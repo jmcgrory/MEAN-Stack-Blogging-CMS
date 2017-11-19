@@ -2,11 +2,17 @@
 .paragraph, p, input, select {
   font: normal normal 300 16px/1.8em "Oxygen", sans-serif;
   margin: 0.5em auto 1.65em; }
+  @media screen and (max-width: 640px) {
+    .paragraph, p, input, select {
+      font-size: 15px; } }
 
 .title, h1, h2, h3, h4, h5, h6 {
   font: normal normal 700 30px/1.6em "Oxygen", sans-serif;
   margin: 0 auto 0.6em;
   text-transform: capitalize; }
+  @media screen and (max-width: 640px) {
+    .title, h1, h2, h3, h4, h5, h6 {
+      font-size: 24px; } }
 
 .clear-inner:after {
   display: block;
@@ -24,7 +30,7 @@
   -webkit-box-sizing: border-box; }
 
 .content {
-  padding: 1em; }
+  padding: 1em 1.5em; }
 
 * {
   font-family: inherit;

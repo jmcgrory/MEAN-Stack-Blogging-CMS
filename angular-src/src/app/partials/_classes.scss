@@ -6,11 +6,19 @@
     .paragraph {
       font: normal normal 300 16px/1.8em $font;
       margin: 0.5em auto 1.65em;
+
+      @include mobile {
+        font-size: 15px;
+      }
     }
     .title {
       font: normal normal 700 30px/1.6em $font;
       margin: 0 auto 0.6em;
       text-transform: capitalize;
+
+      @include mobile {
+        font-size: 24px;
+      }
     }
 
   // Layout
@@ -30,7 +38,7 @@
       -webkit-box-sizing: border-box;
     }
     .content {
-      padding: 1em;
+      padding: 1em 1.5em;
 
       @extend .box;
     }

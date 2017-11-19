@@ -13,6 +13,12 @@
   #logo {
     display: inline-block;
     float: left;
+
+    @include mobile {
+      h1 {
+        font-size: 20px;
+      }
+    }
   }
 
   nav {
@@ -23,6 +29,10 @@
       list-style: none;
       margin: 0.8em auto;
 
+      @include mobile {
+        margin: 0.5em auto;
+      }
+
       li {
         display: inline-block;
 
@@ -30,6 +40,10 @@
           display: block;
           padding: 0.25em 1em;
           font-size: 16px;
+
+          @include mobile {
+            font-size: 14px;
+          }
         }
         &:last-child a {
           padding-right: 0;
