@@ -1,0 +1,39 @@
+//************************//
+//****     NAVBAR     ****//
+//************************//
+
+  // Includes
+  @import '../../partials/const';
+  @import '../../partials/mixins';
+  @import '../../partials/classes';
+  @import '../../partials/basic';
+
+  // Custom Styles
+
+  #logo {
+    display: inline-block;
+    float: left;
+  }
+
+  nav {
+    display: inline-block;
+    float: right;
+
+    ul {
+      list-style: none;
+      margin: 0.8em auto;
+
+      li {
+        display: inline-block;
+
+        a {
+          display: block;
+          padding: 0.25em 1em;
+          font-size: 16px;
+        }
+        &:last-child a {
+          padding-right: 0;
+        }
+      }
+    }
+  }

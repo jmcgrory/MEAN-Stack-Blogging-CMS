@@ -1,0 +1,36 @@
+//************************//
+//****    APP SCSS    ****//
+//************************//
+
+  // Fonts
+    .paragraph {
+      font: normal normal 300 16px/1.8em $font;
+      margin: 0.5em auto 1.65em;
+    }
+    .title {
+      font: normal normal 700 30px/1.6em $font;
+      margin: 0 auto 0.6em;
+      text-transform: capitalize;
+    }
+
+  // Layout
+    .clear-inner:after {
+      display: block;
+      clear: both;
+      content: ' ';
+    }
+    .column {
+      width: 100%;
+      margin: 0 auto;
+      max-width: 720px;
+    }
+    .box {
+      box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      -webkit-box-sizing: border-box;
+    }
+    .content {
+      padding: 1em;
+
+      @extend .box;
+    }

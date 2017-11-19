@@ -1,0 +1,20 @@
+//************************//
+//****     MIXINS     ****//
+//************************//
+
+  // MediaQ
+    @mixin desktop {
+      @media screen and (min-width: #{ $desktop-width }){
+        @content;
+      }
+    }
+    @mixin tablet {
+      @media screen and (max-width: #{ $desktop-width -1px }) and (min-width: #{ $mobile-width + 1px }) {
+        @content;
+      }
+    }
+    @mixin mobile {
+      @media screen and (max-width: #{ $mobile-width }){
+        @content;
+      }
+    }

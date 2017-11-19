@@ -1,0 +1,17 @@
+{
+  "name": "jmcgrory",
+  "version": "1.0.0",
+  "description": "Professional Profile Application",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app"
+  },
+  "dependencies": {
+    "body-parser": "*",
+    "express": "*",
+    "cors": "*"
+  },
+  "author": "jmcgrory",
+  "license": "ISC"
+}
