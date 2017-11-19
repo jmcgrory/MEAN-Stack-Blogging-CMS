@@ -12,9 +12,9 @@
 //************************//
 
   // Development Port
-  // const port = 3000;
+   const port = 3000;
   // Heroku Port
-  const port = process.env.PORT || 8080;
+  // const port = process.env.PORT || 8080;
   const app = express();
 
 //************************//
