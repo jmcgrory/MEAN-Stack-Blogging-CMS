@@ -10,7 +10,12 @@
   "dependencies": {
     "body-parser": "*",
     "express": "*",
-    "cors": "*"
+    "cors": "*",
+    "mongoose": "*",
+    "bcryptjs": "*",
+    "passport": "*",
+    "jsonwebtoken": "*",
+    "passport-jwt": "*"
   },
   "author": "jmcgrory",
   "license": "ISC"

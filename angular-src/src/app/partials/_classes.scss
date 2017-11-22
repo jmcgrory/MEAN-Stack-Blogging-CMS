@@ -20,6 +20,9 @@
         font-size: 24px;
       }
     }
+    input, textarea, select {
+      font: normal normal 300 16px/1.8em $font;
+    }
 
   // Layout
     .clear-inner:after {

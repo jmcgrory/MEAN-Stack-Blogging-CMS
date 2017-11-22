@@ -11,11 +11,18 @@ import { AboutComponent } from './components/about/about.component';
 import { ContactComponent } from './components/contact/contact.component';
 
 import { HighlightModule } from 'ngx-highlightjs';
+import { LoginComponent } from './components/login/login.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
+
+import { AuthService } from './services/auth.service';
+import { AuthGuard } from './guards/auth.guard';
 
 const appRoutes = [
   { path: '', component: HomeComponent, pathMatch: 'full' },
   { path: 'about', component: AboutComponent },
   { path: 'contact', component: ContactComponent },
+  { path: 'login', component: LoginComponent },
+  { path: 'dashboard', component: DashboardComponent },
   { path: '**', redirectTo: '' }
 ]
 
@@ -29,7 +36,9 @@ const options = {
     NavbarComponent,
     HomeComponent,
     AboutComponent,
-    ContactComponent
+    ContactComponent,
+    LoginComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,
@@ -38,7 +47,10 @@ const options = {
     RouterModule.forRoot(appRoutes),
     HighlightModule.forRoot(options)
   ],
-  providers: [],
+  providers: [
+    AuthService,
+    AuthGuard
+  ],
   bootstrap: [AppComponent]
 })
 

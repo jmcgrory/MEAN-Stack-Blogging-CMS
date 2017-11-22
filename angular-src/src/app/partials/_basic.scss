@@ -62,3 +62,32 @@ code {
     padding: 0.5em 0;
   }
 }
+
+.form {
+
+  input, textarea {
+    display: block;
+    width: 100%;
+    appearance: none;
+    border-radius: 0;
+    @extend .box;
+  }
+
+  input[type='text'], input[type='password'], input[type='email'], input[type='tel'] {
+    padding: 0.5em 0.5em 0.5em 0.8em;
+    border: none;
+    border-bottom: 3px solid $primary;
+    background: #f8f8f8;
+  }
+  input[type='submit'] {
+    background: $primary;
+    border: 3px solid $primary;
+    text-align: center;
+    padding: 0.75em;
+    color: #ffffff;
+
+    &:hover {
+      background: #ffffff;
+    }
+  }
+}
