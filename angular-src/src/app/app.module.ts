@@ -17,12 +17,18 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { AuthService } from './services/auth.service';
 import { AuthGuard } from './guards/auth.guard';
 
+import { PostalService } from './services/postal.service';
+import { ArticlesComponent } from './components/articles/articles.component';
+import { PostComponent } from './components/post/post.component';
+
 const appRoutes = [
   { path: '', component: HomeComponent, pathMatch: 'full' },
   { path: 'about', component: AboutComponent },
+  { path: 'articles', component: ArticlesComponent },
+  { path: 'articles/:url', component: PostComponent },
   { path: 'contact', component: ContactComponent },
   { path: 'login', component: LoginComponent },
-  { path: 'dashboard', component: DashboardComponent },
+  { path: 'dashboard', component: DashboardComponent, canActivate:[AuthGuard] },
   { path: '**', redirectTo: '' }
 ]
 
@@ -38,7 +44,9 @@ const options = {
     AboutComponent,
     ContactComponent,
     LoginComponent,
-    DashboardComponent
+    DashboardComponent,
+    ArticlesComponent,
+    PostComponent
   ],
   imports: [
     BrowserModule,
@@ -49,7 +57,8 @@ const options = {
   ],
   providers: [
     AuthService,
-    AuthGuard
+    AuthGuard,
+    PostalService
   ],
   bootstrap: [AppComponent]
 })

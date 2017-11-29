@@ -8,13 +8,13 @@
     "start": "node app"
   },
   "dependencies": {
-    "body-parser": "*",
-    "express": "*",
-    "cors": "*",
-    "mongoose": "*",
     "bcryptjs": "*",
-    "passport": "*",
+    "body-parser": "*",
+    "cors": "*",
+    "express": "*",
     "jsonwebtoken": "*",
+    "mongoose": "^4.10.8",
+    "passport": "*",
     "passport-jwt": "*"
   },
   "author": "jmcgrory",

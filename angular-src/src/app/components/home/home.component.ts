@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { DatePipe } from '@angular/common';
+import { PostalService } from '../../services/postal.service';
+import { Feature } from '../../models/feature.model';
 
 @Component({
   selector: 'app-home',
@@ -6,10 +9,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
+  
+  featured: Feature;
 
-  constructor() { }
+  constructor(
+    private postalService: PostalService
+  ) {}
 
   ngOnInit() {
+    this.postalService.getFeatured().subscribe( data => {
+      this.featured = data;
+    });
   }
 
 }
