@@ -1,0 +1,14 @@
+.table {
+  display: table;
+}
+.tr {
+  display: table-row;
+}
+.td {
+  display: table-cell;
+  font-weight: 400;
+  border-collapse: collapse;
+}
+.th .td {
+  font-weight: 700;
+}

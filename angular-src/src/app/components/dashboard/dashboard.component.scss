@@ -1,0 +1,31 @@
+//***********************//
+//****   DASHBOARD   ****//
+//***********************//
+
+  // Includes
+  @import '../../partials/const';
+  @import '../../partials/mixins';
+  @import '../../partials/classes';
+  @import '../../partials/basic';
+  @import '../../partials/tables';
+
+  //***********************//
+  //****     Posts     ****//
+  //***********************//
+
+  // Post table
+  .post-table {
+    border-top: 1px solid $primary;
+    border-left: 1px solid $primary;
+
+    .td {
+      padding: 0.5em 0.25em 0.5em 0.75em;
+      border-right: 1px solid $primary;
+      border-bottom: 1px solid $primary;
+      font-size: 14px;
+    }
+    .tr.th .td {
+      background: $primary;
+      color: #fff;
+    }
+  }

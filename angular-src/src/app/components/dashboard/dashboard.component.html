@@ -1,0 +1,50 @@
+<div class="column content">
+  <h1>{{greeting}}!</h1>
+  <p>Welcome to your Dash</p>
+</div>
+
+<div class="column content">
+  <h2>Your Articles</h2>
+  <div class="table post-table full">
+    <div class="tr th">
+      <div class="td">
+          Title
+        </div>
+        <div class="td">
+          URL
+        </div>
+        <div class="td">
+          Categories
+        </div>
+        <div class="td">
+          Date
+        </div>
+        <div class="td">
+          Edit
+        </div>
+        <div class="td">
+          Delete
+        </div>
+    </div>
+    <div class="tr" *ngFor="let post of posts">
+      <div class="td">
+        {{ post.title }}
+      </div>
+      <div class="td">
+        {{ post.url }}
+      </div>
+      <div class="td">
+        {{ post.category }}
+      </div>
+      <div class="td">
+        {{ post.date | date:'yy-MM-dd HH:mm' }}
+      </div>
+      <div class="td">
+        [edit]
+      </div>
+      <div class="td">
+        [delete]
+      </div>
+    </div>
+  </div>
+</div>
