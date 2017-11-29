@@ -20,11 +20,13 @@
     "@angular/platform-browser": "^4.0.0",
     "@angular/platform-browser-dynamic": "^4.0.0",
     "@angular/router": "^4.0.0",
+    "angular-font-awesome": "^3.0.3",
+    "angular2-jwt": "^0.2.3",
     "core-js": "^2.4.1",
+    "font-awesome": "^4.7.0",
     "ngx-highlightjs": "^1.2.1",
     "rxjs": "^5.1.0",
-    "zone.js": "^0.8.4",
-    "angular2-jwt": "^0.2.3"
+    "zone.js": "^0.8.4"
   },
   "devDependencies": {
     "@angular/cli": "1.0.0",

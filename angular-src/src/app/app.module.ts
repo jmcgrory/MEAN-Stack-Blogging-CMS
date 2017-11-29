@@ -21,6 +21,8 @@ import { PostalService } from './services/postal.service';
 import { ArticlesComponent } from './components/articles/articles.component';
 import { PostComponent } from './components/post/post.component';
 
+import { AngularFontAwesomeModule } from 'angular-font-awesome';
+
 const appRoutes = [
   { path: '', component: HomeComponent, pathMatch: 'full' },
   { path: 'about', component: AboutComponent },
@@ -53,7 +55,8 @@ const options = {
     FormsModule,
     HttpModule,
     RouterModule.forRoot(appRoutes),
-    HighlightModule.forRoot(options)
+    HighlightModule.forRoot(options),
+    AngularFontAwesomeModule
   ],
   providers: [
     AuthService,
