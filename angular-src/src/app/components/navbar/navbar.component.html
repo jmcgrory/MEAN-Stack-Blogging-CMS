@@ -2,7 +2,7 @@
   <a routerLink="home" id="logo">
     <h2>jmcgrory</h2>
   </a>
-  <nav>
+  <nav [ngClass]="{'admin': authService.loggedIn() }">
     <ul>
       <li>
         <a routerLink="home">Home</a>
@@ -12,6 +12,12 @@
       </li>
       <li routerLinkActive="active">
         <a routerLink="articles">Articles</a>
+      </li>
+      <li routerLinkActive="active" *ngIf="authService.loggedIn()">
+        <a routerLink="dashboard">Dash</a>
+      </li>
+      <li routerLinkActive="active" *ngIf="authService.loggedIn()">
+        <a (click)="logout()">Logout</a>
       </li>
       <li routerLinkActive="active">
         <a routerLink="contact">Contact</a>

@@ -3,6 +3,6 @@ export class Post {
   url: string
   hero: string
   date: Date
-  category: string[]
-  chunks: number[]
+  category: string
+  chunks: string[]
 }

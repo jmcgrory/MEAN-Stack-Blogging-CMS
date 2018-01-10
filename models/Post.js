@@ -23,9 +23,8 @@
       required: true
     },
     category: {
-      type: [
-        String
-      ]
+      type: String,
+      default: "design"
     },
     date: {
       type: Date,
@@ -36,8 +35,11 @@
     },
     chunks: {
       type: [
-        Number
+        String
       ]
+    },
+    active: {
+      type: Boolean
     }
   });
 
@@ -57,18 +59,54 @@
     Post.findOne({ url: search.url }, callback);
   }
 
+  // Get Post by URL
+  module.exports.getPostByID = (search, callback)=>{
+    Post.findById( search.id, callback);
+  }
+
   // Get Featured Posts
   module.exports.getFeaturedPosts = (args, callback)=>{
     let limit = 3;
-    Post.find({}, 'title hero date url', callback).limit(limit);
+    Post.find({ active: true }, 'title hero date url', callback).limit(limit).sort({date: 'desc'});
   }
 
   // Get All Posts
   module.exports.getAllPosts = ( callback )=>{
-    Post.find({}, 'id title date url', callback);
+    Post.find({}, 'id title date url active', callback);
   }
-
+  
   // Add new Post
   module.exports.addPost = (newPost, callback)=>{
     newPost.save(callback);
+  }
+  
+  // Delete Post
+  module.exports.deletePost = (id, callback)=>{
+    Post.remove({ _id: id }, callback);
+  }
+
+  // ?Active Post
+  module.exports.postActive = (req, callback)=>{
+    Post.update(
+      { _id: req.id },
+      { $set: { active: req.active } },
+      callback
+    )
+  }
+
+  // Update Post
+  module.exports.postUpdateMeta = (req, callback)=>{
+    Post.update(
+      { _id: req.id },
+      { $set: {
+          title: req.meta.title,
+          url: req.meta.url,
+          hero: req.meta.hero,
+          date: req.meta.date,
+          category: req.meta.category,
+          chunks: req.meta.chunks
+        }
+      },
+      callback
+    )
   }

@@ -44,6 +44,11 @@ p, input, select {
 
 h1, h2, h3, h4, h5, h6 {
   @extend .title;
+
+  &.small {
+    font-size: 18px;
+    text-transform: uppercase;
+  }
 }
 
 hr {
@@ -78,7 +83,7 @@ code {
     padding: 0.5em 0.5em 0.5em 0.8em;
     border: none;
     border-bottom: 3px solid $primary;
-    background: #f8f8f8;
+    background: #f2f2f2;
   }
   input[type='submit'] {
     background: $primary;
@@ -89,6 +94,51 @@ code {
 
     &:hover {
       background: #ffffff;
+    }
+  }
+
+  .form-input-group {
+    margin: 0.5em auto 1em;
+    @extend .clear-inner;
+
+    label, input, select {
+      display: inline-block;
+      float: left;
+      font-size: 16px;
+      margin: 0 auto;
+      line-height: 1.1;
+      vertical-align: middle;
+      height: 36px;
+      padding: 0.6em 0.5em 0.5em 0.75em;
+      @extend .box;
+    }
+
+    label {
+      width: 33.333%;
+      background: $primary;
+      color: #fff;
+    }
+    input, select {
+      width: 66.666%;
+      border-bottom: none;
+    }
+    select {
+      border: 0;
+      background: #f2f2f2;
+      padding: 0;
+
+      option {
+        padding: 0.4em 0.75em;
+        border-bottom: 1px solid #e8e8e8;
+
+        &:first-child {
+          padding-top: 0.5em;
+        }
+        &:last-child {
+          border-bottom: none;
+          padding-bottom: 0.5em;
+        }
+      }
     }
   }
 }

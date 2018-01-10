@@ -1,6 +1,6 @@
 <div class="column content">
   <h1>{{greeting}}!</h1>
-  <p>Welcome to your Dash</p>
+  <p>Lorem ipsum dolor sit amet, sed an causae sanctus, eros singulis omittantur ex qui, in sea tantas labores. Vis at invenire assentior persecuti, an dicat epicurei sea. Aliquam lobortis tractatos et qui, nec in facete prodesset quaerendum. Ei altera everti mel, cul ne quodsi mollis nostrum, ponderum consetetur ea has.</p>
 </div>
 
 <div class="column content">
@@ -8,23 +8,26 @@
   <div class="table post-table full">
     <div class="tr th">
       <div class="td">
-          Title
-        </div>
-        <div class="td">
-          URL
-        </div>
-        <div class="td">
-          Categories
-        </div>
-        <div class="td">
-          Date
-        </div>
-        <div class="td">
-          Edit
-        </div>
-        <div class="td">
-          Delete
-        </div>
+        Title
+      </div>
+      <div class="td">
+        URL
+      </div>
+      <div class="td">
+        Categories
+      </div>
+      <div class="td">
+        Date
+      </div>
+      <div class="td">
+        Active
+      </div>
+      <div class="td">
+        Edit
+      </div>
+      <div class="td">
+        Delete
+      </div>
     </div>
     <div class="tr" *ngFor="let post of posts">
       <div class="td">
@@ -40,10 +43,39 @@
         {{ post.date | date:'yy-MM-dd HH:mm' }}
       </div>
       <div class="td">
-        [edit]
+        <div class="btn mini" (click)="postActive(post._id, post.active)">
+          <fa name="check-circle" *ngIf="post.active"></fa>
+          <fa name="circle" *ngIf="!post.active"></fa>
+        </div>
       </div>
       <div class="td">
-        [delete]
+        <div class="btn mini" routerLink="/dashboard/{{ post._id }}">
+          <fa name="cog"></fa>
+        </div>
+      </div>
+      <div class="td">
+        <div class="btn mini" (click)="postDelete(post._id)">
+          <fa name="trash"></fa>
+        </div>
+      </div>
+    </div>
+    <div class="tr blank">
+      <div class="td">
+      </div>
+      <div class="td">
+      </div>
+      <div class="td">
+      </div>
+      <div class="td">
+      </div>
+      <div class="td">
+      </div>
+      <div class="td">
+      </div>
+      <div class="td">
+        <div class="btn mini" (click)="postAdd()">
+          <fa name="plus-square"></fa>
+        </div>
       </div>
     </div>
   </div>

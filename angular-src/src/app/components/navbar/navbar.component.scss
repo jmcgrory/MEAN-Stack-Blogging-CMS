@@ -32,6 +32,11 @@
     display: inline-block;
     float: right;
 
+    &.admin ul li a {
+      font-size: 15px;
+      padding: 0.3em 0.5em;
+    }
+
     ul {
       list-style: none;
       margin: 0.8em auto;

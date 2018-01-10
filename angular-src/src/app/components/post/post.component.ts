@@ -31,6 +31,11 @@ export class PostComponent implements OnInit {
 
   }
 
+  onScroll(){
+    console.log('SCROLLDA!');
+  }
+
+  // Unsubscribe on leave
   ngOnDestroy(){
     this.sub.unsubscribe();
   }

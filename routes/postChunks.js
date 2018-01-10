@@ -13,24 +13,71 @@
   const PostChunk = require('../models/PostChunk');
 
 //************************//
-//**** Add Post Chunk ****//
+//****    Functions   ****//
 //************************//
 
-  // Register post request
+  // Add Post Chunk
   router.post('/add', (req, res, next) => {
-    
     // define new post
-    let newPostChunk = new Post({
-      id: req.body.id,
-      name: req.body.type,
-      content: req.body.content
+    let newPostChunk = new PostChunk({
+      type: "text"
     });
-
     PostChunk.addPostChunk(newPostChunk, (err, postChunk) => {
       if(err){
         res.json({success: false, msg: 'Failed to create chunk'});
       } else {
-        res.json({success: true, msg: 'Post Chunk Added'});
+        res.json({
+          success: true,
+          msg: 'Post Chunk Added',
+          newID: postChunk._id
+        });
+      }
+    });
+  });
+
+
+  // Get all postChunks via Array!
+  router.get('/all', (req, res, next) => {
+    // Query
+    let query = req.query[0];
+    console.log(query);
+    PostChunk.getAll(query, (err, chunks)=>{
+      if(err){
+        res.json({success: false, msg: 'Failed to get chunks'});
+      } else {
+        res.json({
+          success: true,
+          msg: 'Got Chunks',
+          newChunks: chunks
+        });
+      }
+    });
+  });
+
+  // Delete Post
+  router.post('/delete', (req, res, next) => {
+    let id = req.body.id;
+    PostChunk.deleteChunk( id, (err, posts) => {
+      if(err){
+        res.json({success: false, msg: 'Failed to delete'});
+      } else {
+        res.json({success: true, msg: 'Chunk deleted'});
+      }
+    });
+  });
+
+  // Delete Post
+  router.post('/update', (req, res, next) => {
+    let send = {
+      id: req.body.id,
+      type: req.body.type,
+      content: req.body.content
+    }
+    PostChunk.updateChunk( send, (err, posts) => {
+      if(err){
+        res.json({success: false, msg: 'Failed to update'});
+      } else {
+        res.json({success: true, msg: 'Chunk updated'});
       }
     });
   });

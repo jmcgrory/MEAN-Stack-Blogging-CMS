@@ -16,16 +16,29 @@
   // Post table
   .post-table {
     border-top: 1px solid $primary;
-    border-left: 1px solid $primary;
 
     .td {
-      padding: 0.5em 0.25em 0.5em 0.75em;
+      padding: 0.5em;
       border-right: 1px solid $primary;
       border-bottom: 1px solid $primary;
-      font-size: 14px;
+      font-size: 12px;
+
+      &:first-child {
+        border-left: 1px solid $primary;
+      }
     }
     .tr.th .td {
       background: $primary;
       color: #fff;
+    }
+    .tr.blank {
+      border-left: none;
+      
+      .td {
+        border-right: none;
+        border-bottom: none;
+        border-left: none;
+        padding-top: 1.5em;
+      }
     }
   }

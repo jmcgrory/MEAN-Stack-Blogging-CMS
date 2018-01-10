@@ -84,15 +84,6 @@
       }
     });
   });
-  
-//************************//
-//****    Profile?    ****//
-//************************//
-
-  // Profile
-  router.get('/profile', passport.authenticate('jwt', {session:false}), (req, res, next) => {
-    res.send({user: req.user});
-  });
 
 //************************//
 //****     Export     ****//

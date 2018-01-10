@@ -14,10 +14,6 @@
 
   // User Schema
   const PostChunkSchema = Schema({
-    id: {
-      type: Number,
-      required: true
-    },
     type: {
       type: String,
       required: true
@@ -41,4 +37,41 @@
   // Get PostChunk by ID
   module.exports.getPostChunkById = (id, callback)=>{
     PostChunk.findById(id, callback);
+  }
+
+  // Add new chunk
+  module.exports.addPostChunk = (newChunk, callback)=>{
+    newChunk.save(callback);
+  }
+
+  // Get all assoc chunks
+  module.exports.getAll = (query, callback)=>{
+    PostChunk.find(
+      {
+        "_id": {
+          $in: query
+        }
+      },
+      callback
+    );
+  }
+
+  // Delete Chunk
+  module.exports.deleteChunk = (id, callback)=>{
+    PostChunk.remove({ _id: id }, callback);
+  }
+
+  // Update Chunk
+
+  // Update Post
+  module.exports.updateChunk = (req, callback)=>{
+    PostChunk.update(
+      { _id: req.id },
+      { $set: {
+          type: req.type,
+          content: req.content
+        }
+      },
+      callback
+    )
   }
