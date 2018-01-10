@@ -4,6 +4,8 @@ MEAN Stack Blog CMS Build with Mongoose/MongoDB, Express, Angular 4 and Node.js,
 
 # Basic Functionalities
 
+This is a MEAN stack blog for fast and quick blogging on the go, full CRUD capabilities and user authentication, allows multiple users.
+
  - User Authentication
  - User Post Dashboard
  - Categorisable Posts
@@ -30,4 +32,6 @@ To-Do:
  - Post deletion requires post-chunk deletion addition
  - Posts/Post Chunk dynamic loading needs to be integrated on scroll (currently testing ngx-infinite-scroll for this)
  - Written articles need to be uploaded using CMS (not a real concern here)
+ - Improve UI for initial load
+ - Add animations to post/page navigation
  
