@@ -1,0 +1,74 @@
+<header class="column content clear-inner">
+    <h1>Edit Post</h1>
+
+    <hr>
+</header>
+  
+<div class="column content" *ngIf="post">
+  
+  <h2 class="small">Post Meta</h2>
+  <form (submit)="editPostMeta()" class="form">
+
+    <div class="form-input-group">
+      <label>Post Title</label>
+      <input type="text" name="title" [(ngModel)]="post.title" placeholder="Post Title">
+    </div>
+
+    <div class="form-input-group">
+      <label>Post URL</label>
+      <input type="text" name="url" [(ngModel)]="post.url" placeholder="Post URL">
+    </div>
+
+    <div class="form-input-group">
+      <label>Post Hero</label>
+      <input type="text" name="hero" [(ngModel)]="post.hero" placeholder="Post Hero">
+    </div>
+
+    <div class="form-input-group">
+      <label>Post Date</label>
+      <input type="text" name="date" [(ngModel)]="post.date" placeholder="Post Date">
+    </div>
+
+    <div class="form-input-group">
+        <label>Category</label>
+        <select name="category" [(ngModel)]="post.category">
+          <option *ngFor="let c of categories" [ngValue]="c">{{c}}</option>
+        </select>
+      </div>
+
+    <input type="submit" class="btn" value="Update Post Meta">
+
+  </form>
+
+</div>
+  
+<div class="column content" *ngIf="chunks">
+  
+  <h2 class="small">Post Chunks</h2>
+
+  <div class="form-chunks">
+
+    <div class="form-chunk-container" *ngFor="let chunk of chunks">
+      <p>{{ chunk._id }}</p>
+      <div class="delete" (click)="deleteChunk(chunk._id)">
+        <fa name="trash"></fa> 
+      </div>
+      <form (submit)="updateChunk(chunk)" class="form">
+        <select name="type" [(ngModel)]="chunk.type">
+          <option *ngFor="let t of types" [ngValue]="t">{{t}}</option>
+        </select>
+        <textarea name="content" [(ngModel)]="chunk.content"></textarea>
+        <input type="submit" class="btn" value="Update Chunk">
+      </form>
+    </div>
+
+    <div class="form-chunk-add">
+      <button class="btn" (click)="newChunk()">
+        <fa name="plus-square"></fa> 
+        Add Post Chunk
+      </button>
+    </div>
+
+  </div>
+
+</div>

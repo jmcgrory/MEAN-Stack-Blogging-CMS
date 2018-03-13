@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { Http, Headers } from '@angular/http';
+import { HttpClientModule, HttpClient, HttpHeaders } from '@angular/common/http';
 import 'rxjs/add/operator/map';
-import { tokenNotExpired } from 'angular2-jwt';
+import { JwtHelperService } from '@auth0/angular-jwt';
 
 
 @Injectable()
@@ -10,20 +10,29 @@ export class AuthService {
   authToken: any;
   user: any;
 
-  constructor(private http: Http) { }
+  constructor(
+    private http: HttpClient,
+    public jwtHelper: JwtHelperService
+  ) { }
 
   registerUser(user){
-    let headers = new Headers();
+    let headers = new HttpHeaders();
     headers.append('Content-Type', 'application/json');
-    return this.http.post('http://localhost:3000/users/register', user, {headers: headers})
-      .map(res => res.json());
+    return this.http.post(
+      'http://localhost:3000/users/register',
+      user,
+      {headers: headers}
+    )//.map(res => res.json());
   }
   
   authenticateUser(user){
-    let headers = new Headers();
+    let headers = new HttpHeaders();
     headers.append('Content-Type', 'application/json');
-    return this.http.post('http://localhost:3000/users/authenticate', user, { headers: headers })
-      .map(res=>res.json());
+    return this.http.post(
+      'http://localhost:3000/users/authenticate',
+      user,
+      { headers: headers }
+    )//.map(res=>res.json());
   }
   
   storeUserData(token, user){
@@ -39,7 +48,7 @@ export class AuthService {
   }
 
   loggedIn(){
-    return tokenNotExpired('id_token');
+    return this.jwtHelper.isTokenExpired('id_token');
   }
 
   logout(){
