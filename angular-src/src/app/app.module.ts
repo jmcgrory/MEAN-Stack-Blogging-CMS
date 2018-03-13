@@ -29,6 +29,7 @@ import { AuthGuard } from './guards/auth.guard';
 import { HighlightModule } from 'ngx-highlightjs';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
+import { JwtModule } from '@auth0/angular-jwt';
 
 // Angular Routes
 const appRoutes = [
@@ -67,7 +68,16 @@ const options = {
     RouterModule.forRoot(appRoutes),
     HighlightModule.forRoot(options),
     AngularFontAwesomeModule,
-    InfiniteScrollModule
+    InfiniteScrollModule,
+    JwtModule.forRoot({
+      config: {
+        tokenGetter: () => {
+          let token = localStorage.getItem('id_token');
+          console.log(token);
+          return token ? token : null;
+        }
+      }
+    })
   ],
   providers: [
     AuthService,

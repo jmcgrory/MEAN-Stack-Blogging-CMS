@@ -1,19 +1,23 @@
 import { Injectable } from '@angular/core';
 import { HttpClientModule, HttpClient, HttpHeaders } from '@angular/common/http';
 import 'rxjs/add/operator/map';
-import { JwtHelperService } from '@auth0/angular-jwt';
+import { JwtHelperService, JwtModule } from '@auth0/angular-jwt';
 
 
 @Injectable()
 export class AuthService {
-
+  
   authToken: any;
   user: any;
 
   constructor(
     private http: HttpClient,
     public jwtHelper: JwtHelperService
-  ) { }
+  ) {
+
+    const helper = new JwtHelperService();
+
+  }
 
   registerUser(user){
     let headers = new HttpHeaders();
