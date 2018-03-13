@@ -1,0 +1,65 @@
+//************************//
+//****      EDIT      ****//
+//************************//
+
+  // Includes
+  @import '../../partials/const';
+  @import '../../partials/mixins';
+  @import '../../partials/classes';
+  @import '../../partials/basic';
+
+  // Rules
+  .form-chunk-container {
+    border: 1px solid $primary;
+    border-top: none;
+    border-bottom: 1px dashed $primary;
+    position: relative;
+
+    .form {
+      padding: 12px;
+    }
+
+    p {
+      margin: 0 auto;
+      background: $primary;
+      padding: 0.5em 0.6em;
+      color: #fff;
+      font-size: 12px;
+      margin-top: -1px;
+    }
+
+    &:first-child {
+      border-top: 1px solid $primary;
+    }
+
+    textarea {
+      resize: vertical;
+      width: 100%;
+      min-height: 200px;
+    }
+
+    .delete {
+      position: absolute;
+      top: -1px;
+      right: 0;
+      color: #fff;
+      padding: 0.45em 0.8em;
+      font-size: 14px;
+      border-left: 1px solid white;
+      border-top: 1px solid $primary;
+      border-bottom: 1px solid $primary;
+      cursor: pointer;
+      @include transition(220ms ease);
+
+      &:hover {
+        background: #fff;
+        color: $primary;
+        border-left: 1px solid $primary;
+      }
+    }
+  }
+
+  .form-chunk-add {
+    border: 1px solid $primary;
+    border-top: none;
+  }

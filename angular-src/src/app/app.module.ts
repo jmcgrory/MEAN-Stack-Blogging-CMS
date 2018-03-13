@@ -2,7 +2,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { HttpModule } from '@angular/http';
+import { HttpClientModule } from '@angular/common/http';
 import { RouterModule, Routes } from '@angular/router';
 
 // Component Imports
@@ -29,6 +29,7 @@ import { AuthGuard } from './guards/auth.guard';
 import { HighlightModule } from 'ngx-highlightjs';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
+import { JwtModule } from '@auth0/angular-jwt';
 
 // Angular Routes
 const appRoutes = [
@@ -63,11 +64,20 @@ const options = {
   imports: [
     BrowserModule,
     FormsModule,
-    HttpModule,
+    HttpClientModule,
     RouterModule.forRoot(appRoutes),
     HighlightModule.forRoot(options),
     AngularFontAwesomeModule,
-    InfiniteScrollModule
+    InfiniteScrollModule,
+    JwtModule.forRoot({
+      config: {
+        tokenGetter: () => {
+          let token = localStorage.getItem('id_token');
+          console.log(token);
+          return token ? token : null;
+        }
+      }
+    })
   ],
   providers: [
     AuthService,
