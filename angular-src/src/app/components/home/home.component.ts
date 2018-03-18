@@ -10,7 +10,7 @@ import { Feature } from '../../models/feature.model';
 })
 export class HomeComponent implements OnInit {
   
-  featured: Feature;
+  featured: Feature[];
 
   constructor(
     private postalService: PostalService

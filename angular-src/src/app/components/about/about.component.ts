@@ -27,8 +27,8 @@ export class AboutComponent implements OnInit {
   
   skills: any = [
     {
-      name: 'Javascript',
-      level: 80
+      name: 'Javascript (ES5/ES6)',
+      level: 75
     },{
       name: 'CSS3/SCSS',
       level: 95
@@ -45,8 +45,14 @@ export class AboutComponent implements OnInit {
       name: 'NodeJS',
       level: 65
     },{
-      name: 'PHP',
-      level: 70
+      name: 'React',
+      level: 30
+    },{
+      name: 'PHP 7+',
+      level: 60
+    },{
+      name: 'Laravel 5.6+',
+      level: 40
     },{
       name: 'ExpressJS',
       level: 45
@@ -61,7 +67,7 @@ export class AboutComponent implements OnInit {
       level: 70
     },{
       name: 'C++',
-      level: 35
+      level: 32
     },{
       name: 'Adobe Photoshop',
       level: 90
@@ -73,7 +79,7 @@ export class AboutComponent implements OnInit {
       level: 65
     },{
       name: 'Adobe InDesign',
-      level: 70
+      level: 60
     },{
       name: 'Adobe XD',
       level: 45

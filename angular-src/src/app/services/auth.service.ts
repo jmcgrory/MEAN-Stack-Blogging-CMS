@@ -3,7 +3,6 @@ import { HttpClientModule, HttpClient, HttpHeaders } from '@angular/common/http'
 import 'rxjs/add/operator/map';
 import { JwtHelperService, JwtModule } from '@auth0/angular-jwt';
 
-
 @Injectable()
 export class AuthService {
   
@@ -14,9 +13,7 @@ export class AuthService {
     private http: HttpClient,
     public jwtHelper: JwtHelperService
   ) {
-
     const helper = new JwtHelperService();
-
   }
 
   registerUser(user){
@@ -26,17 +23,18 @@ export class AuthService {
       'http://localhost:3000/users/register',
       user,
       {headers: headers}
-    )//.map(res => res.json());
+    );
   }
   
   authenticateUser(user){
     let headers = new HttpHeaders();
     headers.append('Content-Type', 'application/json');
-    return this.http.post(
+    let response = this.http.post(
       'http://localhost:3000/users/authenticate',
       user,
       { headers: headers }
-    )//.map(res=>res.json());
+    );
+    return response;
   }
   
   storeUserData(token, user){
@@ -47,12 +45,17 @@ export class AuthService {
   }
 
   loadToken(){
-    const token = localStorage.getItem('id_token');
-    this.authToken = token;
+    this.authToken = this.getToken();
+  }
+
+  getToken(){
+    return localStorage.getItem('id_token');
   }
 
   loggedIn(){
-    return this.jwtHelper.isTokenExpired('id_token');
+    console.log(this.authToken);
+    var blah = this.jwtHelper.decodeToken(this.authToken);
+    return blah;
   }
 
   logout(){

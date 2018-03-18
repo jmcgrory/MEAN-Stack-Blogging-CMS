@@ -18,6 +18,9 @@
 
   // Register post request
   router.post('/register', (req, res, next) => {
+
+    // TODO: Replace in prod with email
+    return false;
     
     // define new user
     let newUser = new User({
@@ -32,6 +35,7 @@
         res.json({success: true, msg: 'User registered'});
       }
     });
+
   });
 
 //************************//
@@ -52,7 +56,14 @@
 
       if(!user){
         // No user found, return JSON...
-        return res.json({ success: false, msg: 'User not found' });
+        return res.json(
+          {
+            success: false,
+            msg: 'User not found',
+            user: null,
+            token: null
+          }
+        );
       } else {
         // Compare submitted to hashed pword in User model func
         User.comparePassword(password, user.password, (err, isMatch)=>{
@@ -70,7 +81,8 @@
             // send back the right data via json response...
             res.json({
               success: true,
-              token: 'JWT '+token,
+              token: token,
+              msg: 'User found',
               user: {
                 id: user._id,
                 name: user.name
@@ -78,7 +90,14 @@
             });
           } else {
             // Error message ja
-            return res.json({ success:false, msg:'Wrong Password' });
+            return res.json(
+              {
+                success:false,
+                msg:'Wrong Password',
+                token: false,
+                user: false
+              }
+            );
           }
         });
       }

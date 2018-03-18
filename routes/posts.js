@@ -26,6 +26,9 @@
 
   // Register post request
   router.post('/add', (req, res, next) => {
+
+    console.log(req);
+
     // define new post
     let newPost = new Post({
       title: "New Post",

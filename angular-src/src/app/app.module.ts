@@ -73,7 +73,6 @@ const options = {
       config: {
         tokenGetter: () => {
           let token = localStorage.getItem('id_token');
-          console.log(token);
           return token ? token : null;
         }
       }
