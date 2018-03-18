@@ -13,12 +13,14 @@
 <div class="column content">
     <h2>Latest Articles</h2>
     <div class="articles">
-        <a routerLink="/articles/{{ post.url }}" *ngFor="let post of featured" class="article featured">
-            <div class="article-hero img-fit">
-                <img [src]="post.hero">
-            </div>
-            <h3>{{ post.title }}</h3>
-            <span>{{ post.date | date:'mediumDate' }}</span>
-        </a>
+        <article *ngFor="let post of featured" class="article featured">
+            <a routerLink="/articles/{{ post.url }}" title="Read Article">
+                <div class="article-hero img-fit">
+                    <img [src]="post.hero">
+                </div>
+                <h3>{{ post.title }}</h3>
+                <span>{{ post.date | date:'mediumDate' }}</span>
+            </a>
+        </article>
     </div>
 </div>
