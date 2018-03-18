@@ -4,5 +4,5 @@ config/
 angular-src/node_modules/
 .sass-cache/
 angular-src/angular-src/
-.css.map
-.css
+*.css.map
+*.css
