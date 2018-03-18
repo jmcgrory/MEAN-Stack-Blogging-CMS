@@ -17,7 +17,7 @@ export class PostalService {
     return this.http.get<Post[]>(
       'http://localhost:3000/posts/featured',
       { headers: headers }
-    )//.map( res => res.json() );
+    );
   }
 
   // Get variable amount of posts...
@@ -31,7 +31,7 @@ export class PostalService {
       //  search: { url: url }
         params: new HttpParams().set('url', url)
       }
-    )//.map( res => res.json() );
+    );
   }
   
   // Get variable amount of posts...
@@ -45,7 +45,7 @@ export class PostalService {
         //search: { id: id }
         params: new HttpParams().set('id', id)
       }
-    )//.map( res => res.json() );
+    );
   }
 
   // Get all posts
@@ -55,7 +55,7 @@ export class PostalService {
     return this.http.get<Post[]>(
       'http://localhost:3000/posts/all',
       { headers: headers }
-    )//.map( res => res.json() );
+    );
   }
 
   // Delete One Post
@@ -66,7 +66,7 @@ export class PostalService {
       'http://localhost:3000/posts/delete',
       { _id: id },
       { headers: headers }
-    )//.map( res => res.json() );
+    );
   }
   
   // Add Generic Post
@@ -76,7 +76,7 @@ export class PostalService {
     return this.http.post(
       'http://localhost:3000/posts/add', {},
       { headers: headers }
-    )//.map( res => res.json() );
+    );
   }
   
   // ?Active Post
@@ -87,7 +87,7 @@ export class PostalService {
       'http://localhost:3000/posts/active',
       { id: id, active: active },
       { headers: headers }
-    )//.map( res => res.json() );
+    );
   }
   
   // ?Active Post
@@ -98,7 +98,7 @@ export class PostalService {
       'http://localhost:3000/posts/update-meta',
       { meta: postMeta },
       { headers: headers }
-    )//.map( res => res.json() );
+    );
   }
 
 }

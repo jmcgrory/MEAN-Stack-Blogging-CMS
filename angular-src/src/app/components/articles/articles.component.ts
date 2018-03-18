@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Feature } from '../../models/feature.model';
+import { DatePipe } from '@angular/common';
+import { PostalService } from '../../services/postal.service';
 
 @Component({
   selector: 'app-articles',
@@ -7,10 +10,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ArticlesComponent implements OnInit {
 
-  constructor() { }
+  articles: Feature[];
+
+  constructor(
+    private postalService: PostalService
+  ) { }
 
   ngOnInit() {
-    
+    this.postalService.getAllPosts().subscribe( data => {
+      this.articles = data;
+    });
   }
 
 }
