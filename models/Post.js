@@ -72,7 +72,7 @@
 
   // Get All Posts
   module.exports.getAllPosts = ( callback )=>{
-    Post.find({}, 'id title date url active', callback);
+    Post.find({}, 'id hero title date url active', callback);
   }
   
   // Add new Post

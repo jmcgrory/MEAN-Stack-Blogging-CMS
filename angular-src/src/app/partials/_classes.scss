@@ -103,6 +103,10 @@
       width: 33.33%;
       @extend .box;
 
+      &:nth-child(1n+3){
+        padding-top: 20px;
+      }
+
       h3 {
         font-size: 16px;
         padding: 0.5em 0;

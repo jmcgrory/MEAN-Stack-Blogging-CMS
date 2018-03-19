@@ -53,9 +53,8 @@ export class AuthService {
   }
 
   loggedIn(){
-    console.log(this.authToken);
-    var blah = this.jwtHelper.decodeToken(this.authToken);
-    return blah;
+    var token = this.jwtHelper.decodeToken(this.authToken);
+    return (token) ? token : false;
   }
 
   logout(){

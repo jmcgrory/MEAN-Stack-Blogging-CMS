@@ -18,6 +18,7 @@ export class ArticlesComponent implements OnInit {
 
   ngOnInit() {
     this.postalService.getAllPosts().subscribe( data => {
+      console.log(data);
       this.articles = data;
     });
   }

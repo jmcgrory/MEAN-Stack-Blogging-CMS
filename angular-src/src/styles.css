@@ -78,6 +78,8 @@ input, textarea, select {
   display: inline-block;
   float: left;
   width: 33.33%; }
+  .article:nth-child(1n+3) {
+    padding-top: 20px; }
   .article h3 {
     font-size: 16px;
     padding: 0.5em 0;
