@@ -52,7 +52,6 @@
     .img-fit {
       width: 100%;
       height: 0;
-      padding-bottom: 150%;
       position: relative;
 
       img {
@@ -100,12 +99,8 @@
     .article {
       display: inline-block;
       float: left;
-      width: 33.33%;
+      padding-top: 25px;
       @extend .box;
-
-      &:nth-child(1n+3){
-        padding-top: 20px;
-      }
 
       h3 {
         font-size: 16px;
@@ -116,22 +111,64 @@
       span {
         font-size: 14px;
       }
-      
-      &:nth-child(3n+1){
-        padding-right: 3%;
-        clear: both;
-      }
-      
-      &:nth-child(3n+2){
-        padding-right: 1.5%;
-        padding-left: 1.5%;
-      }
-      
-      &:nth-child(3n+3){
-        padding-left: 3%;
+
+      @include desktop {
+
+        width: 33.33%;
+
+        &:nth-child(1),
+        &:nth-child(2),
+        &:nth-child(3){
+          padding-top: 0;
+        }
+
+        &:nth-child(3n+1){
+          padding-right: 3%;
+          clear: both;
+        }
+        
+        &:nth-child(3n+2){
+          padding-right: 1.5%;
+          padding-left: 1.5%;
+        }
+        
+        &:nth-child(3n+3){
+          padding-left: 3%;
+        }
+
+        .img-fit {
+          padding-bottom: 150%;
+        }
       }
 
-      &.featured {
+      @include tablet {
+        width: 50%;
 
+        &:nth-child(odd) {
+          padding-right: 3%;
+        }
+
+        &:nth-child(even) {
+          padding-right: 3%;
+        }
+
+        .img-fit {
+          padding-bottom: 125%;
+        }
+      }
+
+      @include mobile {
+        width: 100%;
+        display: block;
+        float: none;
+        padding: 10px 0!important;
+
+        .img-fit {
+          padding-bottom: 110%;
+        }
+      }
+
+      &.feature {
+        padding-top: 0;
       }
     }

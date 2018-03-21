@@ -23,8 +23,8 @@
       required: true
     },
     category: {
-      type: String,
-      default: "design"
+      type: String[],
+      default: []
     },
     date: {
       type: Date,

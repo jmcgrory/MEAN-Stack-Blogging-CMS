@@ -9,7 +9,7 @@
 <div class="column content">
 
   <div class="articles">
-    <article *ngFor="let post of articles" class="article featured">
+    <article *ngFor="let post of articles" class="article">
         <a routerLink="/articles/{{ post.url }}" title="Read Article">
             <div class="article-hero img-fit">
                 <img [src]="post.hero">

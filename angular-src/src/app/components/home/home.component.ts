@@ -19,7 +19,6 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
     this.postalService.getFeatured().subscribe( data => {
       this.featured = data;
-      console.log(data);
     });
   }
 

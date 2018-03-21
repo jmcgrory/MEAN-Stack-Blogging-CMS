@@ -40,7 +40,6 @@ input, textarea, select {
 .img-fit {
   width: 100%;
   height: 0;
-  padding-bottom: 150%;
   position: relative; }
   .img-fit img {
     position: absolute;
@@ -77,9 +76,7 @@ input, textarea, select {
 .article {
   display: inline-block;
   float: left;
-  width: 33.33%; }
-  .article:nth-child(1n+3) {
-    padding-top: 20px; }
+  padding-top: 25px; }
   .article h3 {
     font-size: 16px;
     padding: 0.5em 0;
@@ -87,14 +84,40 @@ input, textarea, select {
     text-transform: none; }
   .article span {
     font-size: 14px; }
-  .article:nth-child(3n+1) {
-    padding-right: 3%;
-    clear: both; }
-  .article:nth-child(3n+2) {
-    padding-right: 1.5%;
-    padding-left: 1.5%; }
-  .article:nth-child(3n+3) {
-    padding-left: 3%; }
+  @media screen and (min-width: 1024px) {
+    .article {
+      width: 33.33%; }
+      .article:nth-child(1), .article:nth-child(2), .article:nth-child(3) {
+        padding-top: 0; }
+      .article:nth-child(3n+1) {
+        padding-right: 3%;
+        clear: both; }
+      .article:nth-child(3n+2) {
+        padding-right: 1.5%;
+        padding-left: 1.5%; }
+      .article:nth-child(3n+3) {
+        padding-left: 3%; }
+      .article .img-fit {
+        padding-bottom: 150%; } }
+  @media screen and (max-width: 1023px) and (min-width: 641px) {
+    .article {
+      width: 50%; }
+      .article:nth-child(odd) {
+        padding-right: 3%; }
+      .article:nth-child(even) {
+        padding-right: 3%; }
+      .article .img-fit {
+        padding-bottom: 125%; } }
+  @media screen and (max-width: 640px) {
+    .article {
+      width: 100%;
+      display: block;
+      float: none;
+      padding: 10px 0 !important; }
+      .article .img-fit {
+        padding-bottom: 110%; } }
+  .article.feature {
+    padding-top: 0; }
 
 * {
   font-family: inherit;

@@ -9,7 +9,7 @@
       }
     }
     @mixin tablet {
-      @media screen and (max-width: #{ $desktop-width -1px }) and (min-width: #{ $mobile-width + 1px }) {
+      @media screen and (max-width: #{ $desktop-width - 1 }) and (min-width: #{ $mobile-width + 1 }) {
         @content;
       }
     }
