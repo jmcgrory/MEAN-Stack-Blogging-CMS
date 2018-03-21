@@ -87,6 +87,10 @@
   const postChunks = require('./routes/postChunks');
   app.use('/chunks', postChunks);
 
+  // Route for PostChunks
+  const categories = require('./routes/categories');
+  app.use('/categories', categories);
+
 //************************//
 //****    RUN DMC     ****//
 //************************//

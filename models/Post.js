@@ -23,8 +23,9 @@
       required: true
     },
     category: {
-      type: String[],
-      default: []
+      type: [
+        String
+      ]
     },
     date: {
       type: Date,
