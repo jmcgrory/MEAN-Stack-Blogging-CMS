@@ -29,7 +29,7 @@ export class EditComponent implements OnInit {
     "travel",
     "motorcycles"
   ];
-  selectedCategory:string = undefined;
+  selectedCategory:string[] = [];
 
   constructor(
     private route: ActivatedRoute,
@@ -63,7 +63,6 @@ export class EditComponent implements OnInit {
 
   newChunk(){
     this.chunkService.createChunk().subscribe(data=>{
-     // this.post.chunks.push(data._id);
       console.log('todo');
       console.log(data);
       this.editPostMeta();
@@ -73,7 +72,6 @@ export class EditComponent implements OnInit {
 
   getAllChunks(){
     this.chunkService.getAllChunks(this.post.chunks).subscribe(data=>{
-      // this.chunks = data.newChunks;
       this.chunks = data;
     });
   }
