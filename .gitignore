@@ -5,5 +5,5 @@ angular-src/node_modules/
 .sass-cache/
 angular-src/angular-src/
 *.css.map
-config/database.js
-angularjs/src/assets/lib/hljs/styles/*.css
+/config/database.js
+/angularjs/src/assets/lib/hljs/styles/*.css
