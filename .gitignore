@@ -6,3 +6,4 @@ angular-src/node_modules/
 angular-src/angular-src/
 *.css.map
 config/database.js
+angularjs/src/assets/lib/hljs/styles/
