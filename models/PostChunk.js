@@ -21,7 +21,7 @@
     content: {
       type: String
     }
-  });
+  }, { collection: 'chunks' });
 
 //************************//
 //****     Export     ****//

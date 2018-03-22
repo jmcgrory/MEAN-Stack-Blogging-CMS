@@ -18,7 +18,7 @@
       type: String,
       required: true
     }
-  });
+  }, { collection: 'categories' });
 
 //************************//
 //****     Export     ****//
@@ -31,10 +31,10 @@
 //****   Functions    ****//
 //************************//
 
-  module.exports.getCategories = (callback)=>{
-    Category.find({}, callback);
-  }
-
   module.exports.getCategory = (search, callback)=>{
     Category.findOne({ category: search.url }, callback);
+  }
+
+  module.exports.getCategories = (callback)=>{
+    Category.find({}, callback);
   }

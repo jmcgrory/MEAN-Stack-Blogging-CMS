@@ -19,8 +19,8 @@
     // Get single post
     router.get('/single', (req, res, next) => {
 
-        Category.getCategories( req.query, (err, categories) => {
-            res.send(categories);
+        Category.getCategory( req.query, (err, category) => {
+            res.send(category);
         });
 
     });
@@ -28,8 +28,9 @@
     // Get all posts
     router.get('/all', (req, res, next) => {
 
-        Category.getAllPosts( (err, category) => {
-            res.send(category);
+        Category.getCategories( (err, categories) => {
+            console.log(categories);
+            res.send(categories);
         });
         
     });

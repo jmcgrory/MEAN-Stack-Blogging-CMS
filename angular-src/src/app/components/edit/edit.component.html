@@ -30,9 +30,9 @@
     </div>
 
     <div class="form-input-group">
-        <label>Category</label>
-        <select name="category" [(ngModel)]="post.category">
-          <option *ngFor="let c of categories" [ngValue]="c">{{c}}</option>
+        <label>Categories</label>
+        <select name="category" [(ngModel)]="post.categories">
+          <option *ngFor="let c of categories" [ngValue]="c.name">{{c.name}}</option>
         </select>
       </div>
 

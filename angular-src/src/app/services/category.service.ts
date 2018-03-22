@@ -24,7 +24,7 @@ export class CategoryService {
   }
 
   // Get all posts
-  getAllPosts(){
+  getCategories(){
     let headers = new HttpHeaders();
     headers.append('Content-Type', 'application/json');
     return this.http.get<Category[]>(
