@@ -11,6 +11,9 @@ import { Feature } from '../../models/feature.model';
 export class HomeComponent implements OnInit {
   
   featured: Feature[];
+  events: any;
+  date_start: number;
+  date_end: number;
 
   constructor(
     private postalService: PostalService
