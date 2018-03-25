@@ -28,13 +28,15 @@
       password: req.body.password
     });
 
-    User.addUser(newUser, (err, user) => {
-      if(err){
-        res.json({success: false, msg: 'Failed to register user'});
-      } else {
-        res.json({success: true, msg: 'User registered'});
-      }
-    });
+    console.log('registration closed', newUser);
+
+    // User.addUser(newUser, (err, user) => {
+    //   if(err){
+    //     res.json({success: false, msg: 'Failed to register user'});
+    //   } else {
+    //     res.json({success: true, msg: 'User registered'});
+    //   }
+    // });
 
   });
 

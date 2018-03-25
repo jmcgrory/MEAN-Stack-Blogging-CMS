@@ -7,7 +7,6 @@
   const bcrypt = require('bcryptjs');
   const Schema = mongoose.Schema;
   const ObjectId = Schema.ObjectId;
-  const config = require('../config/database');
 
 //************************//
 //****   User Model   ****//
@@ -43,7 +42,6 @@
   // Get User by Name using 'findOne'
   module.exports.getUserByName = (name, callback)=>{
     const query = { name: name };
-    console.log(query);
     User.findOne(query, callback);
   }
 

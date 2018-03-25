@@ -47,7 +47,7 @@
   // Middleware for Passport
   app.use(passport.initialize());
   app.use(passport.session());
-  // Require our passport config file and pass in our port
+  // Require our passport config file and pass in configured passport
   require('./config/passport')(passport);
 
 //************************//
@@ -65,7 +65,7 @@
     res.send('Welcome to Localhost 3000: The Sentient Host')
   });
 
-/* When this sucka is live bruh!
+/* Use when live!
   app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, 'public/index.html'));
   });

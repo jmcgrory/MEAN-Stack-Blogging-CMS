@@ -16,18 +16,24 @@
 //****    Functions    ****//
 //*************************//
 
-  function randomURL() {
-    var text = "";
-    var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-    for (var i = 0; i < 10; i++)
-      text += possible.charAt(Math.floor(Math.random() * possible.length));
-    return text;
-  }
+  
+function randomURL() {
+  var text = "";
+  var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+  for (var i = 0; i < 10; i++)
+    text += possible.charAt(Math.floor(Math.random() * possible.length));
+  return text;
+}
+
+  // Get featured posts
+  router.get('/featured', (req, res, next) => {
+    Post.getFeaturedPosts(req, (err, posts) => {
+      res.send(posts);
+    });
+  });
 
   // Register post request
-  router.post('/add', (req, res, next) => {
-
-    console.log(req);
+  router.post('/add', passport.authenticate('jwt', { session: false }), (req, res, next) => {
 
     // define new post
     let newPost = new Post({
@@ -45,13 +51,6 @@
       } else {
         res.json({success: true, msg: 'Post added'});
       }
-    });
-  });
-
-  // Get featured posts
-  router.get('/featured', (req, res, next) => {
-    Post.getFeaturedPosts(req, (err, posts) => {
-      res.send(posts);
     });
   });
 
@@ -81,14 +80,15 @@
   });
   
   // ?Active
-  router.post('/active', (req, res, next) => {
+  router.post('/active', passport.authenticate('jwt', { session: false }), (req, res, next) => {
     Post.postActive( req.body, (err, posts) => {
       res.send(posts);
     });
   });
 
   // Delete Post
-  router.post('/delete', (req, res, next) => {
+  router.post('/delete', passport.authenticate('jwt', { session: false }), (req, res, next) => {
+
     let id = req.body._id;
     Post.deletePost( id, (err, posts) => {
       if(err){
@@ -100,7 +100,7 @@
   });
 
   // Update Post Meta
-  router.post('/update-meta', (req, res, next) => {
+  router.post('/update-meta', passport.authenticate('jwt', { session: false }), (req, res, next) => {
     let id = req.body.meta._id;
     let meta = req.body.meta;
     Post.postUpdateMeta( { id: id, meta: meta }, (err, posts) => {

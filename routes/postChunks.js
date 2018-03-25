@@ -17,7 +17,7 @@
 //************************//
 
   // Add Post Chunk
-  router.post('/add', (req, res, next) => {
+  router.post('/add', passport.authenticate('jwt', { session: false }), (req, res, next) => {
     // define new post
     let newPostChunk = new PostChunk({
       type: "text"
@@ -55,7 +55,7 @@
   });
 
   // Delete Post
-  router.post('/delete', (req, res, next) => {
+  router.post('/delete', passport.authenticate('jwt', { session: false }), (req, res, next) => {
     let id = req.body.id;
     PostChunk.deleteChunk( id, (err, posts) => {
       if(err){
@@ -67,7 +67,7 @@
   });
 
   // Delete Post
-  router.post('/update', (req, res, next) => {
+  router.post('/update', passport.authenticate('jwt', { session: false }), (req, res, next) => {
     let send = {
       id: req.body.id,
       type: req.body.type,
