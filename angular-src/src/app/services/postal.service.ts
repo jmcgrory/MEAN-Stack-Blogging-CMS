@@ -2,18 +2,19 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import 'rxjs/add/operator/map';
 import { Post } from 'app/models/post.model';
+import { AuthService } from './auth.service';
 
 @Injectable()
 export class PostalService {
 
   constructor(
-    private http: HttpClient
+    private http: HttpClient,
+    private authService: AuthService
   ){}
 
   // Get variable amount of posts...
   getFeatured(){
-    let headers = new HttpHeaders();
-    headers.append('Content-Type', 'application/json');
+    let headers = new HttpHeaders({'Content-Type': 'application/json'});
     return this.http.get<Post[]>(
       'http://localhost:3000/posts/featured',
       { headers: headers }
@@ -22,13 +23,11 @@ export class PostalService {
 
   // Get variable amount of posts...
   getPostByURL(url:string){
-    let headers = new HttpHeaders();
-    headers.append('Content-Type', 'application/json');
+    let headers = new HttpHeaders({'Content-Type': 'application/json'});
     return this.http.get<Post>(
       'http://localhost:3000/posts/post',
       {
         headers: headers,
-      //  search: { url: url }
         params: new HttpParams().set('url', url)
       }
     );
@@ -36,13 +35,11 @@ export class PostalService {
   
   // Get variable amount of posts...
   getPostByID(id){
-    let headers = new HttpHeaders();
-    headers.append('Content-Type', 'application/json');
+    let headers = new HttpHeaders({'Content-Type': 'application/json'});
     return this.http.get<Post>(
       'http://localhost:3000/posts/post',
       {
         headers: headers,
-        //search: { id: id }
         params: new HttpParams().set('id', id)
       }
     );
@@ -50,8 +47,7 @@ export class PostalService {
 
   // Get all posts
   getAllPosts(){
-    let headers = new HttpHeaders();
-    headers.append('Content-Type', 'application/json');
+    let headers = new HttpHeaders({'Content-Type': 'application/json'});
     return this.http.get<Post[]>(
       'http://localhost:3000/posts/all',
       { headers: headers }
@@ -60,8 +56,11 @@ export class PostalService {
 
   // Delete One Post
   deletePost(id){
-    let headers = new HttpHeaders();
-    headers.append('Content-Type', 'application/json');
+    let token = this.authService.getToken();
+    let headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': token
+    });
     return this.http.post(
       'http://localhost:3000/posts/delete',
       { _id: id },
@@ -71,8 +70,11 @@ export class PostalService {
   
   // Add Generic Post
   addPost(){
-    let headers = new HttpHeaders();
-    headers.append('Content-Type', 'application/json');
+    let token = this.authService.getToken();
+    let headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': token
+    });
     return this.http.post(
       'http://localhost:3000/posts/add', {},
       { headers: headers }
@@ -81,8 +83,11 @@ export class PostalService {
   
   // ?Active Post
   postActive(id, active){
-    let headers = new HttpHeaders();
-    headers.append('Content-Type', 'application/json');
+    let token = this.authService.getToken();
+    let headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': token
+    });
     return this.http.post(
       'http://localhost:3000/posts/active',
       { id: id, active: active },
@@ -92,8 +97,11 @@ export class PostalService {
   
   // ?Active Post
   updatePostMeta(postMeta){
-    let headers = new HttpHeaders();
-    headers.append('Content-Type', 'application/json');
+    let token = this.authService.getToken();
+    let headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': token
+    });
     return this.http.post(
       'http://localhost:3000/posts/update-meta',
       { meta: postMeta },

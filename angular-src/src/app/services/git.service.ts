@@ -11,8 +11,7 @@ export class GitService {
   
   // Get variable amount of posts...
   getUser(){
-    let headers = new HttpHeaders();
-    headers.append('Content-Type', 'application/json');
+    let headers = new HttpHeaders({'Content-Type': 'application/json'});
     return this.http.get<any>(
       'https://api.github.com/users/jmcgrory/events',
       {

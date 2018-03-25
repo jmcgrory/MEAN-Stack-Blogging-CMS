@@ -6,7 +6,7 @@ import { JwtHelperService, JwtModule } from '@auth0/angular-jwt';
 @Injectable()
 export class AuthService {
   
-  authToken: any;
+  token: any;
   user: any;
 
   constructor(
@@ -17,8 +17,7 @@ export class AuthService {
   }
 
   registerUser(user){
-    let headers = new HttpHeaders();
-    headers.append('Content-Type', 'application/json');
+    let headers = new HttpHeaders({'Content-Type': 'application/json'});
     return this.http.post(
       'http://localhost:3000/users/register',
       user,
@@ -27,8 +26,7 @@ export class AuthService {
   }
   
   authenticateUser(user){
-    let headers = new HttpHeaders();
-    headers.append('Content-Type', 'application/json');
+    let headers = new HttpHeaders({'Content-Type': 'application/json'});
     let response = this.http.post(
       'http://localhost:3000/users/authenticate',
       user,
@@ -38,27 +36,28 @@ export class AuthService {
   }
   
   storeUserData(token, user){
-    localStorage.setItem('id_token', token);
+    localStorage.setItem('id_token', 'jwt '+token);
     localStorage.setItem('user', JSON.stringify(user));
-    this.authToken = token;
+    this.token = 'jwt '+token;
     this.user = user;
   }
 
   loadToken(){
-    this.authToken = this.getToken();
+    this.token = this.getToken();
   }
 
   getToken(){
-    return localStorage.getItem('id_token');
+    var local_token = localStorage.getItem('id_token');
+    return (local_token) ? local_token : 'jwt false';
   }
 
   loggedIn(){
-    var token = this.jwtHelper.decodeToken(this.authToken);
+    var token = this.jwtHelper.decodeToken(this.token);
     return (token) ? token : false;
   }
 
   logout(){
-    this.authToken = null;
+    this.token = null;
     this.user = null;
     localStorage.clear();
   }
