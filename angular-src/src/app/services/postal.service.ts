@@ -99,15 +99,15 @@ export class PostalService {
   }
   
   // ?Active Post
-  updatePostMeta(postMeta){
+  updatePost(post){
     let token = this.authService.getToken();
     let headers = new HttpHeaders({
       'Content-Type': 'application/json',
       'Authorization': token
     });
     return this.http.post(
-      'http://localhost:3000/posts/update-meta',
-      { meta: postMeta },
+      'http://localhost:3000/posts/update',
+      { post: post },
       { headers: headers }
     );
   }

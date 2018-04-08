@@ -29,7 +29,6 @@
     router.get('/all', (req, res, next) => {
 
         Category.getCategories( (err, categories) => {
-            console.log(categories);
             res.send(categories);
         });
         

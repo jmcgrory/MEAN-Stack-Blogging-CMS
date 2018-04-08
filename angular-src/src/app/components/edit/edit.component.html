@@ -1,13 +1,10 @@
 <header class="column content clear-inner">
     <h1>Edit Post</h1>
-
-    <hr>
 </header>
   
 <div class="column content" *ngIf="post">
   
-  <h2 class="small">Post Meta</h2>
-  <form (submit)="editPostMeta()" class="form">
+  <form (submit)="editPost()" class="form">
 
     <div class="form-input-group">
       <label>Post Title</label>
@@ -29,14 +26,19 @@
       <input type="text" name="date" [(ngModel)]="post.date" placeholder="Post Date">
     </div>
 
-    <div class="form-input-group">
-        <label>Categories</label>
-        <select name="category" [(ngModel)]="post.categories">
-          <option *ngFor="let c of categories" [ngValue]="c.name">{{c.name}}</option>
-        </select>
-      </div>
+    <div class="form-input-group form-input-full">
+      <label>Categories</label>
+      <select name="category" [(ngModel)]="post.category" multiple>
+        <option *ngFor="let c of categories" [ngValue]="c.name">{{c.name}}</option>
+      </select>
+    </div>
 
-    <input type="submit" class="btn" value="Update Post Meta">
+    <div class="form-input-group form-input-full">
+      <label>Body Content</label>
+      <textarea name="body" [(ngModel)]="post.body"></textarea>
+    </div>
+
+    <input type="submit" class="btn" value="Update Post">
 
   </form>
 

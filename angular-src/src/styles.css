@@ -166,6 +166,9 @@ code {
   display: block;
   width: 100%;
   appearance: none;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  outline: 0px none transparent;
   border-radius: 0; }
 .form input[type='text'], .form input[type='password'], .form input[type='email'], .form input[type='tel'] {
   padding: 0.5em 0.5em 0.5em 0.8em;

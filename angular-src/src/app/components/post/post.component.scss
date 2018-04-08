@@ -1,0 +1,22 @@
+//************************//
+//****      POST      ****//
+//************************//
+
+  // Includes
+  @import '../../partials/const';
+  @import '../../partials/mixins';
+  @import '../../partials/classes';
+  @import '../../partials/basic';
+
+  .post {
+
+    h2, h3 {
+        font-size: 18px;
+        text-transform: uppercase;
+    }
+
+    h3 {
+        font-weight: 400;
+    }
+
+  }

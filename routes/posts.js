@@ -100,10 +100,10 @@ function randomURL() {
   });
 
   // Update Post Meta
-  router.post('/update-meta', passport.authenticate('jwt', { session: false }), (req, res, next) => {
-    let id = req.body.meta._id;
-    let meta = req.body.meta;
-    Post.postUpdateMeta( { id: id, meta: meta }, (err, posts) => {
+  router.post('/update', passport.authenticate('jwt', { session: false }), (req, res, next) => {
+    let id = req.body.post._id;
+    let post = req.body.post;
+    Post.postUpdate({ id: id, post: post }, (err, posts) => {
       if(err){
         res.json({success: false, msg: 'Failed to update'});
       } else {

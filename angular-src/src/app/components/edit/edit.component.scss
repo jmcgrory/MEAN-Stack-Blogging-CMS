@@ -7,3 +7,35 @@
   @import '../../partials/mixins';
   @import '../../partials/classes';
   @import '../../partials/basic';
+
+  .form .form-input-group {
+
+    &.form-input-full {
+
+      select {
+        height: auto;
+      }
+
+      input, select, textarea, label {
+
+        display: block;
+        width: 100%;
+        float: none;
+
+      }
+
+    }
+
+    textarea {
+
+      resize: vertical;
+      min-height: 400px;
+      padding: 0.8em;
+
+      &:focus {
+        -moz-appearance:none;
+        outline:0px none transparent;
+      }
+    }
+
+  }

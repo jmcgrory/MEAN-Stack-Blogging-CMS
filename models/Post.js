@@ -95,16 +95,16 @@
   }
 
   // Update Post
-  module.exports.postUpdateMeta = (req, callback)=>{
+  module.exports.postUpdate = (req, callback)=>{
     Post.update(
       { _id: req.id },
       { $set: {
-          title: req.meta.title,
-          url: req.meta.url,
-          hero: req.meta.hero,
-          date: req.meta.date,
-          category: req.meta.category,
-          chunks: req.meta.chunks
+          title: req.post.title,
+          url: req.post.url,
+          hero: req.post.hero,
+          date: req.post.date,
+          category: req.post.category,
+          body: req.post.body
         }
       },
       callback

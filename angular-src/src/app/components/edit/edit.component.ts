@@ -16,7 +16,7 @@ export class EditComponent implements OnInit {
   private sub: any;
   post: Post;
   categories: Category[] = [];
-  selectedCategories:string[] = [];
+  selectedCategories: string[] = [];
 
   constructor(
     private route: ActivatedRoute,
@@ -26,7 +26,14 @@ export class EditComponent implements OnInit {
 
   ngOnInit() {
 
-    // Subscribe to the search Params and pass them to getPostByURL() to return post data
+    // Init Post
+    this.getPostData();
+
+    // Update Categories
+    this.getCategories();
+  }
+
+  getPostData(){
     this.sub = this.route.params.subscribe( params => {
       this.postalService.getPostByID(params._id).subscribe( data => {
         this.post = data;
@@ -35,19 +42,17 @@ export class EditComponent implements OnInit {
         }
       });
     });
+  }
 
-    // Update Categories
+  getCategories(){
     this.categoryService.getCategories().subscribe( data => {
       this.categories = data;
     });
   }
 
-  editPostMeta(){
-    if(!this.post.category){
-      this.post.category=this.selectedCategories;
-    }
-    this.postalService.updatePostMeta(this.post).subscribe( data => {
-      console.log(data);
+  editPost(){
+    this.postalService.updatePost(this.post).subscribe( data => {
+      this.getPostData();
     });
   }
 
