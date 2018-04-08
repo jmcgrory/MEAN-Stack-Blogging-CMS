@@ -27,10 +27,7 @@ Build notes:
  
 To-Do:
 
- - Post CRUD needs authentication headers added to API
  - Full responsiveness/Cross Browser stylings need finishing
- - Post deletion requires post-chunk deletion addition
- - Posts/Post Chunk dynamic loading needs to be integrated on scroll (currently testing ngx-infinite-scroll for this)
  - Written articles need to be uploaded using CMS (not a real concern here)
  - Improve UI for initial load
  - Add animations to post/page navigation
