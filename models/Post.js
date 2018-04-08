@@ -34,7 +34,7 @@
     hero: {
       type: String
     },
-    chunks: {
+    body: {
       type: [
         String
       ]

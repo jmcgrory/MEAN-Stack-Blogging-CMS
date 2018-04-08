@@ -42,7 +42,7 @@ function randomURL() {
       category: [],
       date: Date.now(),
       hero: "https://i.imgur.com/A0NDvgK.jpg",
-      chunks: [],
+      body: "",
       active: false
     });
     Post.addPost(newPost, (err, post) => {
