@@ -18,6 +18,11 @@
         @content;
       }
     }
+    @mixin notMobile {
+      @media screen and (min-width: #{ $mobile-width + 1 }){
+        @content;
+      }
+    }
 
   // CSS3
     @mixin transition($args:330ms ease){
@@ -26,4 +31,12 @@
       -ms-transition: $args;
       -o-transition: $args;
       transition: $args;
+    }
+
+    @mixin transform($args: translate3d(0,0,0)){
+      -webkit-transform: $args;
+      -moz-transform: $args;
+      -ms-transform: $args;
+      -o-transform: $args;
+      transform: $args;
     }

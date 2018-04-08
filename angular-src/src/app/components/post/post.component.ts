@@ -21,6 +21,9 @@ export class PostComponent implements OnInit {
 
   ngOnInit() {
 
+    // To the Top
+    setTimeout(function(){window.scrollTo(0, 1)}, 0);
+
     // Subscribe to the search Params and pass them to getPostByURL() to return post data
     this.sub = this.route.params.subscribe( params => {
       this.postalService.getPostByURL(params.url).subscribe( data => {
@@ -29,10 +32,6 @@ export class PostComponent implements OnInit {
       });
     });
 
-  }
-
-  onScroll(){
-    console.log('SCROLLDA!');
   }
 
   // Unsubscribe on leave

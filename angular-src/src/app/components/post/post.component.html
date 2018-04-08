@@ -4,13 +4,3 @@
     <span>{{ post?.date | date:'fullDate' }}</span>
 
 </header>
-
-<div 
-  class="column content"
-  style="min-height:2000px" 
-  infiniteScroll
-  [infiniteScrollDistance]="2"
-  [infiniteScrollThrottle]="50"
-  (scrolled)="onScroll()">
-  [content]
-</div>

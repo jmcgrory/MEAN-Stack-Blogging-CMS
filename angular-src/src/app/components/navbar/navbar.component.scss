@@ -10,6 +10,10 @@
 
   // Custom Styles
 
+  header {
+    position: relative;
+  }
+
   #logo {
     display: inline-block;
     float: left;
@@ -20,30 +24,22 @@
       margin: 0;
       text-transform: none;
     }
-
-    @include mobile {
-      h2 {
-        font-size: 20px;
-      }
-    }
   }
 
   nav {
     display: inline-block;
     float: right;
 
-    &.admin ul li a {
-      font-size: 15px;
-      padding: 0.3em 0.5em;
+    @include notMobile {
+      &.admin ul li a {
+        font-size: 15px;
+        padding: 0.3em 0.5em;
+      }
     }
 
     ul {
       list-style: none;
       margin: 0.8em auto;
-
-      @include mobile {
-        margin: 0.5em auto;
-      }
 
       li {
         display: inline-block;
@@ -53,10 +49,6 @@
           display: block;
           padding: 0.25em 1em;
           font-size: 16px;
-
-          @include mobile {
-            font-size: 14px;
-          }
         }
         &.active a:before {
           position: absolute;
@@ -68,14 +60,111 @@
           display: block;
           content: ' ';
         }
-        &:last-child a {
-          padding-right: 0;
 
-          &:before {
-            right: 10%;
-            width: 55%;
+        @include notMobile {
+          &:last-child a {
+            padding-right: 0;
+
+            &:before {
+              right: 10%;
+              width: 55%;
+            }
           }
         }
       }
     }
+    @include mobile {
+      position: absolute;
+      display: none;
+      width: 100%;
+      float: none;
+      top: 100%;
+      left: 0;
+
+      &.active {
+        display: block;
+      }
+
+      ul {
+        margin: 0 auto;
+        background: #fff;
+        padding: 0;
+        border-bottom: 3px solid $primary;
+
+        li {
+          display: block;
+          width: 100%;
+
+          &.active a:before {
+            height: 100%;
+            width: 3px;
+            top: 0;
+            right: 0;
+          }
+
+          a {
+            padding: 1.5em 1em;
+            text-align: center;
+            font-size: 16px;
+            border-top: 1px solid $primary;
+          }
+        }
+      }
+    }
+  }
+
+  .mobile-menu-btn {
+    appearance: none;
+    -webkit-appearance: none;
+    border-radius: 0;
+    display: inline-block;
+    float: right;
+    width: 50px;
+    height: 50px;
+    position: relative;
+    border: none;
+    outline: none;
+    cursor: pointer;
+
+    @include notMobile {
+      display: none;
+    }
+
+    .mobile-menu-bar {
+      height: 2px;
+      background: $primary;
+      width: 60%;
+      left: 50%;
+      margin-left: -30%;
+      display: block;
+      position: absolute;
+      margin-top: -1px;
+      @include transition(220ms ease-out);
+
+      &.mobile-menu-bar-1 {
+        top: 33.33%;
+      }
+      &.mobile-menu-bar-2 {
+        top: 50%;
+      }
+      &.mobile-menu-bar-3 {
+        top: 66.66%;
+      }
+    }
+
+    &.active .mobile-menu-bar {
+      top: 50%;
+
+      &.mobile-menu-bar-1 {
+        @include transform(rotate(-135deg));
+      }
+      &.mobile-menu-bar-2 {
+        width: 0%;
+        margin-left: 0%;
+      }
+      &.mobile-menu-bar-3 {
+        @include transform(rotate(135deg));
+      }
+    }
+
   }

@@ -20,7 +20,7 @@ export class HomeComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.postalService.getFeatured().subscribe( data => {
+    this.postalService.getLimitPosts(4).subscribe( data => {
       this.featured = data;
     });
   }

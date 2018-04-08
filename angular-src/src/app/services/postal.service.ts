@@ -13,11 +13,14 @@ export class PostalService {
   ){}
 
   // Get variable amount of posts...
-  getFeatured(){
+  getLimitPosts(limit){
     let headers = new HttpHeaders({'Content-Type': 'application/json'});
     return this.http.get<Post[]>(
-      'http://localhost:3000/posts/featured',
-      { headers: headers }
+      'http://localhost:3000/posts/limit',
+      { 
+        headers: headers,
+        params: new HttpParams().set('limit', limit)
+      }
     );
   }
 

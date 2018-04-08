@@ -18,17 +18,17 @@
 
     li {
       display: block;
-      margin: 1em 0;
+      margin: 0.9em 0;
 
       span {
         display: block;
-        margin-bottom: 0.5em;
+        margin-bottom: 0.2em;
       }
 
       .skill-bar {
         display: block;
         width: 100%;
-        height: 8px;
+        height: 6px;
         position: relative;
 
         .skill-val, .skill-bg {

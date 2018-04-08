@@ -29,7 +29,6 @@ import { AuthGuard } from './guards/auth.guard';
 // Third Party Imports
 import { HighlightModule } from 'ngx-highlightjs';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
-import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { JwtModule } from '@auth0/angular-jwt';
 
 // Angular Routes
@@ -69,7 +68,6 @@ const options = {
     RouterModule.forRoot(appRoutes),
     HighlightModule.forRoot(options),
     AngularFontAwesomeModule,
-    InfiniteScrollModule,
     JwtModule.forRoot({
       config: {
         tokenGetter: () => {

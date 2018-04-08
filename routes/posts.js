@@ -26,8 +26,8 @@ function randomURL() {
 }
 
   // Get featured posts
-  router.get('/featured', (req, res, next) => {
-    Post.getFeaturedPosts(req, (err, posts) => {
+  router.get('/limit', (req, res, next) => {
+    Post.getLimitPosts(req.limit, (err, posts) => {
       res.send(posts);
     });
   });

@@ -2,7 +2,12 @@
   <a routerLink="home" id="logo">
     <h2>jmcgrory</h2>
   </a>
-  <nav [ngClass]="{'admin': authService.loggedIn() }">
+  <button id="mobileMenuBtn" class="mobile-menu-btn" [ngClass]="{ 'active': menuActive }" (click)="mobileMenu()">
+    <span class="mobile-menu-bar mobile-menu-bar-1"></span>
+    <span class="mobile-menu-bar mobile-menu-bar-2"></span>
+    <span class="mobile-menu-bar mobile-menu-bar-3"></span>
+  </button>
+  <nav [ngClass]="{'admin': authService.loggedIn(), 'active': menuActive }">
     <ul>
       <li>
         <a routerLink="home">Home</a>

@@ -9,6 +9,8 @@ import { Router } from '@angular/router';
 })
 export class NavbarComponent implements OnInit {
 
+  menuActive: boolean = false;
+
   constructor(
     private authService: AuthService,
     private router: Router
@@ -21,6 +23,10 @@ export class NavbarComponent implements OnInit {
     this.authService.logout();
     this.router.navigate(['home']);
     return false;
+  }
+
+  mobileMenu(){
+    this.menuActive = !this.menuActive;
   }
 
 }

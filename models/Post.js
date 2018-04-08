@@ -66,8 +66,7 @@
   }
 
   // Get Featured Posts
-  module.exports.getFeaturedPosts = (args, callback)=>{
-    let limit = 3;
+  module.exports.getLimitPosts = (limit, callback)=>{
     Post.find({ active: true }, 'title hero date url', callback).limit(limit).sort({date: 'desc'});
   }
 
