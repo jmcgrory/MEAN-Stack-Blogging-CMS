@@ -20,7 +20,6 @@ import { PostComponent } from './components/post/post.component';
 // Service Imports
 import { AuthService } from './services/auth.service';
 import { PostalService } from './services/postal.service';
-import { ChunkService } from './services/chunk.service';
 import { CategoryService } from './services/category.service';
 
 // Guard Imports
@@ -81,7 +80,6 @@ const options = {
     AuthService,
     AuthGuard,
     PostalService,
-    ChunkService,
     CategoryService
   ],
   bootstrap: [AppComponent]

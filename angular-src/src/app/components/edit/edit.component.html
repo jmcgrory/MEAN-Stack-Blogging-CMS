@@ -41,34 +41,3 @@
   </form>
 
 </div>
-  
-<div class="column content" *ngIf="chunks">
-  
-  <h2 class="small">Post Chunks</h2>
-
-  <div class="form-chunks">
-
-    <div class="form-chunk-container" *ngFor="let chunk of chunks">
-      <p>{{ chunk._id }}</p>
-      <div class="delete" (click)="deleteChunk(chunk._id)">
-        <fa name="trash"></fa> 
-      </div>
-      <form (submit)="updateChunk(chunk)" class="form">
-        <select name="type" [(ngModel)]="chunk.type">
-          <option *ngFor="let t of types" [ngValue]="t">{{t}}</option>
-        </select>
-        <textarea name="content" [(ngModel)]="chunk.content"></textarea>
-        <input type="submit" class="btn" value="Update Chunk">
-      </form>
-    </div>
-
-    <div class="form-chunk-add">
-      <button class="btn" (click)="newChunk()">
-        <fa name="plus-square"></fa> 
-        Add Post Chunk
-      </button>
-    </div>
-
-  </div>
-
-</div>
