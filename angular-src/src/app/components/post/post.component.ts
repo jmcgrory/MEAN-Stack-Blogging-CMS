@@ -4,7 +4,6 @@ import { AuthService } from '../../services/auth.service';
 import { DatePipe } from '@angular/common';
 import { PostalService } from 'app/services/postal.service';
 import { Post } from 'app/models/post.model';
-import { HtmlPipe } from 'app/pipes/html.pipe';
 
 @Component({
   selector: 'app-post',

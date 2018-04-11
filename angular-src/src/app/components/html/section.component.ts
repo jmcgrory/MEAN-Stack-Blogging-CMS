@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { HtmlPipe } from 'app/pipes/html.pipe';
 
 @Component({
     selector: 'app-section',
