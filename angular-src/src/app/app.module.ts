@@ -16,6 +16,8 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { EditComponent } from './components/edit/edit.component';
 import { ArticlesComponent } from './components/articles/articles.component';
 import { PostComponent } from './components/post/post.component';
+import { SectionComponent } from './components/html/section.component';
+import { HtmlComponent } from './components/html/html.component';
 
 // Service Imports
 import { AuthService } from './services/auth.service';
@@ -24,6 +26,9 @@ import { CategoryService } from './services/category.service';
 
 // Guard Imports
 import { AuthGuard } from './guards/auth.guard';
+
+// Pipes
+import { HtmlPipe } from './pipes/html.pipe'
 
 // Third Party Imports
 import { HighlightModule } from 'ngx-highlightjs';
@@ -58,7 +63,10 @@ const options = {
     DashboardComponent,
     ArticlesComponent,
     PostComponent,
-    EditComponent
+    EditComponent,
+    SectionComponent,
+    HtmlComponent,
+    HtmlPipe
   ],
   imports: [
     BrowserModule,

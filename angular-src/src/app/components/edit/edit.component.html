@@ -1,5 +1,6 @@
 <header class="column content clear-inner">
     <h1>Edit Post</h1>
+    <p *ngIf="post"><a routerLink="/articles/{{ post?.url }}" target="_blank">View Post</a></p>
 </header>
   
 <div class="column content" *ngIf="post">
@@ -35,10 +36,35 @@
 
     <div class="form-input-group form-input-full">
       <label>Body Content</label>
-      <textarea name="body" [(ngModel)]="post.body"></textarea>
+      <div *ngFor="let section of post.body; let i = index" class="edit-section">
+        <div class="form-input-group">
+          <label>Section Type</label>
+          <select name="sectionType[i]" [(ngModel)]="section.type">
+            <option *ngFor="let type of sectionTypes" [ngValue]="type">
+              {{type}}
+            </option>
+          </select>
+        </div>
+        <div class="form-input-group">
+          <label>Section Id</label>
+          <input type="text" name="sectionId[i]" [(ngModel)]="section.id">
+        </div>
+        <div class="form-input-group">
+          <label>Section Classes</label>
+          <input type="text" name="sectionClasses[i]" [(ngModel)]="section.class">
+        </div>
+        <div class="form-input-group form-input-full">
+          <textarea  name="sectionContent[i]"[(ngModel)]="section.content"></textarea>
+        </div>
+      </div>
+      <p>
+        <a class="btn mini" (click)="addSection()">
+          <fa name="plus-square"></fa> Add Section
+        </a>
+      </p>
     </div>
 
-    <input type="submit" class="btn" value="Update Post">
+    <p><input type="submit" class="btn" value="Update Post"></p>
 
   </form>
 

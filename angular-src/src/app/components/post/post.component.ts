@@ -1,8 +1,10 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { AuthService } from '../../services/auth.service';
 import { DatePipe } from '@angular/common';
 import { PostalService } from 'app/services/postal.service';
 import { Post } from 'app/models/post.model';
+import { HtmlPipe } from 'app/pipes/html.pipe';
 
 @Component({
   selector: 'app-post',
@@ -16,6 +18,7 @@ export class PostComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
+    private authService: AuthService,
     private postalService: PostalService
   ) { }
 
@@ -28,7 +31,7 @@ export class PostComponent implements OnInit {
     this.sub = this.route.params.subscribe( params => {
       this.postalService.getPostByURL(params.url).subscribe( data => {
         this.post = data;
-        console.log(this.post);
+        console.log(this.post.body);
       });
     });
 

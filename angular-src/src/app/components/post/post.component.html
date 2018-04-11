@@ -5,7 +5,14 @@
 
 </header>
 
-<article class="column content post" [innerHTML]="post?.body">
+<article class="column content post" *ngIf="post">
 
+    <ng-template ngFor let-section [ngForOf]="post.body">
+        <app-section [section]="section"></app-section>
+    </ng-template>
 
 </article>
+
+<div class="column content" *ngIf="authService.loggedIn()">
+    <a class="btn mini" routerLink="/dashboard/{{ post?._id }}">Edit Article</a>
+</div>

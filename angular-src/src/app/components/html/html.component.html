@@ -1,0 +1,46 @@
+
+<!-- HEADINGS -->
+
+    <h1 *ngIf="node.tag==='h1'" [innerHTML]="node.content"></h1>
+
+    <h2 *ngIf="node.tag==='h2'" [innerHTML]="node.content"></h2>
+
+    <h3 *ngIf="node.tag==='h3'" [innerHTML]="node.content"></h3>
+
+    <h4 *ngIf="node.tag==='h4'" [innerHTML]="node.content"></h4>
+
+    <h5 *ngIf="node.tag==='h5'" [innerHTML]="node.content"></h5>
+
+    <h6 *ngIf="node.tag==='h6'" [innerHTML]="node.content"></h6>
+
+<!-- Basic Content Tags -->
+
+    <blockquote *ngIf="node.tag==='blockquote'" [innerHTML]="node.content"></blockquote>
+
+    <p *ngIf="node.tag==='p'" [innerHTML]="node.content"></p>
+
+    <ul *ngIf="node.tag==='ul'" [innerHTML]="node.content"></ul>
+
+    <ol *ngIf="node.tag==='ol'" [innerHTML]="node.content"></ol>
+
+    <li *ngIf="node.tag==='li'" [innerHTML]="node.content"></li>
+
+<!-- Phrasing Content Tags -->
+
+    <q *ngIf="node.tag==='q'" [innerHTML]="node.content"></q>
+
+    <a *ngIf="node.tag==='a'" href="{{node.href}}" routerLink="node.routerLink" [innerHTML]="node.content"></a>
+
+    <span *ngIf="node.tag==='span'" [innerHTML]="node.content"></span>
+
+    <em *ngIf="node.tag==='em'" [innerHTML]="node.content"></em>
+
+    <strong *ngIf="node.tag==='strong'" [innerHTML]="node.content"></strong>
+
+    <del *ngIf="node.tag==='del'" [innerHTML]="node.content"></del>
+
+    <ins *ngIf="node.tag==='ins'" [innerHTML]="node.content"></ins>
+
+<!-- Media Content Tags -->
+
+    <img *ngIf="node.tag==='img'" alt="{{node.alt}}" [src]="node.src">

@@ -35,9 +35,8 @@
       type: String
     },
     body: {
-      type: [
-        String
-      ]
+      type: Array,
+      default: []
     },
     active: {
       type: Boolean

@@ -4,5 +4,5 @@ export class Post {
   hero: string
   date: Date
   category: string[]
-  body: string
+  body: Array<any>
 }

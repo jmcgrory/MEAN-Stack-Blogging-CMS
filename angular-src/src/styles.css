@@ -60,6 +60,7 @@ input, textarea, select {
   cursor: pointer;
   border-radius: 6px;
   font-size: 16px;
+  text-decoration: none !important;
   -webkit-transition: 330ms ease;
   -moz-transition: 330ms ease;
   -ms-transition: 330ms ease;
@@ -119,6 +120,45 @@ input, textarea, select {
   .article.feature {
     padding-top: 0; }
 
+.post h2, .post h3 {
+  font-size: 18px;
+  text-transform: uppercase; }
+.post h3 {
+  font-weight: 400; }
+
+/*
+
+This Is The H6
+They were the worst of times, but seriously this is a paragraph. What does a link look like within here? Who knows, he thought to himself! That was an 'i' tag for thoughts, now lets use an 'em' tag for emphasis.
+
+Additionally now, in the next paragraph tag, we are going to get bolder strong text, and similarly strong "bring to attention" tag use... despite that we can continue talking normally, but then switch over to a quick bit of span action. Crikey eh!
+
+Things To Cover
+Let's think of a few more things we need to cover:
+
+Unordered Lists - Such as this!
+Ordered Lists - Numeric please
+Inline 'q' Quotes - Nothing fancy
+Block Quotes - Semi fancy
+Unordered Lists - Such as this!
+Unordered Lists - Such as this!
+What about nested list item elements
+What about them!?
+Del/Ins Tags - Deleted/Inserted content, remember attrs!
+Note Tag - Bit O' Highlightin
+Dfn Tag - Dfn, much like span tbh
+Abbr - Abbrev's yo!
+Additional Concerns
+Hmm that line break really got me thinking about, you guessed it, layout tags! Within a CMS textarea content editor? Yeah. Let's list some of these...
+
+Section Tags - Because we want to compartmentalise things, if that is a word. Oh this is a long list item, I wonder how the styling will react!
+What about nested ordered list item elements
+What about them!?
+Samp - Inline code samples, maybe include kbd tag
+Pre/Code - Full code blocks!
+Cite Element - Not layout but hey
+
+*/
 * {
   font-family: inherit;
   color: inherit; }

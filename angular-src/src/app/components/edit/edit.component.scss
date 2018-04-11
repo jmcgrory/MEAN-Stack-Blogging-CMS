@@ -12,11 +12,11 @@
 
     &.form-input-full {
 
-      select {
+      > select {
         height: auto;
       }
 
-      input, select, textarea, label {
+      > input, > select, > textarea, > label {
 
         display: block;
         width: 100%;
@@ -27,15 +27,20 @@
     }
 
     textarea {
-
       resize: vertical;
-      min-height: 400px;
+      min-height: 300px;
       padding: 0.8em;
 
       &:focus {
         -moz-appearance:none;
         outline:0px none transparent;
       }
+    }
+
+    .edit-section {
+      padding: 10px;
+      border: 1px solid $primary;
+      border-top: none;
     }
 
   }
