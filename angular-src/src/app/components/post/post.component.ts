@@ -30,7 +30,7 @@ export class PostComponent implements OnInit {
     this.sub = this.route.params.subscribe( params => {
       this.postalService.getPostByURL(params.url).subscribe( data => {
         this.post = data;
-        console.log(this.post.body);
+        console.log(this.post);
       });
     });
 

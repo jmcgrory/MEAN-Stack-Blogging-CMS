@@ -1,19 +1,36 @@
 <header class="column content clear-inner">
 
     <h1>{{ post?.title }}</h1>
-    <span>{{ post?.date | date:'fullDate' }}</span>
+    <span>
+        <fa name="calendar"></fa> {{ post?.date | date:'fullDate' }}
+    </span>
 
 </header>
 
 <article class="column content post" *ngIf="post">
 
     <ng-template ngFor let-section [ngForOf]="post.body">
-        <section PostSection [section]="section" id="section.id" [innerHtml]="section.type==='html' ? section.content | Html : null">
+
+        <section 
+            PostSectionid="section.id"
+            [innerHtml]="section.content"
+            *ngIf="section.type==='html'">
         </section>
+            
+        <section *ngIf="section.type==='code'">
+            <pre>
+                <code class="section.class" [code]="section.content" highlight></code>
+            </pre>
+            <p *ngIf="section.caption&&section.type==='code'" class="section-code-caption"></p>
+        </section>
+
     </ng-template>
 
 </article>
 
 <div class="column content" *ngIf="authService.loggedIn()">
-    <a class="btn mini" routerLink="/dashboard/{{ post?._id }}">Edit Article</a>
+
+    <a class="btn mini" routerLink="/dashboard/{{ post?._id }}">
+        Edit Article
+    </a>
 </div>

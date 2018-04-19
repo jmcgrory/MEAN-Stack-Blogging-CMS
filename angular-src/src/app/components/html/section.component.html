@@ -1,4 +1,10 @@
-<pre *ngIf="section.type==='code'">
-    <code class="section.class" [code]="section.content" highlight></code>
-</pre>
-<p *ngIf="section.caption&&section.type==='code'" class="section-code-caption"></p>
+<section PostSectionid="section.id" [innerHtml]="section.content" *ngIf="section.type==='html'">
+
+</section>
+
+<section *ngIf="section.type==='code'">
+    <pre>
+        <code class="section.class" [code]="section.content" highlight></code>
+    </pre>
+    <p *ngIf="section.caption&&section.type==='code'" class="section-code-caption"></p>
+</section>
