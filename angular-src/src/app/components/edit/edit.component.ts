@@ -17,27 +17,6 @@ export class EditComponent implements OnInit {
   post: Post;
   categories: Category[] = [];
   selectedCategories: string[] = [];
-  parsedBody: string;
-  elementTypes: string[] = [
-    "h1",
-    "h2",
-    "h3",
-    "h4",
-    "h5",
-    "h6",
-    "p",
-    "ul",
-    "ol",
-    "li",
-    "q",
-    "a",
-    "span",
-    "em",
-    "strong",
-    "del",
-    "ins",
-    "img"
-  ];
   sectionTypes: string[] = [
     "html",
     "code"
@@ -63,7 +42,7 @@ export class EditComponent implements OnInit {
     this.sub = this.route.params.subscribe( params => {
       this.postalService.getPostByID(params._id).subscribe( data => {
         this.post = data;
-        console.log(data.body);
+        
         if(data.category!==undefined){
           this.selectedCategories = data.category;
         }
@@ -74,7 +53,7 @@ export class EditComponent implements OnInit {
   addSection(){
     let defaultId = "section"+this.post.body.length;
     this.post.body.push({
-      type: "html",
+      type: "code",
       id: defaultId,
       content: "// Default",
       class: "typescript"
@@ -89,7 +68,7 @@ export class EditComponent implements OnInit {
   }
 
   editPost(){
-    this.postalService.updatePost(this.post, this.parsedBody).subscribe( data => {
+    this.postalService.updatePost(this.post).subscribe( data => {
       this.getPostData();
     });
   }

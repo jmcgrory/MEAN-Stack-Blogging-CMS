@@ -53,6 +53,10 @@
           <label>Section Classes</label>
           <input type="text" name="sectionClasses[i]" [(ngModel)]="section.class">
         </div>
+        <div class="form-input-group" *ngIf="section.type==='code'">
+          <label>Code Caption</label>
+          <input type="text" name="sectionCaption[i]" [(ngModel)]="section.caption">
+        </div>
         <div class="form-input-group form-input-full">
           <textarea  name="sectionContent[i]"[(ngModel)]="section.content"></textarea>
         </div>

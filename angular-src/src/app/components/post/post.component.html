@@ -8,7 +8,8 @@
 <article class="column content post" *ngIf="post">
 
     <ng-template ngFor let-section [ngForOf]="post.body">
-        <app-section [section]="section"></app-section>
+        <section PostSection [section]="section" id="section.id" [innerHtml]="section.type==='html' ? section.content | Html : null">
+        </section>
     </ng-template>
 
 </article>

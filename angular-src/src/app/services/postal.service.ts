@@ -99,8 +99,7 @@ export class PostalService {
   }
   
   // ?Active Post
-  updatePost(post, parsedBody){
-    post.body = parsedBody;
+  updatePost(post){
     let token = this.authService.getToken();
     let headers = new HttpHeaders({
       'Content-Type': 'application/json',
