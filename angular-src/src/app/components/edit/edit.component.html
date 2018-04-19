@@ -1,6 +1,10 @@
 <header class="column content clear-inner">
     <h1>Edit Post</h1>
-    <p *ngIf="post"><a routerLink="/articles/{{ post?.url }}" target="_blank">View Post</a></p>
+    <p *ngIf="post">
+      <a routerLink="/articles/{{ post?.url }}" target="_blank">
+        View Post
+      </a>
+    </p>
 </header>
   
 <div class="column content" *ngIf="post">
@@ -9,57 +13,106 @@
 
     <div class="form-input-group">
       <label>Post Title</label>
-      <input type="text" name="title" [(ngModel)]="post.title" placeholder="Post Title">
+      <input
+        type="text"
+        name="title"
+        [(ngModel)]="post.title"
+        placeholder="Post Title">
     </div>
 
     <div class="form-input-group">
       <label>Post URL</label>
-      <input type="text" name="url" [(ngModel)]="post.url" placeholder="Post URL">
+      <input
+        type="text"
+        name="url"
+        [(ngModel)]="post.url"
+        placeholder="Post URL">
     </div>
 
     <div class="form-input-group">
       <label>Post Hero</label>
-      <input type="text" name="hero" [(ngModel)]="post.hero" placeholder="Post Hero">
+      <input
+        type="text"
+        name="hero"
+        [(ngModel)]="post.hero"
+        placeholder="Post Hero">
     </div>
 
     <div class="form-input-group">
       <label>Post Date</label>
-      <input type="text" name="date" [(ngModel)]="post.date" placeholder="Post Date">
+      <input
+        type="text"
+        name="date"
+        [(ngModel)]="post.date"
+        placeholder="Post Date">
     </div>
 
     <div class="form-input-group form-input-full">
       <label>Categories</label>
-      <select name="category" [(ngModel)]="post.category" multiple>
-        <option *ngFor="let c of categories" [ngValue]="c.name">{{c.name}}</option>
+      <select
+        name="category"
+        [(ngModel)]="post.category"
+        multiple>
+        <option
+          *ngFor="let c of categories"
+          [ngValue]="c.name">
+          {{c.name}}
+        </option>
       </select>
     </div>
 
     <div class="form-input-group form-input-full">
+
       <label>Body Content</label>
-      <div *ngFor="let section of post.body; let i = index" class="edit-section">
+
+      <div 
+        *ngFor="let section of post.body; let i = index;"
+        class="edit-section">
+
         <div class="form-input-group">
           <label>Section Type</label>
-          <select name="sectionType[i]" [(ngModel)]="section.type">
-            <option *ngFor="let type of sectionTypes" [ngValue]="type">
+          <select
+            name="sectionType-{{i}}"
+            [(ngModel)]="section.type">
+            <option
+              *ngFor="let type of sectionTypes"
+              [ngValue]="type">
               {{type}}
             </option>
           </select>
         </div>
+
         <div class="form-input-group">
           <label>Section Id</label>
-          <input type="text" name="sectionId[i]" [(ngModel)]="section.id">
+          <input
+            type="text"
+            name="sectionId{{i}}"
+            [(ngModel)]="section.id">
         </div>
-        <div class="form-input-group">
+
+        <div class="form-input-group" *ngIf="section.type==='code'">
           <label>Section Classes</label>
-          <input type="text" name="sectionClasses[i]" [(ngModel)]="section.class">
+          <input 
+            type="text"
+            name="sectionClasses{{i}}"
+            [(ngModel)]="section.class">
         </div>
+
         <div class="form-input-group" *ngIf="section.type==='code'">
           <label>Code Caption</label>
-          <input type="text" name="sectionCaption[i]" [(ngModel)]="section.caption">
+          <input 
+            type="text"
+            name="sectionCaption{{i}}"
+            [(ngModel)]="section.caption">
         </div>
+
         <div class="form-input-group form-input-full">
-          <textarea  name="sectionContent[i]"[(ngModel)]="section.content"></textarea>
+          <textarea 
+            name="sectionContent{{i}}"
+            [(ngModel)]="section.content">
+          </textarea>
         </div>
+
       </div>
       <p>
         <a class="btn mini" (click)="addSection()">
@@ -68,7 +121,9 @@
       </p>
     </div>
 
-    <p><input type="submit" class="btn" value="Update Post"></p>
+    <p>
+      <input type="submit" class="btn" value="Update Post">
+    </p>
 
   </form>
 

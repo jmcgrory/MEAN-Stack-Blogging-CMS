@@ -42,7 +42,6 @@ export class EditComponent implements OnInit {
     this.sub = this.route.params.subscribe( params => {
       this.postalService.getPostByID(params._id).subscribe( data => {
         this.post = data;
-        
         if(data.category!==undefined){
           this.selectedCategories = data.category;
         }
@@ -55,7 +54,9 @@ export class EditComponent implements OnInit {
     this.post.body.push({
       type: "code",
       id: defaultId,
-      content: "// Default",
+      content: `
+      // Default
+          `,
       class: "typescript"
     });
 

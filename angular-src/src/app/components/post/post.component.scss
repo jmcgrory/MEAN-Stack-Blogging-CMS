@@ -1,3 +1,29 @@
 //************************//
 //****      POST      ****//
 //************************//
+
+    // Includes
+    @import '../../partials/const';
+    @import '../../partials/mixins';
+
+    h1 {
+        margin-bottom: 0;
+    }
+
+    .post-date {
+        margin: 0 auto 1em;
+
+        time {
+            padding-left: 0.1em;
+        }
+    }
+
+    pre.captioned {
+        margin-bottom: 0;
+    }
+
+    .section-code-caption {
+        margin: -2em auto 2em;
+        opacity: 0.5;
+        text-align: center;
+    }

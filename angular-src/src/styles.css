@@ -51,9 +51,9 @@ input, textarea, select {
     height: 100%; }
 
 .btn {
-  background: #ff5e53;
+  background: #2c3435;
   color: #fff;
-  border: 2px solid #ff5e53;
+  border: 2px solid #2c3435;
   text-align: center;
   min-width: 180px;
   padding: 1em;
@@ -68,7 +68,7 @@ input, textarea, select {
   transition: 330ms ease; }
   .btn:hover {
     background: transparent;
-    color: #ff5e53; }
+    color: #2c3435; }
   .btn.mini {
     font-size: 14px;
     padding: 0.3em;
@@ -167,7 +167,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-family: "PT Sans", sans-serif;
-  color: #ff5e53; }
+  color: #2c3435; }
 
 a {
   text-decoration: none;
@@ -178,7 +178,7 @@ p a {
   padding: 0 2px; }
   p a:hover {
     text-decoration: none;
-    background: #ff5e53;
+    background: #2c3435;
     color: #fff; }
 
 .full {
@@ -189,7 +189,7 @@ h1.small, h2.small, h3.small, h4.small, h5.small, h6.small {
   text-transform: uppercase; }
 
 hr {
-  border: 1px solid #ff5e53;
+  border: 1px solid #2c3435;
   clear: both; }
   @media screen and (max-width: 640px) {
     hr {
@@ -213,11 +213,11 @@ code {
 .form input[type='text'], .form input[type='password'], .form input[type='email'], .form input[type='tel'] {
   padding: 0.5em 0.5em 0.5em 0.8em;
   border: none;
-  border-bottom: 3px solid #ff5e53;
+  border-bottom: 3px solid #2c3435;
   background: #f2f2f2; }
 .form input[type='submit'] {
-  background: #ff5e53;
-  border: 3px solid #ff5e53;
+  background: #2c3435;
+  border: 3px solid #2c3435;
   text-align: center;
   padding: 0.75em;
   color: #ffffff; }
@@ -233,18 +233,19 @@ code {
     line-height: 1.1;
     vertical-align: middle;
     height: 36px;
-    padding: 0.6em 0.5em 0.5em 0.75em; }
+    padding: 0.6em 0.5em 0.5em 0.75em;
+    border-radius: 0;
+    -webkit-appearance: none; }
   .form .form-input-group label {
     width: 33.333%;
-    background: #ff5e53;
+    background: #2c3435;
     color: #fff; }
   .form .form-input-group input, .form .form-input-group select {
     width: 66.666%;
     border-bottom: none; }
   .form .form-input-group select {
     border: 0;
-    background: #f2f2f2;
-    padding: 0; }
+    background: #f2f2f2; }
     .form .form-input-group select option {
       padding: 0.4em 0.75em;
       border-bottom: 1px solid #e8e8e8; }

@@ -1,15 +1,19 @@
 <header class="column content clear-inner">
 
     <h1>{{ post?.title }}</h1>
-    <span>
-        <fa name="calendar"></fa> {{ post?.date | date:'fullDate' }}
-    </span>
+    <p class="post-date">
+        <fa name="calendar"></fa>
+        <time>{{ post?.date | date:'fullDate' }}</time>
+    </p>
 
 </header>
 
 <article class="column content post" *ngIf="post">
 
-    <ng-template ngFor let-section [ngForOf]="post.body">
+    <ng-template
+        ngFor
+        let-section
+        [ngForOf]="post.body">
 
         <section 
             PostSectionid="section.id"
@@ -18,10 +22,16 @@
         </section>
             
         <section *ngIf="section.type==='code'">
-            <pre>
-                <code class="section.class" [code]="section.content" highlight></code>
+            <pre [ngClass]="{ 'captioned':section.caption }">
+                <code
+                    class="section.class"
+                    [code]="section.content"
+                    highlight>
+                </code>
             </pre>
-            <p *ngIf="section.caption&&section.type==='code'" class="section-code-caption"></p>
+            <p *ngIf="section.caption&&section.type==='code'" class="section-code-caption">
+                {{ section.caption }}
+            </p>
         </section>
 
     </ng-template>
