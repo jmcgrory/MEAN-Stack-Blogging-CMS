@@ -22,39 +22,22 @@
             cb(null, directory)
         },
         filename: (req, file, cb) => {
-
             const originalname = file.originalname;
-
             let newname = 'file';
-
             if(originalname !== ''){
-
-                // Remove Special Chars
                 newname = originalname.replace(/[^a-zA-Z 0-9]/g, "");
-
-                // Dashed for Spaces
                 newname = newname.replace(' ', '-');
-
-                // To Lower
                 newname = newname.toLowerCase();
-
             }
-
             newname = newname+'-'+Date.now()+'.jpg';
-
-            cb(null, newname)
-      }
-    });
-    const fileFilter = (req, file, cb) => {
-
-        if( file.mimetype !== 'image/jpeg' ){
-
-            return cb(null, false);
-
+            cb(null, newname);
         }
+    });
 
+    // Filter out non jpegs
+    const fileFilter = (req, file, cb) => {
+        if( file.mimetype !== 'image/jpeg' ) return cb(null, false);
         cb(null, true);
-        
     }
 
     // Specify
