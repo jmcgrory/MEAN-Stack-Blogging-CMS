@@ -16,14 +16,14 @@
 //****    Functions    ****//
 //*************************//
 
-  
-function randomURL() {
-  var text = "";
-  var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-  for (var i = 0; i < 10; i++)
-    text += possible.charAt(Math.floor(Math.random() * possible.length));
-  return text;
-}
+  // Random URL generation
+  function randomURL() {
+    var text = "";
+    var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+    for (var i = 0; i < 10; i++)
+      text += possible.charAt(Math.floor(Math.random() * possible.length));
+    return text;
+  }
 
   // Get featured posts
   router.get('/limit', (req, res, next) => {
