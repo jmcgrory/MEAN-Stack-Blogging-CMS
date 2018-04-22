@@ -7,3 +7,4 @@ angular-src/angular-src/
 *.css.map
 /config/database.js
 /angular-src/src/assets/lib/hljs/styles/*.css
+uploads/

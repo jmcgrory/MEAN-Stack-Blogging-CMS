@@ -75,6 +75,10 @@
 //****   CRUD Routes  ****//
 //************************//
 
+  // Multer File Upload
+  const media = require('./routes/media');
+  app.use('/media', media);
+
   // Route for Users
   const users = require('./routes/users');
   app.use('/users', users);
