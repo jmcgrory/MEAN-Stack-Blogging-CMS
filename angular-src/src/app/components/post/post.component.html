@@ -17,7 +17,7 @@
 
         <section 
             PostSectionid="section.id"
-            [innerHtml]="section.content"
+            [innerHtml]="section.content | Html"
             *ngIf="section.type==='html'">
         </section>
             

@@ -177,16 +177,81 @@
   // Posts
 
   .post {
-    h2, h3 {
-      font-size: 18px;
-      text-transform: uppercase;
+
+    h2 {
+      border-bottom: 1px solid;
+      padding: 0 0 0.5em;
+      margin: 0 0 0.75em;
     }
 
     h3 {
-        font-weight: 400;
+      font-weight: 400;
+    }
+
+    h2, h3 {
+      text-transform: uppercase;
+      font-size: 20px;
+    }
+
+    blockquote {
+      border-left: 2px solid;
+      padding: 0.5em 0 0.5em 1.5em;
+      margin: 1.5em 0 1.75em 0.5em;
+      color: $primary;
+      font-size: 18px;
+    }
+
+    q {
+      font-style: italic;
+    }
+
+    ul, ol {
+      padding-left: 2em;
+      line-height: 1.8em;
+    }
+
+    li {
+      padding: 0.2em 0;
+    }
+
+    p {
+      @include notMobile(){
+        text-align: justify;
+      }
+    }
+
+    del {
+      opacity: 0.5;
+    }
+
+    ins {
+      position: relative;
+      -webkit-margin-start: 4px;
+
+      &:after {
+        display: block;
+        content: ' ';
+        border-left: 2px solid transparent;
+        border-right: 2px solid transparent;
+        border-top: 5px solid;
+        position: absolute;
+        top: -1px;
+        left: -5px;
+      }
+    }
+
+    samp {
+      font-family: monospace;
+      background: #efefef;
+      font-size: 13px;
+      padding: 4px 7px;
+      -webkit-margin-end: 2px;
+      border-radius: 3px;
+      white-space: nowrap;
     }
 
   }
+
 /*
 
 This Is The H6
