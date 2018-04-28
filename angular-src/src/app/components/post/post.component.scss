@@ -7,23 +7,101 @@
     @import '../../partials/mixins';
 
     h1 {
+
         margin-bottom: 0;
+
     }
 
     .post-date {
+
         font-size: 14px;
 
         time {
+
             padding-left: 0.1em;
+
         }
+
     }
 
-    pre.captioned {
-        margin-bottom: 0;
+    .captioned {
+
+        margin-bottom: 2em;
+
+        pre {
+
+            margin-bottom: 0;
+
+        }
+
     }
 
-    .section-code-caption {
-        margin: -2em auto 2em;
-        opacity: 0.5;
-        text-align: center;
+    .section-code, .section-media {
+
+        &.captioned {
+
+            background: $tertiary;
+
+            padding: 0.2em;
+
+        }
+
+        p {
+
+            opacity: 0.5;
+
+            text-align: center;
+
+            margin-bottom: 0.2em;
+
+        }
+
+    }
+
+    .section-code {
+
+        &.captioned {
+
+            pre {
+
+                margin-top: 0;
+            
+            }
+
+            code {
+
+                margin-top: -20px;
+
+            }
+
+        }
+
+        p {
+
+            margin-top: -2em;
+
+        }
+
+    }
+
+    .section-media {
+
+        img, video {
+
+            width: auto;
+
+            height: auto;
+
+            max-width: 100%;
+
+            display: block;
+
+            clear: both;
+
+            margin: 0 auto;
+
+            padding: 0;
+
+        }
+
     }

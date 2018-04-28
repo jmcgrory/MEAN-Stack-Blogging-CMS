@@ -54,6 +54,11 @@
 //****   Base Routes  ****//
 //************************//
 
+  // Upload Directory
+  // TODO: Fix Static Uploads Folder Serving
+  //app.use(express.static('uploads'));
+  //app.use('/uploads', express.static(path.join(__dirname, '/uploads')));
+
   // Set Static Directory for Angular
   app.use(express.static(path.join(__dirname, 'public')));
 

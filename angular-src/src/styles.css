@@ -148,59 +148,17 @@ input, textarea, select {
 .post del {
   opacity: 0.5; }
 .post ins {
-  position: relative;
-  -webkit-margin-start: 4px; }
-  .post ins:after {
-    display: block;
-    content: ' ';
-    border-left: 2px solid transparent;
-    border-right: 2px solid transparent;
-    border-top: 5px solid;
-    position: absolute;
-    top: -1px;
-    left: -5px; }
+  font-weight: 700;
+  text-decoration: none; }
 .post samp {
   font-family: monospace;
-  background: #efefef;
+  background: #f8f8f8;
   font-size: 13px;
   padding: 4px 7px;
   -webkit-margin-end: 2px;
   border-radius: 3px;
   white-space: nowrap; }
 
-/*
-
-This Is The H6
-They were the worst of times, but seriously this is a paragraph. What does a link look like within here? Who knows, he thought to himself! That was an 'i' tag for thoughts, now lets use an 'em' tag for emphasis.
-
-Additionally now, in the next paragraph tag, we are going to get bolder strong text, and similarly strong "bring to attention" tag use... despite that we can continue talking normally, but then switch over to a quick bit of span action. Crikey eh!
-
-Things To Cover
-Let's think of a few more things we need to cover:
-
-Unordered Lists - Such as this!
-Ordered Lists - Numeric please
-Inline 'q' Quotes - Nothing fancy
-Block Quotes - Semi fancy
-Unordered Lists - Such as this!
-Unordered Lists - Such as this!
-What about nested list item elements
-What about them!?
-Del/Ins Tags - Deleted/Inserted content, remember attrs!
-Note Tag - Bit O' Highlightin
-Dfn Tag - Dfn, much like span tbh
-Abbr - Abbrev's yo!
-Additional Concerns
-Hmm that line break really got me thinking about, you guessed it, layout tags! Within a CMS textarea content editor? Yeah. Let's list some of these...
-
-Section Tags - Because we want to compartmentalise things, if that is a word. Oh this is a long list item, I wonder how the styling will react!
-What about nested ordered list item elements
-What about them!?
-Samp - Inline code samples, maybe include kbd tag
-Pre/Code - Full code blocks!
-Cite Element - Not layout but hey
-
-*/
 * {
   font-family: inherit;
   color: inherit; }
@@ -252,7 +210,7 @@ code {
   -webkit-appearance: none;
   outline: 0px none transparent;
   border-radius: 0; }
-.form input[type='text'], .form input[type='password'], .form input[type='email'], .form input[type='tel'] {
+.form input[type='text'], .form input[type='password'], .form input[type='email'], .form input[type='tel'], .form input[type='number'] {
   padding: 0.5em 0.5em 0.5em 0.8em;
   border: none;
   border-bottom: 3px solid #2c3435;

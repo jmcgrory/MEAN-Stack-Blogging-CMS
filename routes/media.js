@@ -86,8 +86,7 @@
 
         upload(req, res, (err) => {
 
-            // Request Variables
-            console.log(req);
+            console.log(req.file);
 
             // Response
             let response = {
@@ -134,18 +133,22 @@
         '/all',
         passport.authenticate('jwt', { session: false }),
         (req, res, next) => {
-            const page = 1;
-            Media.getPagedMedia(page, (err, media) => {
-                if(err){
-                    res.json({
-                        success: true,
-                        msg: 'Could not get Media'
-                    });
-                }
-                res.send({media});
-            });
-        }
-    )
+
+        const page = 1;
+
+        Media.getPagedMedia(page, (err, media) => {
+
+            if(err){
+                res.json({
+                    success: true,
+                    msg: 'Could not get Media'
+                });
+            }
+
+            res.send(media);
+        });
+
+    });
 
     // File Delete
     router.post(

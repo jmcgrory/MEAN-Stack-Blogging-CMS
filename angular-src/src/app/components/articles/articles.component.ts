@@ -4,22 +4,28 @@ import { DatePipe } from '@angular/common';
 import { PostalService } from '../../services/postal.service';
 
 @Component({
-  selector: 'app-articles',
-  templateUrl: './articles.component.html',
-  styleUrls: ['./articles.component.css']
+selector: 'app-articles',
+templateUrl: './articles.component.html',
+styleUrls: ['./articles.component.css']
 })
 export class ArticlesComponent implements OnInit {
 
-  articles: Feature[];
+    articles: Feature[];
 
-  constructor(
-    private postalService: PostalService
-  ) { }
+    constructor(
 
-  ngOnInit() {
-    this.postalService.getAllPosts().subscribe( data => {
-      this.articles = data;
-    });
-  }
+        private postalService: PostalService
+
+    ){}
+
+    ngOnInit() {
+
+        this.postalService.getAllPosts().subscribe(data => {
+
+            this.articles = data;
+
+        });
+
+    }
 
 }

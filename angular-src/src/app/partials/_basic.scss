@@ -82,7 +82,7 @@ code {
     @extend .box;
   }
 
-  input[type='text'], input[type='password'], input[type='email'], input[type='tel'] {
+  input[type='text'], input[type='password'], input[type='email'], input[type='tel'], input[type='number'] {
     padding: 0.5em 0.5em 0.5em 0.8em;
     border: none;
     border-bottom: 3px solid $primary;

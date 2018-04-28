@@ -87,8 +87,11 @@
         (req, res, next) => {
 
         Post.getAllPosts( (err, posts) => {
+            
             res.send(posts);
+
         });
+
     });
 
     // ?Active

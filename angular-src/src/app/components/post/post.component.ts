@@ -29,7 +29,7 @@ export class PostComponent implements OnInit {
 
     // Subscribe to the search Params and pass them to getPostByURL() to return post data
     this.sub = this.route.params.subscribe( params => {
-      this.postalService.getPostByURL(params.url).subscribe( data => {
+      this.postalService.getPostByURL(params.url).subscribe(data => {
         this.post = data;
       });
     });

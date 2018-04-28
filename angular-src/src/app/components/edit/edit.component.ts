@@ -18,8 +18,9 @@ export class EditComponent implements OnInit {
   categories: Category[] = [];
   selectedCategories: string[] = [];
   sectionTypes: string[] = [
-    "html",
-    "code"
+    'html',
+    'code',
+    'media'
   ];
 
 
@@ -50,14 +51,14 @@ export class EditComponent implements OnInit {
   }
 
   addSection(){
-    let defaultId = "section"+this.post.body.length;
+    let defaultId = 'section'+this.post.body.length;
     this.post.body.push({
-      type: "code",
+      type: 'code',
       id: defaultId,
       content: `
       // Default
           `,
-      class: "typescript"
+      class: 'typescript'
     });
 
   }

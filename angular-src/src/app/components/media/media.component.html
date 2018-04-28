@@ -4,6 +4,61 @@
       
 <div class="column content">
 
-    <p>Media</p>
+    <h2>Add Media</h2>
+
+    <form (submit)="addMedia()" class="form">
+
+        <div class="form-input-group">
+            <label>Media</label>
+            <input
+                type="file"
+                name="file"
+                placeholder="Select Your Media">
+        </div>
+
+        <p>
+            <input type="submit" class="btn" value="Upload Media">
+        </p>
+
+    </form>
     
+    <h2>Existing Media</h2>
+
+    <div class="media-container" *ngIf="media">
+
+        <div class="file-container" *ngFor="let file of media">
+
+            <div class="file-img-container">
+
+            <img [src]="file.filePath" />
+
+            </div>
+
+            <div class="table">
+                <div class="tr">
+                    <div class="td">ID</div>
+                    <div class="td">{{file._id}}</div>
+                </div>
+                <div class="tr">
+                    <div class="td">Name</div>
+                    <div class="td">{{file.fileName}}</div>
+                </div>
+                <div class="tr">
+                    <div class="td">Path</div>
+                    <div class="td">{{file.filePath}}</div>
+                </div>
+                <div class="tr">
+                    <div class="td">Mime</div>
+                    <div class="td">{{file.mimeType}}</div>
+                </div>
+                <div class="tr">
+                    <div class="td">Date</div>
+                    <div class="td">{{file.uploaded | date:'E d LLL yyyy HH:mm' }}</div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
 </div>
