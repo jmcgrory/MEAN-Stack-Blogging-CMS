@@ -32,7 +32,7 @@
       default: Date.now
     },
     hero: {
-      type: String
+      type: Number
     },
     body: {
       type: Array,
@@ -47,7 +47,7 @@
 //****     Export     ****//
 //************************//
 
-  // Create Post model that's avaible outside
+  // Create Post model
   const Post = module.exports = mongoose.model('Post', PostSchema);
 
 //************************//

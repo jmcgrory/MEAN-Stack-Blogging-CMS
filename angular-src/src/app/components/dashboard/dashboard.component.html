@@ -1,6 +1,7 @@
 <div class="column content">
   <h1>{{greeting}}!</h1>
   <p>Lorem ipsum dolor sit amet, sed an causae sanctus, eros singulis omittantur ex qui, in sea tantas labores. Vis at invenire assentior persecuti, an dicat epicurei sea. Aliquam lobortis tractatos et qui, nec in facete prodesset quaerendum. Ei altera everti mel, cul ne quodsi mollis nostrum, ponderum consetetur ea has.</p>
+  <p><a routerLink="/dashboard/media" title="View Media" class="btn mini"><fa name="cog"></fa> Media</a></p>
 </div>
 
 <div class="column content">
@@ -49,7 +50,7 @@
         </div>
       </div>
       <div class="td">
-        <div class="btn mini" routerLink="/dashboard/{{ post._id }}">
+        <div class="btn mini" routerLink="/dashboard/edit/{{ post._id }}">
           <fa name="cog"></fa>
         </div>
       </div>

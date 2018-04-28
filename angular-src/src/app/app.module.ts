@@ -18,11 +18,13 @@ import { ArticlesComponent } from './components/articles/articles.component';
 import { PostComponent } from './components/post/post.component';
 import { SectionComponent } from './components/html/section.component';
 import { HtmlComponent } from './components/html/html.component';
+import { MediaComponent } from './components/media/media.component';
 
 // Service Imports
 import { AuthService } from './services/auth.service';
 import { PostalService } from './services/postal.service';
 import { CategoryService } from './services/category.service';
+import { MediaService } from './services/media.service';
 
 // Guard Imports
 import { AuthGuard } from './guards/auth.guard';
@@ -44,7 +46,8 @@ const appRoutes = [
   { path: 'contact', component: ContactComponent },
   { path: 'login', component: LoginComponent },
   { path: 'dashboard', component: DashboardComponent, canActivate:[AuthGuard] },
-  { path: 'dashboard/:_id', component: EditComponent, canActivate:[AuthGuard] },
+  { path: 'dashboard/edit/:_id', component: EditComponent, canActivate:[AuthGuard] },
+  { path: 'dashboard/media', component: MediaComponent, canActivate:[AuthGuard] },
   { path: '**', redirectTo: '' }
 ]
 
@@ -66,6 +69,7 @@ const options = {
     EditComponent,
     SectionComponent,
     HtmlComponent,
+    MediaComponent,
     HtmlPipe
   ],
   imports: [
@@ -88,7 +92,8 @@ const options = {
     AuthService,
     AuthGuard,
     PostalService,
-    CategoryService
+    CategoryService,
+    MediaService
   ],
   bootstrap: [AppComponent]
 })

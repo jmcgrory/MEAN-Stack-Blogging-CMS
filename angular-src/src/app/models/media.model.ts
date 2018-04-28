@@ -1,5 +1,7 @@
 export class Media {
-    file: string
     mimeType: string
     uploaded: string
+    fileName: string
+    filePath: string
+    alt: string
 }

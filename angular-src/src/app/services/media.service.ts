@@ -29,6 +29,25 @@ export class MediaService {
 
     }
 
+    getAllMedia(){
+
+        // TODO: Pagination...
+
+        let token = this.authService.getToken();
+        let headers = new HttpHeaders({
+          'Content-Type': 'application/json',
+          'Authorization': token
+        });
+        return this.http.get<Media[]>(
+            'http://localhost:3000/media/all',
+            { 
+                headers: headers,
+                params: new HttpParams()
+            }
+        );
+
+    }
+
     // Delete Media
     delete(id){
 

@@ -1,7 +1,7 @@
 export class Post {
   title: string
   url: string
-  hero: string
+  hero: number
   date: Date
   category: string[]
   body: Array<any>

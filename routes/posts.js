@@ -44,12 +44,12 @@
 
         // define new post
         let newPost = new Post({
-        title: "New Post",
-        url: randomURL(),
-        category: [],
-        date: Date.now(),
-        hero: "https://i.imgur.com/A0NDvgK.jpg",
-        active: false
+            title: "New Post",
+            url: randomURL(),
+            category: [],
+            date: Date.now(),
+            hero: 0,
+            active: false
         });
 
         Post.addPost(newPost, (err, post) => {
