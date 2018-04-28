@@ -17,20 +17,17 @@
             type: String,
             required: true
         },
-            uploaded: {
+        uploaded: {
             type: String,
             required: true
         },
-            fileName: {
+        fileName: {
             type: String,
             required: true
         },
-            filePath: {
+        filePath: {
             type: String,
             required: true
-        },
-            alt: {
-            type: String
         }
     });
 

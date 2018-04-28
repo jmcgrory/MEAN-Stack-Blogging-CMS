@@ -113,8 +113,7 @@
                 fileName: req.file.filename,
                 mimeType: req.file.mimetype,
                 uploaded: new Date(),
-                filePath: newPath,
-                alt: "Placeholder"
+                filePath: newPath
             });
 
             Media.addMedia(insert, (err, media) => {

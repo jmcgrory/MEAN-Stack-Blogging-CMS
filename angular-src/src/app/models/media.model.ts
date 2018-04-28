@@ -3,5 +3,4 @@ export class Media {
     uploaded: string
     fileName: string
     filePath: string
-    alt: string
 }
