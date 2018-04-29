@@ -18,6 +18,12 @@ export class ArticlesComponent implements OnInit {
 
     ){}
 
+    parse(upload){
+
+        return 'http://localhost:3000'+upload.substring(1);
+
+    }
+
     ngOnInit() {
 
         this.postalService.getAllPosts().subscribe(data => {

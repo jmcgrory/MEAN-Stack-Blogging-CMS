@@ -32,7 +32,7 @@
       default: Date.now
     },
     hero: {
-      type: Number
+      type: String
     },
     body: {
       type: Array,

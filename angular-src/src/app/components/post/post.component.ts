@@ -22,6 +22,12 @@ export class PostComponent implements OnInit {
     private postalService: PostalService
   ) { }
 
+  parse(upload){
+
+      return 'http://localhost:3000'+upload.substring(1);
+
+  }
+
   ngOnInit() {
 
     // To the Top

@@ -27,11 +27,15 @@ export class MediaComponent implements OnInit {
 
     }
 
+    parse(upload){
+
+        return 'http://localhost:3000'+upload.substring(1);
+
+    }
+
     ngOnInit(){
 
         this.mediaService.getAllMedia().subscribe((data: Media[]) => {
-
-            console.log(data);
 
             this.media = data;
 

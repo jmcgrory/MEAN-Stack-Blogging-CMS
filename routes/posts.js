@@ -32,7 +32,9 @@
         (req, res, next) => {
 
         Post.getLimitPosts(req.limit, (err, posts) => {
+
             res.send(posts);
+
         });
 
     });
@@ -48,16 +50,22 @@
             url: randomURL(),
             category: [],
             date: Date.now(),
-            hero: 0,
+            hero: '',
             active: false
         });
 
         Post.addPost(newPost, (err, post) => {
+
             if(err){
+
                 res.json({success: false, msg: 'Failed to create post'});
+
             } else {
+
                 res.json({success: true, msg: 'Post added'});
+
             }
+            
         });
 
     });
@@ -100,7 +108,9 @@
         (req, res, next) => {
 
         Post.postActive( req.body, (err, posts) => {
+
             res.send(posts);
+
         });
 
     });
@@ -111,12 +121,19 @@
         (req, res, next) => {
 
         let id = req.body._id;
+
         Post.deletePost( id, (err, posts) => {
+
             if(err){
+
                 res.json({success: false, msg: 'Failed to delete'});
+
             } else {
+
                 res.json({success: true, msg: 'Post deleted'});
+
             }
+
         });
 
     });
@@ -127,13 +144,23 @@
         (req, res, next) => {
 
         let id = req.body.post._id;
+
         let post = req.body.post;
+
+        console.log(post);
+
         Post.postUpdate({ id: id, post: post }, (err, posts) => {
+
             if(err){
+
                 res.json({success: false, msg: 'Failed to update'});
+
             } else {
+
                 res.json({success: true, msg: 'Post updated'});
+
             }
+
         });
 
     });

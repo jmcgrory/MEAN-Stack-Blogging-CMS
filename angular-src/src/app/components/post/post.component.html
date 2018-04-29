@@ -36,7 +36,7 @@
         </section>
             
         <section *ngIf="section.type==='media'" class="section-media" [ngClass]="{ 'captioned':section.caption }">
-            <img src="https://images5.alphacoders.com/560/560615.jpg" alt="{{section.caption}}" />
+            <img [src]="parse(section.hero)" alt="{{section.caption}}" />
             <p *ngIf="section.caption" class="section-caption">
                 {{ section.caption }}
             </p>

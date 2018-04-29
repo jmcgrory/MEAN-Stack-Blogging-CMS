@@ -1,6 +1,6 @@
 export class Feature {
   title: string
   url: string
-  hero: number
+  hero: string
   date: Date;
 }

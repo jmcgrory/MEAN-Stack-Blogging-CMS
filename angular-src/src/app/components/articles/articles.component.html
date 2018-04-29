@@ -12,7 +12,7 @@
     <article *ngFor="let post of articles" class="article">
         <a routerLink="/articles/{{ post.url }}" title="Read Article">
             <div class="article-hero img-fit">
-                <img [src]="post.hero">
+                <img [src]="parse(post.hero)">
             </div>
             <h3>{{ post.title }}</h3>
             <span>{{ post.date | date:'mediumDate' }}</span>

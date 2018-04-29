@@ -19,6 +19,12 @@ export class HomeComponent implements OnInit {
     private postalService: PostalService
   ) {}
 
+  parse(upload){
+
+      return 'http://localhost:3000'+upload.substring(1);
+
+  }
+
   ngOnInit() {
     this.postalService.getLimitPosts(4).subscribe( data => {
       this.featured = data;

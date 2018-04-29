@@ -7,77 +7,107 @@ import { CategoryService } from 'app/services/category.service';
 import { Category } from 'app/models/category.model';
 
 @Component({
-  selector: 'app-edit',
-  templateUrl: './edit.component.html',
-  styleUrls: ['./edit.component.css']
+selector: 'app-edit',
+templateUrl: './edit.component.html',
+styleUrls: ['./edit.component.css']
 })
 export class EditComponent implements OnInit {
 
-  private sub: any;
-  post: Post;
-  categories: Category[] = [];
-  selectedCategories: string[] = [];
-  sectionTypes: string[] = [
-    'html',
-    'code',
-    'media'
-  ];
+    private sub: any;
+
+    post: Post;
+
+    categories: Category[] = [];
+
+    selectedCategories: string[] = [];
+
+    sectionTypes: string[] = [
+
+        'html',
+
+        'code',
+
+        'media'
+
+    ];
 
 
-  constructor(
-    private route: ActivatedRoute,
-    private postalService: PostalService,
-    private categoryService: CategoryService
-  ) { }
+    constructor(
+        private route: ActivatedRoute,
+        private postalService: PostalService,
+        private categoryService: CategoryService
+    ){}
 
-  ngOnInit() {
+    ngOnInit() {
 
-    // Init Post
-    this.getPostData();
+        // Init Post
+        this.getPostData();
 
-    // Update Categories
-    this.getCategories();
-  }
+        // Update Categories
+        this.getCategories();
 
-  getPostData(){
-    this.sub = this.route.params.subscribe( params => {
-      this.postalService.getPostByID(params._id).subscribe( data => {
-        this.post = data;
-        if(data.category!==undefined){
-          this.selectedCategories = data.category;
-        }
-      });
-    });
-  }
+    }
 
-  addSection(){
-    let defaultId = 'section'+this.post.body.length;
-    this.post.body.push({
-      type: 'code',
-      id: defaultId,
-      content: `
-      // Default
-          `,
-      class: 'typescript'
-    });
+    getPostData(){
 
-  }
+        this.sub = this.route.params.subscribe( params => {
 
-  getCategories(){
-    this.categoryService.getCategories().subscribe( data => {
-      this.categories = data;
-    });
-  }
+            this.postalService.getPostByID(params._id).subscribe( data => {
 
-  editPost(){
-    this.postalService.updatePost(this.post).subscribe( data => {
-      this.getPostData();
-    });
-  }
+                this.post = data;
 
-  // Unsubscribe on leave
-  ngOnDestroy(){
-    this.sub.unsubscribe();
-  }
+                if(data.category!==undefined){
+
+                    this.selectedCategories = data.category;
+
+                }
+
+            });
+
+        });
+
+    }
+
+    addSection(){
+
+        let defaultId = 'section'+this.post.body.length;
+
+        this.post.body.push({
+            type: 'code',
+            id: defaultId,
+            content: `
+                // Default
+                `,
+            class: 'typescript'
+        });
+
+    }
+
+    getCategories(){
+
+        this.categoryService.getCategories().subscribe( data => {
+
+            this.categories = data;
+
+        });
+
+    }
+
+    editPost(){
+
+        this.postalService.updatePost(this.post).subscribe( data => {
+
+            this.getPostData();
+
+        });
+
+    }
+
+    // Unsubscribe on leave
+    ngOnDestroy(){
+
+        this.sub.unsubscribe();
+
+    }
 
 }
