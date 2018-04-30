@@ -45,10 +45,12 @@ export class MediaService {
         // TODO: Pagination...
 
         let token = this.authService.getToken();
+
         let headers = new HttpHeaders({
           'Content-Type': 'application/json',
           'Authorization': token
         });
+
         return this.http.get<Media[]>(
             'http://localhost:3000/media/all',
             { 
@@ -60,10 +62,23 @@ export class MediaService {
     }
 
     // Delete Media
-    delete(id){
+    delete(path: string){
 
-        // TODO: Make this
-        console.log(id);
+        let token = this.authService.getToken();
+
+        let headers = new HttpHeaders({
+          'Content-Type': 'application/json',
+          'Authorization': token
+        });
+
+        return this.http.post<string>(
+            'http://localhost:3000/media/delete',
+            { filePath: path },
+            { 
+                headers: headers,
+                params: new HttpParams()
+            }
+        );
 
     }
 

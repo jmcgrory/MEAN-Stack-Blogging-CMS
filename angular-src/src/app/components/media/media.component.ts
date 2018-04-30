@@ -45,7 +45,19 @@ export class MediaComponent implements OnInit {
 
     }
 
-    parse(upload){
+    delete(path: string){
+
+        this.mediaService.delete(path).subscribe(data => {
+
+            console.log(data);
+
+            this.getAllMedia();
+
+        });
+
+    }
+
+    parse(upload: string){
 
         return 'http://localhost:3000'+upload.substring(1);
 

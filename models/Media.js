@@ -52,6 +52,11 @@
     }
 
     // Get Media
+    module.exports.delete = (path, callback)=>{
+        Media.remove({ filePath: path }, callback);
+    }
+
+    // Get Media
     module.exports.getPagedMedia = (page, callback)=>{
 
         // TODO: Pagination Offset

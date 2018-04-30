@@ -154,30 +154,56 @@
         passport.authenticate('jwt', { session: false }),
         (req, res, next) => {
 
-        const file = 'uploads/'+req.body.path;
+        const path = req.body.filePath;
 
-        if(!file.endsWith('.jpg')){
+        if(!path.endsWith('.jpg')&&!path.endsWith('.gif')){
+
             return res.json({
+
                 success: false,
+
                 msg: 'Incorrect Filetype Deletion'
+
             });
+
         }
 
-        fs.unlink(file, (err) => {
+        Media.delete( path, (err, media) => {
 
             if(err){
-                console.log(err);
-                return res.json({
-                    success: false,
-                    msg: 'Could not delete file'
+
+                res.json({success: false, msg: 'Failed to delete'});
+
+            } else {
+
+                fs.unlink(path, (err) => {
+
+                    if(err){
+
+                        console.log(err);
+
+                        return res.json({
+
+                            success: false,
+
+                            msg: 'Could not delete file'
+
+                        });
+
+                    }
+        
+                    return res.json({
+
+                        success: true,
+
+                        msg: 'File Deleted'
+
+                    });
+            
                 });
+
             }
 
-            return res.json({
-                success: true,
-                msg: 'File Deleted'
-            });
-    
         });
 
     });

@@ -20,9 +20,21 @@
 
         margin: 0 0 20px;
 
+        a.btn.mini {
+
+            position: absolute;
+
+            top: 10px;
+
+            right: 10px;
+
+        }
+
         &:nth-child(odd){
 
             padding-right: 10px;
+
+            clear: both;
 
         }
 
@@ -49,6 +61,12 @@
             border-left: 1px solid;
     
             .tr {
+
+                &:nth-child(3){
+
+                    height: 35px;
+
+                }
                 
                 .td {
 

@@ -38,7 +38,13 @@
 
             <div class="file-img-container">
 
-            <img [src]="parse(file.filePath)" />
+                <img [src]="parse(file.filePath)" />
+
+                <a class="btn mini" (click)="delete(file.filePath)">
+
+                    <fa name="trash"></fa>
+
+                </a>
 
             </div>
 
