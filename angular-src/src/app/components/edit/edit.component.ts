@@ -33,9 +33,13 @@ export class EditComponent implements OnInit {
 
 
     constructor(
+
         private route: ActivatedRoute,
+
         private postalService: PostalService,
+
         private categoryService: CategoryService
+        
     ){}
 
     ngOnInit() {

@@ -254,5 +254,39 @@ code {
       .form .form-input-group select option:last-child {
         border-bottom: none;
         padding-bottom: 0.5em; }
+  .form .form-input-group.form-upload label {
+    display: block;
+    width: 100%;
+    padding: 1.5em;
+    background: #f8f8f8;
+    height: auto;
+    cursor: pointer;
+    opacity: 0.5;
+    border: 2px dashed #2c3435;
+    -webkit-transition: opacity 330ms ease;
+    -moz-transition: opacity 330ms ease;
+    -ms-transition: opacity 330ms ease;
+    -o-transition: opacity 330ms ease;
+    transition: opacity 330ms ease; }
+    .form .form-input-group.form-upload label fa {
+      color: #2c3435;
+      display: block;
+      opacity: 0.75;
+      font-size: 24px;
+      text-align: center;
+      -webkit-transition: opacity 330ms ease;
+      -moz-transition: opacity 330ms ease;
+      -ms-transition: opacity 330ms ease;
+      -o-transition: opacity 330ms ease;
+      transition: opacity 330ms ease; }
+    .form .form-input-group.form-upload label:hover {
+      opacity: 1; }
+  .form .form-input-group.form-upload input {
+    width: 0.1px;
+    height: 0.1px;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1; }
 
 /*# sourceMappingURL=styles.css.map */

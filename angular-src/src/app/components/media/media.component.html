@@ -8,11 +8,19 @@
 
     <form (submit)="addMedia()" class="form">
 
-        <div class="form-input-group">
-            <label>Media</label>
+        <div class="form-input-group form-upload">
+
+            <label for="file">
+
+                <fa name="file"></fa>
+
+            </label>
+
             <input
                 type="file"
                 name="file"
+                id="file"
+                (change)="handleFileInput($event.target.files)"
                 placeholder="Select Your Media">
         </div>
 

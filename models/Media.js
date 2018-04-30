@@ -18,7 +18,7 @@
             required: true
         },
         uploaded: {
-            type: String,
+            type: Date,
             required: true
         },
         fileName: {
@@ -56,5 +56,5 @@
 
         // TODO: Pagination Offset
 
-        Media.find({}, callback);
+        Media.find({}, callback).sort({uploaded: 'desc'});;
     }

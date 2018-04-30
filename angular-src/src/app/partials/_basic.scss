@@ -3,146 +3,316 @@
 //************************//
 
 * {
-  font-family: inherit;
-  color: inherit;
+
+    font-family: inherit;
+
+    color: inherit;
+
 }
 
 body {
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  font-family: $font;
-  color: $primary;
+
+    -webkit-font-smoothing: antialiased;
+
+    -moz-osx-font-smoothing: grayscale;
+
+    font-family: $font;
+
+    color: $primary;
+
 }
 
 a {
-  text-decoration: none;
-  cursor: pointer;
+
+    text-decoration: none;
+
+    cursor: pointer;
+
 }
 
 p a {
-  text-decoration: underline;
-  padding: 0 2px;
 
-  &:hover {
-    text-decoration: none;
-    background: $primary;
-    color: #fff;
-  }
+    text-decoration: underline;
+
+    padding: 0 2px;
+
+    &:hover {
+
+        text-decoration: none;
+
+        background: $primary;
+
+        color: #fff;
+
+    }
+
 }
 
 .full {
-  width: 100%;
+
+    width: 100%;
+
 }
 
 body, div, section {
-  @extend .box;
+
+    @extend .box;
+
 }
 
 p, input, select {
-  @extend .paragraph;
+
+    @extend .paragraph;
+
 }
 
 h1, h2, h3, h4, h5, h6 {
-  @extend .title;
 
-  &.small {
-    font-size: 18px;
-    text-transform: uppercase;
-  }
+    @extend .title;
+
+
+    &.small {
+
+        font-size: 18px;
+
+        text-transform: uppercase;
+
+    }
+
 }
 
 hr {
-  border: 1px solid $primary;
-  clear: both;
 
-  @include mobile(){
-    margin: 0;
-  }
+    border: 1px solid $primary;
+
+    clear: both;
+
+    @include mobile(){
+
+        margin: 0;
+
+    }
+
 }
 
 code {
-  font-family: $code;
 
-  @include mobile(){
-    font-size: 14px;
-    padding: 0.5em 0;
-  }
+    font-family: $code;
+
+    @include mobile(){
+
+        font-size: 14px;
+
+        padding: 0.5em 0;
+
+    }
+
 }
 
 .form {
 
-  input, textarea {
-    display: block;
-    width: 100%;
-    appearance: none;
-    -moz-appearance:none;
-    -webkit-appearance: none;
-    outline: 0px none transparent;
-    border-radius: 0;
-    @extend .box;
-  }
+    input, textarea {
 
-  input[type='text'], input[type='password'], input[type='email'], input[type='tel'], input[type='number'] {
-    padding: 0.5em 0.5em 0.5em 0.8em;
-    border: none;
-    border-bottom: 3px solid $primary;
-    background: #f2f2f2;
-  }
-  input[type='submit'] {
-    background: $primary;
-    border: 3px solid $primary;
-    text-align: center;
-    padding: 0.75em;
-    color: #ffffff;
+        display: block;
 
-    &:hover {
-      background: #ffffff;
-    }
-  }
+        width: 100%;
 
-  .form-input-group {
-    margin: 0.5em auto 1em;
-    @extend .clear-inner;
+        appearance: none;
 
-    label, input, select {
-      display: inline-block;
-      float: left;
-      font-size: 16px;
-      margin: 0 auto;
-      line-height: 1.1;
-      vertical-align: middle;
-      height: 36px;
-      padding: 0.6em 0.5em 0.5em 0.75em;
-      border-radius: 0;
-      -webkit-appearance: none;
-      @extend .box;
+        -moz-appearance:none;
+
+        -webkit-appearance: none;
+
+        outline: 0px none transparent;
+
+        border-radius: 0;
+
+        @extend .box;
+
     }
 
-    label {
-      width: 33.333%;
-      background: $primary;
-      color: #fff;
-    }
-    input, select {
-      width: 66.666%;
-      border-bottom: none;
-    }
-    select {
-      border: 0;
-      background: #f2f2f2;
+    input[type='text'], input[type='password'], input[type='email'], input[type='tel'], input[type='number'] {
 
-      option {
-        padding: 0.4em 0.75em;
-        border-bottom: 1px solid #e8e8e8;
+        padding: 0.5em 0.5em 0.5em 0.8em;
 
-        &:first-child {
-          padding-top: 0.5em;
+        border: none;
+
+        border-bottom: 3px solid $primary;
+
+        background: #f2f2f2;
+
+    }
+
+    input[type='submit'] {
+
+        background: $primary;
+
+        border: 3px solid $primary;
+
+        text-align: center;
+
+        padding: 0.75em;
+
+        color: #ffffff;
+
+        &:hover {
+
+            background: #ffffff;
+
         }
-        &:last-child {
-          border-bottom: none;
-          padding-bottom: 0.5em;
-        }
-      }
+
     }
-  }
+
+    .form-input-group {
+
+        margin: 0.5em auto 1em;
+
+        @extend .clear-inner;
+
+        label, input, select {
+
+            display: inline-block;
+
+            float: left;
+
+            font-size: 16px;
+
+            margin: 0 auto;
+
+            line-height: 1.1;
+
+            vertical-align: middle;
+
+            height: 36px;
+
+            padding: 0.6em 0.5em 0.5em 0.75em;
+
+            border-radius: 0;
+
+            -webkit-appearance: none;
+
+            @extend .box;
+
+        }
+
+        label {
+
+            width: 33.333%;
+
+            background: $primary;
+
+            color: #fff;
+
+        }
+
+        input, select {
+
+            width: 66.666%;
+
+            border-bottom: none;
+
+        }
+
+        select {
+
+            border: 0;
+
+            background: #f2f2f2;
+
+            option {
+
+                padding: 0.4em 0.75em;
+
+                border-bottom: 1px solid #e8e8e8;
+
+                &:first-child {
+
+                    padding-top: 0.5em;
+
+                }
+
+                &:last-child {
+
+                    border-bottom: none;
+
+                    padding-bottom: 0.5em;
+
+                }
+
+            }
+
+        }
+
+        &.form-upload {
+
+            label {
+
+                display: block;
+
+                width: 100%;
+
+                padding: 1.5em;
+
+                background: $tertiary;
+
+                height: auto;
+
+                cursor: pointer;
+
+                opacity: 0.5;
+
+                border: 2px dashed $primary;
+
+                @include transition(opacity 330ms ease);
+
+                fa {
+
+                    color: $primary;
+
+                    display: block;
+
+                    opacity: 0.75;
+
+                    font-size: 24px;
+
+                    text-align: center;
+
+                    @include transition(opacity 330ms ease);
+
+                }
+
+                &:hover {
+
+                    opacity: 1;
+                    
+                    fa {
+
+                    //    opacity: 1;
+
+                    }
+
+                }
+
+            }
+
+            input {
+
+                width: 0.1px;
+
+                height: 0.1px;
+
+                opacity: 0;
+
+                overflow: hidden;
+
+                position: absolute;
+
+                z-index: -1;
+
+            }
+
+        }
+
+    }
+
 }

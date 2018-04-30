@@ -13,19 +13,30 @@ export class MediaService {
     ){}
 
     // Media Upload
-    upload(media){
+    upload(fileToUpload: File){
 
-        // TODO: Sort this out
-        console.log(media);
+        console.log(fileToUpload);
 
-        // let headers = new HttpHeaders({'Content-Type': 'application/json'});
-        // return this.http.get<Media[]>(
-        //     'http://localhost:3000/media/upload',
-        //     { 
-        //         headers: headers,
-        //         params: new HttpParams().set('limit', limit)
-        //     }
-        // );
+        let formData: FormData = new FormData();
+
+        formData.append('file', fileToUpload, fileToUpload.name);
+
+        let token = this.authService.getToken();
+
+        let headers = new HttpHeaders({
+            'Authorization': token
+        });
+
+        return this.http.post(
+
+            'http://localhost:3000/media/upload',
+            formData,
+            { 
+                headers: headers,
+                params: new HttpParams()
+            }
+
+        );
 
     }
 

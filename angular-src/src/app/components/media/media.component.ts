@@ -13,6 +13,7 @@ export class MediaComponent implements OnInit {
 
     // Media
     media: Media[]
+    fileToUpload: File = null;
 
     constructor(
 
@@ -20,10 +21,27 @@ export class MediaComponent implements OnInit {
 
     ){}
 
+    handleFileInput(files: FileList) {
+
+        this.fileToUpload = files.item(0);
+
+    }
+
     addMedia(){
 
-        // TODO: Create Function
-        console.log('Add Media');
+        if(this.fileToUpload===undefined){
+
+            console.log('No Media');
+            
+            return false;
+
+        }
+
+        this.mediaService.upload(this.fileToUpload).subscribe(data => {
+
+            this.getAllMedia();
+
+        });
 
     }
 
@@ -34,6 +52,12 @@ export class MediaComponent implements OnInit {
     }
 
     ngOnInit(){
+
+        this.getAllMedia();
+
+    }
+
+    getAllMedia(){
 
         this.mediaService.getAllMedia().subscribe((data: Media[]) => {
 

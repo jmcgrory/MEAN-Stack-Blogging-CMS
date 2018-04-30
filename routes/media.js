@@ -69,7 +69,7 @@
     // File upload
     router.post(
         '/upload',
-    //    passport.authenticate('jwt', { session: false }),
+        passport.authenticate('jwt', { session: false }),
         (req, res, next) => {
 
         const date = new Date();
@@ -85,8 +85,6 @@
         if(!fs.existsSync(monthDirectory)) fs.mkdir(monthDirectory);
 
         upload(req, res, (err) => {
-
-            console.log(req.file);
 
             // Response
             let response = {
