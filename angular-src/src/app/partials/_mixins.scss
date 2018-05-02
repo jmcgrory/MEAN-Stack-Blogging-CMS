@@ -2,41 +2,74 @@
 //****     MIXINS     ****//
 //************************//
 
-  // MediaQ
-    @mixin desktop {
-      @media screen and (min-width: #{ $desktop-width }){
+// MediaQ
+@mixin desktop {
+
+    @media screen and (min-width: #{ $desktop-width }) {
+
         @content;
-      }
-    }
-    @mixin tablet {
-      @media screen and (max-width: #{ $desktop-width - 1 }) and (min-width: #{ $mobile-width + 1 }) {
-        @content;
-      }
-    }
-    @mixin mobile {
-      @media screen and (max-width: #{ $mobile-width }){
-        @content;
-      }
-    }
-    @mixin notMobile {
-      @media screen and (min-width: #{ $mobile-width + 1 }){
-        @content;
-      }
+
     }
 
-  // CSS3
-    @mixin transition($args:330ms ease){
-      -webkit-transition: $args;
-      -moz-transition: $args;
-      -ms-transition: $args;
-      -o-transition: $args;
-      transition: $args;
+}
+
+@mixin tablet {
+
+    @media screen and (max-width: #{ $desktop-width - 1 }) and (min-width: #{ $mobile-width + 1 }) {
+
+        @content;
+
     }
 
-    @mixin transform($args: translate3d(0,0,0)){
-      -webkit-transform: $args;
-      -moz-transform: $args;
-      -ms-transform: $args;
-      -o-transform: $args;
-      transform: $args;
+}
+
+@mixin mobile {
+
+    @media screen and (max-width: #{ $mobile-width }) {
+
+        @content;
+
     }
+
+}
+
+@mixin notMobile {
+
+    @media screen and (min-width: #{ $mobile-width + 1 }) {
+
+        @content;
+
+    }
+
+}
+
+
+// CSS3
+@mixin transition($args:330ms ease) {
+
+    -webkit-transition: $args;
+
+    -moz-transition: $args;
+
+    -ms-transition: $args;
+
+    -o-transition: $args;
+
+    transition: $args;
+
+}
+
+
+@mixin transform($args: translate3d(0,0,0)) {
+
+    -webkit-transform: $args;
+
+    -moz-transform: $args;
+
+    -ms-transform: $args;
+
+    -o-transform: $args;
+
+    transform: $args;
+
+}

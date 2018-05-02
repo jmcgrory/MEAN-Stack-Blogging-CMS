@@ -2,17 +2,26 @@
 //****    VARIABLES   ****//
 //************************//
 
-  // Colours
-  //  $primary:       #ff5e53;
+    // Colours
+
+    //  $primary:       #ff5e53;
+
     $primary:       #2c3435;
+
     $secondary:     #213538;
+
     $tertiary:      #f8f8f8;
 
-  // Fonts
+    // Fonts
+
     @import url('https://fonts.googleapis.com/css?family=Roboto+Mono|PT+Sans:400,700');
+
     $font: 'PT Sans', sans-serif;
+
     $code: 'Roboto Mono', monospace;
 
-  // Layout
+    // Layout
+
     $desktop-width: 1024px;
+    
     $mobile-width: 640px;

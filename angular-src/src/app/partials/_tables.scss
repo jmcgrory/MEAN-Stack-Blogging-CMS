@@ -1,14 +1,31 @@
+//************************//
+//****     PRISM      ****//
+//************************//
+
 .table {
-  display: table;
+
+    display: table;
+
 }
+
 .tr {
-  display: table-row;
+
+    display: table-row;
+
 }
+
 .td {
-  display: table-cell;
-  font-weight: 400;
-  border-collapse: collapse;
+
+    display: table-cell;
+
+    font-weight: 400;
+
+    border-collapse: collapse;
+
 }
+
 .th .td {
-  font-weight: 700;
+
+    font-weight: 700;
+
 }
