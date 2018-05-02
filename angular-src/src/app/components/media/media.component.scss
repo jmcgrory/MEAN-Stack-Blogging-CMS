@@ -4,9 +4,14 @@
 
 // Includes
 @import '../../partials/const';
+
 @import '../../partials/mixins';
-@import '../../partials/classes';
-@import '../../partials/tables';
+
+@import '../../partials/classes'; // TODO: Unnecessary
+
+@import '../../partials/tables'; // TODO: Unnecessary
+
+// Styles
 
 .media-container {
 

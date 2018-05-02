@@ -2,66 +2,102 @@
 //****      EDIT      ****//
 //************************//
 
-  // Includes
-  @import '../../partials/const';
-  @import '../../partials/mixins';
-  @import '../../partials/classes';
-  @import '../../partials/basic';
+// Includes
 
-  header p {
-    margin-bottom: 0;
-  }
+@import '../../partials/const';
 
-  .form .form-input-group {
+@import '../../partials/mixins';
+
+@import '../../partials/classes';
+
+@import '../../partials/basic';
+
+// Styles
+
+header p {
+
+margin-bottom: 0;
+
+}
+
+.form .form-input-group {
 
     &.form-input-full {
 
-      > select {
-        height: auto;
-      }
+        > select {
 
-      > input, > select, > textarea, > label {
+            height: auto;
 
-        display: block;
-        width: 100%;
-        float: none;
+        }
 
-      }
+        > input,
+        > select,
+        > textarea,
+        > label {
+
+            display: block;
+
+            width: 100%;
+            
+            float: none;
+
+        }
 
     }
 
     textarea {
-      resize: vertical;
-      min-height: 160px;
-      padding: 0.8em;
 
-      &:focus {
-        -moz-appearance:none;
-        outline:0px none transparent;
-      }
+        resize: vertical;
+
+        min-height: 160px;
+
+        padding: 0.8em;
+
+        &:focus {
+
+            -moz-appearance:none;
+
+            outline:0px none transparent;
+
+        }
+
     }
 
     .edit-section {
-      padding: 10px;
-      border: 1px solid $primary;
-      border-top: none;
-      border-bottom: 1px dashed $primary;
 
-      &:last-child {
-        border-bottom: 1px solid $primary;
-      }
+        padding: 10px;
 
-      .form-input-group {
-        margin: 0.35em auto;
-      }
+        border: 1px solid $primary;
+        
+        border-top: none;
+        
+        border-bottom: 1px dashed $primary;
 
-      .form-input-group:first-child {
-        margin-top: 0.15em;
-      }
+        &:last-child {
+            
+            border-bottom: 1px solid $primary;
+        
+        }
 
-      .form-input-group:last-child {
-        margin-bottom: 0.15em;
-      }
+        .form-input-group {
+            
+            margin: 0.35em auto;
+
+
+            &:first-child {
+                
+                margin-top: 0.15em;
+            
+            }
+
+            &:last-child {
+                
+                margin-bottom: 0.15em;
+            
+            }
+            
+        }
+
     }
 
-  }
+}

@@ -2,43 +2,69 @@
 //****   DASHBOARD   ****//
 //***********************//
 
-  // Includes
-  @import '../../partials/const';
-  @import '../../partials/mixins';
-  @import '../../partials/classes';
-  @import '../../partials/basic';
-  @import '../../partials/tables';
+// Includes
+@import '../../partials/const';
 
-  //***********************//
-  //****     Posts     ****//
-  //***********************//
+@import '../../partials/mixins';
 
-  // Post table
-  .post-table {
+@import '../../partials/classes'; // TODO: Unnecessary?
+
+@import '../../partials/basic'; // TODO: Unnecessary?
+
+@import '../../partials/tables'; // TODO: Unnecessary?
+
+// Posts
+
+.post-table {
+
     border-top: 1px solid $primary;
 
     .td {
-      padding: 0.5em;
-      border-right: 1px solid $primary;
-      border-bottom: 1px solid $primary;
-      font-size: 12px;
 
-      &:first-child {
-        border-left: 1px solid $primary;
-      }
+        padding: 0.5em;
+
+        border-right: 1px solid $primary;
+
+        border-bottom: 1px solid $primary;
+
+        font-size: 12px;
+
+        &:first-child {
+
+            border-left: 1px solid $primary;
+
+        }
+
     }
-    .tr.th .td {
-      background: $primary;
-      color: #fff;
+
+    .tr {
+        
+        &.th .td {
+
+            background: $primary;
+
+            color: #fff;
+
+        }
+
+        &.blank {
+
+            border-left: none;
+
+            .td {
+
+                border-right: none;
+
+                border-bottom: none;
+
+                border-left: none;
+
+                padding-top: 1.5em;
+
+            }
+
+        }
+
     }
-    .tr.blank {
-      border-left: none;
-      
-      .td {
-        border-right: none;
-        border-bottom: none;
-        border-left: none;
-        padding-top: 1.5em;
-      }
-    }
-  }
+
+}

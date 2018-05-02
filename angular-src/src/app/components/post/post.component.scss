@@ -2,106 +2,109 @@
 //****      POST      ****//
 //************************//
 
-    // Includes
-    @import '../../partials/const';
-    @import '../../partials/mixins';
+// Includes
+@import '../../partials/const';
 
-    h1 {
+@import '../../partials/mixins';
+
+// Styles
+
+h1 {
+
+    margin-bottom: 0;
+
+}
+
+.post-date {
+
+    font-size: 14px;
+
+    time {
+
+        padding-left: 0.1em;
+
+    }
+
+}
+
+.captioned {
+
+    margin-bottom: 2em;
+
+    pre {
 
         margin-bottom: 0;
 
     }
 
-    .post-date {
+}
 
-        font-size: 14px;
+.section-code, .section-media {
 
-        time {
+    &.captioned {
 
-            padding-left: 0.1em;
+        background: $tertiary;
 
-        }
+        padding: 0.2em;
 
     }
 
-    .captioned {
+    p {
 
-        margin-bottom: 2em;
+        opacity: 0.5;
+
+        text-align: center;
+
+        margin-bottom: 0.2em;
+
+    }
+
+}
+
+.section-code {
+
+    &.captioned {
 
         pre {
 
-            margin-bottom: 0;
+            margin-top: 0;
+        
+        }
+
+        code {
+
+            margin-top: -20px;
 
         }
 
     }
 
-    .section-code, .section-media {
+    p {
 
-        &.captioned {
-
-            background: $tertiary;
-
-            padding: 0.2em;
-
-        }
-
-        p {
-
-            opacity: 0.5;
-
-            text-align: center;
-
-            margin-bottom: 0.2em;
-
-        }
+        margin-top: -2em;
 
     }
 
-    .section-code {
+}
 
-        &.captioned {
+.section-media {
 
-            pre {
+    img, video {
 
-                margin-top: 0;
-            
-            }
+        width: auto;
 
-            code {
+        height: auto;
 
-                margin-top: -20px;
+        max-width: 100%;
 
-            }
+        display: block;
 
-        }
+        clear: both;
 
-        p {
+        margin: 0 auto;
 
-            margin-top: -2em;
-
-        }
+        padding: 0;
 
     }
 
-    .section-media {
-
-        img, video {
-
-            width: auto;
-
-            height: auto;
-
-            max-width: 100%;
-
-            display: block;
-
-            clear: both;
-
-            margin: 0 auto;
-
-            padding: 0;
-
-        }
-
-    }
+}

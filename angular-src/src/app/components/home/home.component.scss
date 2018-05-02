@@ -2,14 +2,24 @@
 //****      HOME      ****//
 //************************//
 
-  // Includes
-  @import '../../partials/const';
-  @import '../../partials/mixins';
-  @import '../../partials/classes';
-  @import '../../partials/basic';
+// Includes
 
-  .articles .article.featured:nth-child(4){
+@import '../../partials/const';
+
+@import '../../partials/mixins';
+
+@import '../../partials/classes'; // TODO: Unnecessary?
+
+@import '../../partials/basic'; // TODO: Unnecessary?
+
+// Styles
+
+.articles .article.featured:nth-child(4){
+
     @include desktop {
-      display: none;
+
+        display: none;
+
     }
-  }
+
+}
