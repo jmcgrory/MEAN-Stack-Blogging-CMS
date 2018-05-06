@@ -4,8 +4,11 @@ import { DatePipe } from '@angular/common';
 import { PostalService } from '../../services/postal.service';
 
 @Component({
-selector: 'app-articles',
-templateUrl: './articles.component.html'
+
+    selector: 'app-articles',
+
+    templateUrl: './articles.component.html'
+
 })
 export class ArticlesComponent implements OnInit {
 
@@ -17,7 +20,7 @@ export class ArticlesComponent implements OnInit {
 
     ){}
 
-    parse(upload){
+    parse(upload: string): string {
 
         return 'http://localhost:3000'+upload.substring(1);
 

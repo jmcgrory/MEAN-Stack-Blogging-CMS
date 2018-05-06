@@ -1,5 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 
+// TODO: Delete this probably
+
 @Component({
     selector: 'app-html',
     templateUrl: './html.component.html'
@@ -11,7 +13,9 @@ export class HtmlComponent implements OnInit {
     constructor() { }
 
     ngOnInit() {
+
         console.log(this.node);
+
     }
 
 }

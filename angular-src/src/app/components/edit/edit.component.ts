@@ -7,9 +7,13 @@ import { CategoryService } from 'app/services/category.service';
 import { Category } from 'app/models/category.model';
 
 @Component({
-selector: 'app-edit',
-templateUrl: './edit.component.html',
-styleUrls: ['./edit.component.css']
+
+    selector: 'app-edit',
+
+    templateUrl: './edit.component.html',
+
+    styleUrls: ['./edit.component.css']
+
 })
 export class EditComponent implements OnInit {
 
@@ -52,7 +56,7 @@ export class EditComponent implements OnInit {
 
     }
 
-    getPostData(){
+    getPostData(): void {
 
         this.sub = this.route.params.subscribe( params => {
 
@@ -72,22 +76,27 @@ export class EditComponent implements OnInit {
 
     }
 
-    addSection(){
+    addSection(): void {
 
-        let defaultId = 'section'+this.post.body.length;
+        const defaultId = 'section'+this.post.body.length;
 
         this.post.body.push({
+
             type: 'code',
+
             id: defaultId,
+
             content: `
                 // Default
                 `,
+
             class: 'typescript'
+
         });
 
     }
 
-    getCategories(){
+    getCategories(): void {
 
         this.categoryService.getCategories().subscribe( data => {
 
@@ -97,7 +106,7 @@ export class EditComponent implements OnInit {
 
     }
 
-    editPost(){
+    editPost(): void {
 
         this.postalService.updatePost(this.post).subscribe( data => {
 

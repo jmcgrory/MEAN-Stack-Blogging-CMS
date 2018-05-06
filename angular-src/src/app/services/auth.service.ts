@@ -12,36 +12,48 @@ export class AuthService {
     user: any;
 
     constructor(
+
         private http: HttpClient,
+
         private router: Router,
+
         public jwtHelper: JwtHelperService
+
     ) {
+
         const helper = new JwtHelperService();
+
     }
 
-    registerUser(user){
+    registerUser(user) {
 
-    let headers = new HttpHeaders({'Content-Type': 'application/json'});
+        let headers = new HttpHeaders({'Content-Type': 'application/json'});
 
         return this.http.post(
+
             'http://localhost:3000/users/register',
+
             user,
+
             { headers: headers }
+
         );
 
     }
 
-    authenticateUser(user){
+    authenticateUser(user) {
 
         let headers = new HttpHeaders({'Content-Type': 'application/json'});
         
-        let response = this.http.post(
-            'http://localhost:3000/users/authenticate',
-            user,
-            { headers: headers }
-        );
+        return this.http.post(
 
-        return response;
+            'http://localhost:3000/users/authenticate',
+
+            user,
+            
+            { headers: headers }
+
+        );
 
     }
 
@@ -73,7 +85,7 @@ export class AuthService {
 
     }
 
-    storeUserData(token, user){
+    storeUserData(token: string, user): void {
 
         localStorage.setItem('id_token', 'jwt '+token);
 
@@ -85,13 +97,13 @@ export class AuthService {
 
     }
 
-    loadToken(){
+    loadToken(): void {
 
         this.token = this.getToken();
 
     }
 
-    getToken(){
+    getToken(): string {
 
         var local_token = localStorage.getItem('id_token');
 
@@ -101,7 +113,7 @@ export class AuthService {
 
     }
 
-    loggedIn(){
+    loggedIn() {
 
         var token = this.jwtHelper.decodeToken(this.token);
 
@@ -109,7 +121,7 @@ export class AuthService {
 
     }
 
-    logout(){
+    logout(): void {
 
         this.token = null;
 

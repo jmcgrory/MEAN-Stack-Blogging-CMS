@@ -16,129 +16,187 @@ export class PostalService {
     ){}
 
     // Get variable amount of posts...
-    getLimitPosts(limit){
+    getLimitPosts(limit: number){
 
         let headers = new HttpHeaders({'Content-Type': 'application/json'});
+
+        const limitInteger = !isNaN(limit) ? limit+"" : "0";
 
         return this.http.get<Post[]>(
+
             'http://localhost:3000/posts/limit',
-            { 
+            
+            {
+
                 headers: headers,
-                params: new HttpParams().set('limit', limit)
+
+                params: new HttpParams().set('limit', limitInteger)
+
             }
+
         );
 
     }
 
     // Get variable amount of posts...
-    getPostByURL(url:string){
+    getPostByURL(url: string) {
 
         let headers = new HttpHeaders({'Content-Type': 'application/json'});
 
         return this.http.get<Post>(
+
             'http://localhost:3000/posts/post',
+
             {
+
                 headers: headers,
+
                 params: new HttpParams().set('url', url)
+
             }
+
         );
 
     }
 
     // Get variable amount of posts...
-    getPostByID(id){
+    getPostByID(id: string) {
 
         let headers = new HttpHeaders({'Content-Type': 'application/json'});
 
         return this.http.get<Post>(
+
             'http://localhost:3000/posts/post',
+
             {
+
                 headers: headers,
+
                 params: new HttpParams().set('id', id)
+
             }
+
         );
 
     }
 
     // Get all posts
-    getAllPosts(){
+    getAllPosts() {
 
         let headers = new HttpHeaders({'Content-Type': 'application/json'});
         
         return this.http.get<Post[]>(
+
             'http://localhost:3000/posts/all',
+
             { headers: headers }
+
         );
 
     }
 
     // Delete One Post
-    deletePost(id){
+    deletePost(id: string) {
 
         let token = this.authService.getToken();
 
         let headers = new HttpHeaders({
+
             'Content-Type': 'application/json',
+
             'Authorization': token
+
         });
 
         return this.http.post(
+
             'http://localhost:3000/posts/delete',
+
             { _id: id },
+
             { headers: headers }
+
         );
 
     }
 
     // Add Generic Post
-    addPost(){
+    addPost() {
 
         let token = this.authService.getToken();
 
         let headers = new HttpHeaders({
+
             'Content-Type': 'application/json',
+
             'Authorization': token
+
         });
 
         return this.http.post(
-            'http://localhost:3000/posts/add', {},
+
+            'http://localhost:3000/posts/add',
+
+            {},
+
             { headers: headers }
+
         );
 
     }
 
     // ?Active Post
-    postActive(id, active){
+    postActive(id: string, active: boolean) {
 
         let token = this.authService.getToken();
 
         let headers = new HttpHeaders({
+
             'Content-Type': 'application/json',
+
             'Authorization': token
+
         });
 
         return this.http.post(
+
             'http://localhost:3000/posts/active',
-            { id: id, active: active },
+
+            {
+
+                id: id,
+
+                active: active
+
+            },
+
             { headers: headers }
+
         );
 
     }
 
     // ?Active Post
-    updatePost(post){
+    updatePost(post: Post) {
 
         let token = this.authService.getToken();
 
         let headers = new HttpHeaders({
+
             'Content-Type': 'application/json',
+
             'Authorization': token
+
         });
 
         return this.http.post(
+
             'http://localhost:3000/posts/update',
+
             { post: post },
+
             { headers: headers }
+
         );
 
     }

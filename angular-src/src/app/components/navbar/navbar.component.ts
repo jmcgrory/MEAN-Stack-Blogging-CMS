@@ -1,32 +1,42 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-navbar',
-  templateUrl: './navbar.component.html',
-  styleUrls: ['./navbar.component.css']
+
+    selector: 'app-navbar',
+
+    templateUrl: './navbar.component.html',
+
+    styleUrls: ['./navbar.component.css']
+
 })
-export class NavbarComponent implements OnInit {
+export class NavbarComponent {
 
-  menuActive: boolean = false;
+    menuActive: boolean = false;
 
-  constructor(
-    private authService: AuthService,
-    private router: Router
-  ) { }
+    constructor(
 
-  ngOnInit() {
-  }
+        private authService: AuthService,
 
-  logout(){
-    this.authService.logout();
-    this.router.navigate(['home']);
-    return false;
-  }
+        private router: Router
 
-  mobileMenu(){
-    this.menuActive = !this.menuActive;
-  }
+    ) { }
+
+    logout(): boolean {
+
+        this.authService.logout();
+        
+        this.router.navigate(['home']);
+
+        return false;
+
+    }
+
+    mobileMenu(): void {
+
+        this.menuActive = !this.menuActive;
+
+    }
 
 }

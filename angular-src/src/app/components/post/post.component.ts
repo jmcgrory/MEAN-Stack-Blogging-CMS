@@ -7,44 +7,59 @@ import { PostalService } from 'app/services/postal.service';
 import { Post } from 'app/models/post.model';
 
 @Component({
-  selector: 'app-post',
-  templateUrl: './post.component.html',
-  styleUrls: ['./post.component.css']
+
+    selector: 'app-post',
+
+    templateUrl: './post.component.html',
+
+    styleUrls: ['./post.component.css']
+
 })
 export class PostComponent implements OnInit {
 
-  private sub: any;
-  post: Post;
+    private sub: any;
 
-  constructor(
-    private route: ActivatedRoute,
-    private authService: AuthService,
-    private postalService: PostalService
-  ) { }
+    post: Post;
 
-  parse(upload){
+    constructor(
 
-      return 'http://localhost:3000'+upload.substring(1);
+        private route: ActivatedRoute,
 
-  }
+        private authService: AuthService,
 
-  ngOnInit() {
+        private postalService: PostalService
+
+    ) { }
+
+    parse(upload: string): string {
+
+        return 'http://localhost:3000'+upload.substring(1);
+
+    }
+
+    ngOnInit() {
 
     // To the Top
     setTimeout(function(){window.scrollTo(0, 1)}, 0);
 
     // Subscribe to the search Params and pass them to getPostByURL() to return post data
     this.sub = this.route.params.subscribe( params => {
-      this.postalService.getPostByURL(params.url).subscribe(data => {
-        this.post = data;
-      });
+
+    this.postalService.getPostByURL(params.url).subscribe(data => {
+
+    this.post = data;
+
     });
 
-  }
+    });
 
-  // Unsubscribe on leave
-  ngOnDestroy(){
-    this.sub.unsubscribe();
-  }
+    }
+
+    // Unsubscribe on leave
+    ngOnDestroy(){
+
+        this.sub.unsubscribe();
+
+    }
 
 }

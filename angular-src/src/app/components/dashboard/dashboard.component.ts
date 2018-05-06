@@ -5,86 +5,129 @@ import { Post } from 'app/models/post.model';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-dashboard',
-  templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.css']
+
+    selector: 'app-dashboard',
+
+    templateUrl: './dashboard.component.html',
+
+    styleUrls: ['./dashboard.component.css']
+
 })
 export class DashboardComponent implements OnInit {
 
-  greeting: string;
-  posts: Post[];
+    greeting: string;
 
-  // Randomisation
-  randomGreeting(){
+    posts: Post[];
 
-    // Randomised Greetings
-    let greetings = [
-      "Bok prijatelju", // Croatian
-      "Ahoj příteli", // Czech
-      "Hej ven", // Danish
-      "Hallo vriend", // Dutch
-      "Salut l'ami", // French
-      "Hei ystävä", // Finnish
-      "Hallo Freund", // German
-      "Helló barát", // Hungarian
-      "Ciao amico", // Italian
-      "Salut prietene", // Romanian
-      "Caraid hello", // Scottish Gaelic
-      "Hola amigo", // Spanish
-      "Hej kompis", // Swedish
-    ];
+    // Randomisation
+    randomGreeting(): void {
 
-    this.greeting = greetings[Math.floor(Math.random() * greetings.length)];
-  }
+        // Randomised Greetings
+        const greetings: string[] = [
 
-  constructor(
-    private postalService: PostalService,
-    private router: Router
-  ) { }
+            "Bok prijatelju", // Croatian
+            
+            "Ahoj příteli", // Czech
+            
+            "Hej ven", // Danish
+            
+            "Hallo vriend", // Dutch
+            
+            "Salut l'ami", // French
+            
+            "Hei ystävä", // Finnish
+            
+            "Hallo Freund", // German
+            
+            "Helló barát", // Hungarian
+            
+            "Ciao amico", // Italian
+            
+            "Salut prietene", // Romanian
+            
+            "Caraid hello", // Scottish Gaelic
+            
+            "Hola amigo", // Spanish
+            
+            "Hej kompis", // Swedish
 
-  ngOnInit() {
-    // Loads random <h1> greeting :)
-    this.randomGreeting();
+        ];
 
-    // Load all posts
-    this.getAllPosts();
-  }
+        this.greeting = greetings[Math.floor(Math.random() * greetings.length)];
 
-  // Get all posts
-  getAllPosts(){
-    // Load all posts
-    this.postalService.getAllPosts().subscribe( data => {
-      this.posts = data;
-    });
-  }
+    }
 
-  // Edit clicked post
-  postEdit(id){
-    // TODO: Edit Selected Post Functionality
-    console.log('Edit: '+id);
-  }
+    constructor(
 
-  // Delete clicked post
-  postDelete(id){
-    this.postalService.deletePost(id).subscribe( data => {
-      // Load all posts
-      this.getAllPosts();
-    });
-  }
+        private postalService: PostalService,
 
-  // Add post
-  postAdd(){
-    this.postalService.addPost().subscribe( data => {
-      // Load all posts
-      this.getAllPosts();
-    });
-  }
+        private router: Router
 
-  postActive(id, active){
-    this.postalService.postActive(id, !active).subscribe( data => {
-      // Load all posts
-      this.getAllPosts();
-    });
-  }
+    ) {}
+
+    ngOnInit() {
+
+        // Loads random <h1> greeting :)
+        this.randomGreeting();
+
+        // Load all posts
+        this.getAllPosts();
+    
+    }
+
+    // Get all posts
+    getAllPosts(): void {
+
+        // Load all posts
+        this.postalService.getAllPosts().subscribe( data => {
+
+            this.posts = data;
+
+        });
+
+    }
+
+    // Edit clicked post
+    postEdit(id: string): void {
+
+        // TODO: Edit Selected Post Functionality
+        console.log('Edit: '+id);
+
+    }
+
+    // Delete clicked post
+    postDelete(id: string): void {
+
+        this.postalService.deletePost(id).subscribe( data => {
+
+            // Load all posts
+            this.getAllPosts();
+
+        });
+
+    }
+
+    // Add post
+    postAdd(): void {
+
+        this.postalService.addPost().subscribe( data => {
+            
+            // Load all posts
+            this.getAllPosts();
+
+        });
+
+    }
+
+    postActive(id: string, active: boolean): void{
+
+        this.postalService.postActive(id, !active).subscribe( data => {
+
+            // Load all posts
+            this.getAllPosts();
+        
+        });
+
+    }
 
 }
