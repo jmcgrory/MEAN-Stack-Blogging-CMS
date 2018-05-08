@@ -28,7 +28,7 @@
 //************************//
 
   // Mongoose connect to DB
-  mongoose.connect(config.database);
+  mongoose.connect(config.database, { useMongoClient: true });
 
   // When connected log connection
   mongoose.connection.on('connected', () => {
