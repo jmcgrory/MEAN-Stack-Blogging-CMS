@@ -2,103 +2,144 @@
 //****  Dependencies  ****//
 //************************//
 
-  const express = require('express');
-  const path = require('path');
-  const bodyParser = require('body-parser');
-  const cors = require('cors');
-  const mongoose = require('mongoose');
-  const config = require('./config/database.js');
-  const passport = require('passport');
+    const express = require('express');
+
+    const path = require('path');
+
+    const bodyParser = require('body-parser');
+
+    const cors = require('cors');
+
+    const mongoose = require('mongoose');
+
+    const config = require('./config/database.js');
+
+    const passport = require('passport');
 
 //************************//
 //****    App Setup   ****//
 //************************//
 
-  // Development Port
-  const port = 3000;
-  // Heroku Port
-  // const port = process.env.PORT || 8080;
-  const app = express();
+    // Development Port
 
-  // Middleware for Body Parser
-  app.use(bodyParser.json());
+    const port = 3000;
+
+    // Heroku Port
+
+    // const port = process.env.PORT || 8080;
+
+    const app = express();
+
+    // Middleware for Body Parser
+
+    app.use(bodyParser.json());
 
 //************************//
 //****   Mongod Init  ****//
 //************************//
 
-  // Mongoose connect to DB
-  mongoose.connect(config.database, { useMongoClient: true });
+    // Mongoose connect to DB
 
-  // When connected log connection
-  mongoose.connection.on('connected', () => {
-    console.log('connected to db '+config.database);
-  });
+    mongoose.connect(config.database, { useMongoClient: true });
 
-  // Error situation, try not to panic
-  mongoose.connection.on('error', (err) => {
-    console.log('DB Error: '+err);
-  });
+    // When connected log connection
+
+    mongoose.connection.on('connected', () => {
+
+        console.log('connected to db '+config.database);
+
+    });
+
+    // Error situation, try not to panic
+
+    mongoose.connection.on('error', (err) => {
+
+        console.log('DB Error: '+err);
+
+    });
 
 //************************//
 //****  Passport Init ****//
 //************************//
 
-  // Middleware for Passport
-  app.use(passport.initialize());
-  app.use(passport.session());
-  // Require our passport config file and pass in configured passport
-  require('./config/passport')(passport);
+    // Middleware for Passport
+
+    app.use(passport.initialize());
+
+    app.use(passport.session());
+
+    // Require our passport config file and pass in configured passport
+    
+    require('./config/passport')(passport);
 
 //************************//
 //****   Base Routes  ****//
 //************************//
 
-  // Upload Directory
-  app.use('/uploads', express.static(path.join(__dirname, '/uploads')));
+    // Upload Directory
 
-  // Set Static Directory for Angular
-  app.use(express.static(path.join(__dirname, 'public')));
+    app.use('/uploads', express.static(path.join(__dirname, '/uploads')));
 
-  // Allow CORS for cross domain
-  app.use(cors());
-  
-  // Index Route
-  app.get('/', (req, res) => {
-    res.send('Welcome to Localhost 3000: The Sentient Host')
-  });
+    // Set Static Directory for Angular
 
-/* Use when live!
-  app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public/index.html'));
-  });
-  */
+    app.use(express.static(path.join(__dirname, 'public')));
+
+    // Allow CORS
+
+    app.use(cors());
+
+    // Index Route
+
+    app.get('/', (req, res) => {
+
+        res.send('[application]')
+
+    });
+
+    /* Use when live
+    app.get('*', (req, res) => {
+
+        res.sendFile(path.join(__dirname, 'public/index.html'));
+
+    });
+    */
 
 //************************//
 //****   CRUD Routes  ****//
 //************************//
 
-  // Multer File Upload
-  const media = require('./routes/media');
-  app.use('/media', media);
+    // Multer File Upload
 
-  // Route for Users
-  const users = require('./routes/users');
-  app.use('/users', users);
+    const media = require('./routes/media');
 
-  // Route for Posts
-  const posts = require('./routes/posts');
-  app.use('/posts', posts);
+    app.use('/media', media);
 
-  // Route for PostChunks
-  const categories = require('./routes/categories');
-  app.use('/categories', categories);
+    // Route for Users
+
+    const users = require('./routes/users');
+
+    app.use('/users', users);
+
+    // Route for Posts
+
+    const posts = require('./routes/posts');
+
+    app.use('/posts', posts);
+
+    // Route for PostChunks
+
+    const categories = require('./routes/categories');
+
+    app.use('/categories', categories);
 
 //************************//
 //****    RUN DMC     ****//
 //************************//
 
-  // Run the server
-  app.listen(port, () => {
-    console.log('LISTENING ON PORT >>> '+ port);
-  });
+    // Run the server
+
+    app.listen(port, () => {
+
+        console.log('LISTENING ON PORT >>> '+ port);
+
+    });
