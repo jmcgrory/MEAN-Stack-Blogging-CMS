@@ -2,21 +2,31 @@ import { Component, OnInit } from '@angular/core';
 import { Feature } from '../../models/feature.model';
 import { DatePipe } from '@angular/common';
 import { PostalService } from '../../services/postal.service';
+import { CategoryService } from 'app/services/category.service';
+import { Category } from 'app/models/category.model';
 
 @Component({
 
     selector: 'app-articles',
 
-    templateUrl: './articles.component.html'
+    templateUrl: './articles.component.html',
+
+    styleUrls: [ './articles.component.css' ]
 
 })
 export class ArticlesComponent implements OnInit {
 
-    articles: Feature[];
+    articles: Feature[] = [];
+
+    categories: any[] = [];
+
+    activeCategories: string[] = [];
 
     constructor(
 
-        private postalService: PostalService
+        private postalService: PostalService,
+
+        private categoryService: CategoryService
 
     ){}
 
@@ -28,9 +38,71 @@ export class ArticlesComponent implements OnInit {
 
     ngOnInit() {
 
+        // Get Initial Posts
+        this.getAllPosts();
+
+        // Get Available Categories
+        this.getAllCategories();
+
+    }
+
+    getAllPosts(): void {
+
         this.postalService.getAllPosts().subscribe(data => {
 
             this.articles = data;
+
+            console.log(this.articles);
+
+        });
+
+    }
+
+    getAllCategories(): void {
+
+        this.categoryService.getCategories().subscribe( data => {
+
+            this.buildSelectableCategories(data);
+
+        });
+
+    }
+
+    buildSelectableCategories(categories: Category[]): void {
+
+        this.categories = categories.map( category => {
+
+            return {
+
+                active: false,
+                
+                name: category.name,
+
+            }
+
+        });
+
+        console.log(this.categories);
+
+    }
+
+    selectCategory(index: number): void {
+
+        this.categories[index].active = !this.categories[index].active;
+
+        this.filterCategories();
+
+    }
+
+    filterCategories(): void {
+
+        this.activeCategories = this.categories.filter( category => {
+
+            return category.active;
+
+        }).map( category => {
+
+            return category.name;
 
         });
 

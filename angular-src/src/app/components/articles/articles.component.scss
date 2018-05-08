@@ -1,0 +1,128 @@
+//************************//
+//****    Articles    ****//
+//************************//
+
+// Includes
+
+@import '../../partials/const';
+
+@import '../../partials/mixins';
+
+@import '../../partials/classes';
+
+// Styles
+
+.category-picker {
+
+    width: 180px;
+
+    cursor: pointer;
+
+    background: #fff;
+
+    p {
+
+        margin: 0 auto;
+
+        border: 1px solid;
+
+        padding: 0.2em 0.5em;
+
+    }
+
+    ul {
+
+        display: none;
+
+        list-style: none;
+
+        border-left: 1px solid;
+
+        width: 100%;
+
+        margin: 0 auto;
+
+        padding: 0;
+
+        li {
+
+            display: block;
+
+            width: 100%;
+
+            border-bottom: 1px solid;
+
+            @extend .clear-inner;
+
+
+            .checkbox, span {
+
+                text-align: center;
+
+                border-right: 1px solid $primary;
+
+                display: inline-block;
+
+                float: left;
+
+                height: 30px;
+
+                @extend .box;
+
+            }
+
+            .checkbox {
+
+                width: 18%;
+
+                font-size: 13px;
+
+                fa {
+
+                    display: block;
+
+                    padding: 7px 0 0 2px;
+
+                    color: #fff;
+
+                }
+
+            }
+
+            span {
+
+                padding-top: 5px;
+
+                width: 82%;
+
+            }
+
+            &:hover span {
+
+                font-weight: 700;
+
+            }
+
+            &.active {
+
+                background: $primary;
+
+                span {
+
+                    color: #fff;
+
+                }
+
+            }
+
+        }
+
+    }
+
+    &:hover ul {
+
+        display: block;
+
+    }
+
+}
