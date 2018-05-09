@@ -93,6 +93,8 @@ input, textarea, select {
 
     position: relative;
 
+    overflow: hidden;
+
     img {
 
         position: absolute;
@@ -108,6 +110,20 @@ input, textarea, select {
         width: 100%;
 
         height: 100%;
+
+        @include transition(330ms ease);
+
+    }
+
+    &:hover img {
+
+        height: 110%;
+
+        width: 110%;
+
+        top: -5%;
+
+        left: -5%;
 
     }
 
@@ -254,13 +270,13 @@ input, textarea, select {
 
         &:nth-child(odd) {
 
-            padding-right: 3%;
+            padding-right: 2%;
 
         }
 
         &:nth-child(even) {
 
-            padding-right: 3%;
+            padding-left: 2%;
 
         }
 

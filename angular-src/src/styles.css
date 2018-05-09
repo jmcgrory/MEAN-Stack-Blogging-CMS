@@ -40,7 +40,8 @@ input, textarea, select {
 .img-fit {
   width: 100%;
   height: 0;
-  position: relative; }
+  position: relative;
+  overflow: hidden; }
   .img-fit img {
     position: absolute;
     object-fit: cover;
@@ -48,7 +49,17 @@ input, textarea, select {
     top: 0;
     left: 0;
     width: 100%;
-    height: 100%; }
+    height: 100%;
+    -webkit-transition: 330ms ease;
+    -moz-transition: 330ms ease;
+    -ms-transition: 330ms ease;
+    -o-transition: 330ms ease;
+    transition: 330ms ease; }
+  .img-fit:hover img {
+    height: 110%;
+    width: 110%;
+    top: -5%;
+    left: -5%; }
 
 .btn {
   background: #2c3435;
@@ -108,9 +119,9 @@ input, textarea, select {
     .article {
       width: 50%; }
       .article:nth-child(odd) {
-        padding-right: 3%; }
+        padding-right: 2%; }
       .article:nth-child(even) {
-        padding-right: 3%; }
+        padding-left: 2%; }
       .article .img-fit {
         padding-bottom: 125%; } }
   @media screen and (max-width: 640px) {

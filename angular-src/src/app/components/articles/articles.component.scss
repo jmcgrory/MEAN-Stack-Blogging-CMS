@@ -12,6 +12,18 @@
 
 // Styles
 
+h1 {
+
+    @include notMobile {
+
+        display: inline-block;
+
+        width: 50%;
+
+    }
+
+}
+
 .category-picker {
 
     width: 180px;
@@ -20,6 +32,18 @@
 
     background: #fff;
 
+    opacity: 0.25;
+
+    @include transition(opacity 330ms ease);
+
+    @include notMobile {
+
+        display: inline-block;
+
+        float: right;
+
+    }
+
     p {
 
         margin: 0 auto;
@@ -27,6 +51,22 @@
         border: 1px solid;
 
         padding: 0.2em 0.5em;
+
+        position: relative;
+
+        display: block;
+
+        fa {
+
+            position: absolute;
+
+            right: 0.5em;
+
+            top: 0.15em;
+
+            font-size: 22px;
+
+        }
 
     }
 
@@ -44,6 +84,8 @@
 
         padding: 0;
 
+        @extend .box;
+
         li {
 
             display: block;
@@ -52,14 +94,23 @@
 
             border-bottom: 1px solid;
 
+            border-right: 1px solid $primary;
+
             @extend .clear-inner;
 
+            @extend .box;
+
+            fa, span {
+
+                opacity: 0.25;
+
+                @include transition(opacity 330ms ease);
+                
+            }
 
             .checkbox, span {
 
                 text-align: center;
-
-                border-right: 1px solid $primary;
 
                 display: inline-block;
 
@@ -73,7 +124,9 @@
 
             .checkbox {
 
-                width: 18%;
+                border-right: 1px solid $primary;
+
+                width: 17%;
 
                 font-size: 13px;
 
@@ -83,8 +136,6 @@
 
                     padding: 7px 0 0 2px;
 
-                    color: #fff;
-
                 }
 
             }
@@ -93,23 +144,21 @@
 
                 padding-top: 5px;
 
-                width: 82%;
+                width: 83%;
 
             }
 
-            &:hover span {
+            &.active span {
 
                 font-weight: 700;
 
             }
 
-            &.active {
+            &.active, &:hover {
 
-                background: $primary;
+                span, fa {
 
-                span {
-
-                    color: #fff;
+                    opacity: 1;
 
                 }
 
@@ -119,9 +168,15 @@
 
     }
 
-    &:hover ul {
+    &:hover {
 
-        display: block;
+        opacity: 1;
+        
+        ul {
+
+            display: block;
+
+        }
 
     }
 
