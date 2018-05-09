@@ -39,6 +39,20 @@
 
     });
 
+    // Get posts with arguments
+    router.get('/get',
+        (req, res, next) => {
+
+        console.log(req.query);
+
+        Post.getPosts(req.query, (err, posts) => {
+
+            res.send([]);
+
+        });
+
+    });
+
     // Register post request
     router.post('/add',
         passport.authenticate('jwt', { session: false }),

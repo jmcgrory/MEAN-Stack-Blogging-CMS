@@ -95,6 +95,50 @@ export class PostalService {
 
     }
 
+    // Get Posts with args
+    getPosts(
+        limit: string = '12',
+        offset: string = '0',
+        order: string = 'desc',
+        fields: string[] = [],
+        categories: string[] = [],
+        excluding: string[] = []) {
+
+        const fieldParams = fields.join(',');
+        
+        const categoryParams = categories.join(',');
+
+        const excludedIds = excluding.join(',');
+
+        let headers = new HttpHeaders({'Content-Type': 'application/json'});
+        
+        return this.http.get<Post[]>(
+
+            'http://localhost:3000/posts/get',
+
+            {
+                headers: headers,
+
+                params: new HttpParams()
+                
+                    .set('limit', limit)
+                    
+                    .set('offset', offset)
+                    
+                    .set('order', order)
+                    
+                    .set('fields', fieldParams)
+                    
+                    .set('categories', categoryParams)
+                    
+                    .set('excluding', excludedIds)
+
+            }
+
+        );
+
+    }
+
     // Delete One Post
     deletePost(id: string) {
 
