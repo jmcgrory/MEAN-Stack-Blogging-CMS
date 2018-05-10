@@ -36,21 +36,25 @@ export class HomeComponent implements OnInit {
 
     ngOnInit() {
 
-        this.postalService.getPosts(
+        const params = {
 
-            '2', // limit
+            limit: '2', // limit
                     
-            '2', // offset
+            offset: '2', // offset
             
-            'desc', // order
-            
-            ['id', 'hero'], // fieldParams
-            
-            ['design', 'development'], // categories
-            
-            ['808lol'], // excludedIds
+            order: 'desc', // order
 
-        ).subscribe( data => {
+            active: 'true', // active
+            
+            fields: ['id', 'hero'], // fieldParams
+            
+            categories: ['design', 'development'], // categories
+            
+            excluding: ['5aae9c78fb28a40984d60cc3'], // excludedIds
+
+        };
+
+        this.postalService.getPosts(params).subscribe( data => {
             
             console.log(data);
 

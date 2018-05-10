@@ -112,22 +112,44 @@
 
     // Get All Posts
     module.exports.getPosts = (query, callback) => {
-        
-        const limit = query.limit;
-                    
-        const offset = query.offset;
-        
-        const order = query.order;
 
-        const fields = query.fields.replace(',', ' ').trim();
-        
-        const categories = query.categories.split(',');
-        
-        const excluding = query.excluding.split(',');
+        // TODO: OFFSET
 
-        console.log(limit, offset, order, fields, categories, excluding);
+        let find = {};
 
-        Post.find({}, 'id hero title date url active', callback);
+        if(query['active']) find['active'] = (query['active'] === 'true');
+
+        if(query['excluding']) find['active'] = { "$ne": query['excluding'].split(',') };
+
+        // TODO: Categories
+
+    //    if(query['categories']) find['categories'] = { "$in": query['categories'].split(',') };
+
+        const categories = query['categories'].split(',');
+
+        console.log(categories);
+
+        find['categories.1'] = { "$in": categories };
+
+        const fields = query['fields'] ? query['fields'].replace(',', ' ').trim() : 'id';
+
+        const limit = query['limit'] ? parseInt(query['limit']) : 12;
+
+        const order = query['order'] ? query['order'] : 'desc';
+
+        console.log(find);
+
+        // TODO: Use Aggregate Constructor to not die of brain implosion
+
+        Post
+            
+            .find(find, callback)
+
+            .select(fields)
+            
+            .limit(limit)
+            
+            .sort({date: order});
 
     }
 

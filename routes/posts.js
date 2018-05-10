@@ -43,11 +43,11 @@
     router.get('/get',
         (req, res, next) => {
 
-        console.log(req.query);
-
         Post.getPosts(req.query, (err, posts) => {
 
-            res.send([]);
+            if(err) console.log(err);
+
+            res.send(posts);
 
         });
 

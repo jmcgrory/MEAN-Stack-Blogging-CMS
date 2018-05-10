@@ -96,42 +96,45 @@ export class PostalService {
     }
 
     // Get Posts with args
-    getPosts(
-        limit: string = '12',
-        offset: string = '0',
-        order: string = 'desc',
-        fields: string[] = [],
-        categories: string[] = [],
-        excluding: string[] = []) {
+    getPosts(params: object) {
 
-        const fieldParams = fields.join(',');
-        
-        const categoryParams = categories.join(',');
+        /*
 
-        const excludedIds = excluding.join(',');
+            // Params
+
+            limit: string,
+            offset: string,
+            order: string,
+            active: string,
+            fields: string[],
+            categories: string[],
+            excluding: string[]
+
+        */
+
+        let httpParams = new HttpParams();
+
+        Object.keys(params).map(key => {
+
+            let value = params[key];
+
+            if(Array.isArray(value)) value = value.join(',');
+
+            httpParams = httpParams.set(key, value);
+
+        });
 
         let headers = new HttpHeaders({'Content-Type': 'application/json'});
         
-        return this.http.get<Post[]>(
+        return this.http.get<any[]>(
 
             'http://localhost:3000/posts/get',
 
             {
+
                 headers: headers,
 
-                params: new HttpParams()
-                
-                    .set('limit', limit)
-                    
-                    .set('offset', offset)
-                    
-                    .set('order', order)
-                    
-                    .set('fields', fieldParams)
-                    
-                    .set('categories', categoryParams)
-                    
-                    .set('excluding', excludedIds)
+                params: httpParams
 
             }
 
