@@ -161,8 +161,6 @@
 
         let post = req.body.post;
 
-        console.log(post);
-
         Post.postUpdate({ id: id, post: post }, (err, posts) => {
 
             if(err){

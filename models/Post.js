@@ -113,43 +113,41 @@
     // Get All Posts
     module.exports.getPosts = (query, callback) => {
 
-        // TODO: OFFSET
-
-        let find = {};
-
-        if(query['active']) find['active'] = (query['active'] === 'true');
-
-        if(query['excluding']) find['active'] = { "$ne": query['excluding'].split(',') };
-
         // TODO: Categories
 
-    //    if(query['categories']) find['categories'] = { "$in": query['categories'].split(',') };
+        const limit = query.hasOwnProperty('limit') ? parseInt(query['limit']) : 12;
 
-        const categories = query['categories'].split(',');
+        const offset = query.hasOwnProperty('offset') ? parseInt(query['offset']) : 0;
 
-        console.log(categories);
+        const order = query.hasOwnProperty('order') ? query['order'] : 'desc';
 
-        find['categories.1'] = { "$in": categories };
+        const fields = query.hasOwnProperty('fields') ? query['fields'].replace(',', ' ').trim() : 'id';
 
-        const fields = query['fields'] ? query['fields'].replace(',', ' ').trim() : 'id';
+        const active = query.hasOwnProperty('active') ? query['active'] : true;
 
-        const limit = query['limit'] ? parseInt(query['limit']) : 12;
+        let params = {
 
-        const order = query['order'] ? query['order'] : 'desc';
+            active: active
 
-        console.log(find);
+        }
 
-        // TODO: Use Aggregate Constructor to not die of brain implosion
+        if(query.hasOwnProperty('categories')) {
 
-        Post
+            const categoryParams = query['categories'].split(',');
             
-            .find(find, callback)
+            params['category'] = { $in: categoryParams }
 
-            .select(fields)
+        }
+
+        if(query.hasOwnProperty('excluding')) {
             
-            .limit(limit)
-            
-            .sort({date: order});
+            const excludedIds = query['excluding'].split(',');
+
+            params['id'] = { $ne: excludedIds };
+
+        }
+    
+        Post.find(params).skip(offset).limit(limit).select(fields).sort({date: order}).exec(callback);
 
     }
 
