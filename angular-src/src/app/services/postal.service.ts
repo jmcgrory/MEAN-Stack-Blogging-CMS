@@ -16,29 +16,6 @@ export class PostalService {
     ){}
 
     // Get variable amount of posts...
-    getLimitPosts(limit: number){
-
-        let headers = new HttpHeaders({'Content-Type': 'application/json'});
-
-        const limitInteger = !isNaN(limit) ? limit+"" : "0";
-
-        return this.http.get<Post[]>(
-
-            'http://localhost:3000/posts/limit',
-            
-            {
-
-                headers: headers,
-
-                params: new HttpParams().set('limit', limitInteger)
-
-            }
-
-        );
-
-    }
-
-    // Get variable amount of posts...
     getPostByURL(url: string) {
 
         let headers = new HttpHeaders({'Content-Type': 'application/json'});
@@ -95,22 +72,17 @@ export class PostalService {
 
     }
 
-    // Get Posts with args
+    /*
+        // Get Posts with args
+        limit: string,
+        offset: string,
+        order: string,
+        active: string,
+        fields: string[],
+        categories: string[],
+        excluding: string[]
+    */
     getPosts(params: object) {
-
-        /*
-
-            // Params
-
-            limit: string,
-            offset: string,
-            order: string,
-            active: string,
-            fields: string[],
-            categories: string[],
-            excluding: string[]
-
-        */
 
         let httpParams = new HttpParams();
 

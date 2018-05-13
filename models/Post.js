@@ -94,14 +94,6 @@
 
     }
 
-    // Get Featured Posts
-
-    module.exports.getLimitPosts = (limit, callback) => {
-
-        Post.find({ active: true }, 'title hero date url', callback).limit(limit).sort({date: 'desc'});
-
-    }
-
     // Get All Posts
 
     module.exports.getAllPosts = (callback) => {
@@ -115,15 +107,15 @@
 
         // TODO: Categories
 
-        const limit = query.hasOwnProperty('limit') ? parseInt(query['limit']) : 12;
+        const limit = query.hasOwnProperty('limit') ? parseInt(query.limit) : 12;
 
-        const offset = query.hasOwnProperty('offset') ? parseInt(query['offset']) : 0;
+        const offset = query.hasOwnProperty('offset') ? parseInt(query.offset) : 0;
 
-        const order = query.hasOwnProperty('order') ? query['order'] : 'desc';
+        const order = query.hasOwnProperty('order') ? query.order : 'desc';
 
-        const fields = query.hasOwnProperty('fields') ? query['fields'].replace(',', ' ').trim() : 'id';
+        const fields = query.hasOwnProperty('fields') ? query.fields.replace(/,/g, ' ').trim() : 'id';
 
-        const active = query.hasOwnProperty('active') ? query['active'] : true;
+        const active = query.hasOwnProperty('active') ? query.active === 'true' : true;
 
         let params = {
 

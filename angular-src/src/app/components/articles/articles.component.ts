@@ -46,13 +46,12 @@ export class ArticlesComponent implements OnInit {
 
     }
 
+
     getAllPosts(): void {
 
         this.postalService.getAllPosts().subscribe(data => {
 
             this.articles = data;
-
-            console.log(this.articles);
 
         });
 

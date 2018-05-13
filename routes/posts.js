@@ -27,18 +27,6 @@
 
     }
 
-    // Get featured posts
-    router.get('/limit',
-        (req, res, next) => {
-
-        Post.getLimitPosts(req.limit, (err, posts) => {
-
-            res.send(posts);
-
-        });
-
-    });
-
     // Get posts with arguments
     router.get('/get',
         (req, res, next) => {
@@ -60,12 +48,19 @@
 
         // define new post
         let newPost = new Post({
+
             title: "New Post",
+
             url: randomURL(),
+
             category: [],
+
             date: Date.now(),
+
             hero: '',
+
             active: false
+            
         });
 
         Post.addPost(newPost, (err, post) => {

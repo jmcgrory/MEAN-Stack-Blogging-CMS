@@ -34,9 +34,33 @@ export class HomeComponent implements OnInit {
 
     }
 
+    listmymovies(){
+
+        const mymovies = [
+            "Jaws",
+            "Moulin Rouge",
+            "The Notebook"
+        ]
+
+        return mymovies;
+
+    }
+
     ngOnInit() {
 
-        this.postalService.getLimitPosts(4).subscribe( data => {
+        const params = {
+
+            limit: '4', // limit
+            
+            fields: ['url', 'hero', 'title', 'date'], // fieldParams
+            
+            categories: ['design', 'development'], // categories
+
+        };
+
+        this.postalService.getPosts(params).subscribe( data => {
+
+            console.log(data);
             
             this.featured = data;
 
