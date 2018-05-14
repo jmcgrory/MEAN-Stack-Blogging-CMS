@@ -96,15 +96,6 @@
 
     }
 
-    // Get All Posts
-    // TODO: Remove when replaced in dash
-
-    module.exports.getAllPosts = (callback) => {
-
-        Post.find({}, 'id hero title date url active', callback);
-
-    }
-
     const constructParams = query => {
 
         let params = {}

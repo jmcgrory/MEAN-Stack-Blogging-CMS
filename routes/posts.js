@@ -113,18 +113,6 @@
 
     });
 
-    // Get all posts
-    router.get('/all',
-        (req, res, next) => {
-
-        Post.getAllPosts( (err, posts) => {
-            
-            res.send(posts);
-
-        });
-
-    });
-
     // ?Active
     router.post('/active',
         passport.authenticate('jwt', { session: false }),

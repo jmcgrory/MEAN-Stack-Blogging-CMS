@@ -57,21 +57,6 @@ export class PostalService {
 
     }
 
-    // Get all posts
-    getAllPosts() {
-
-        let headers = new HttpHeaders({'Content-Type': 'application/json'});
-        
-        return this.http.get<Post[]>(
-
-            'http://localhost:3000/posts/all',
-
-            { headers: headers }
-
-        );
-
-    }
-
     /*
         // Get Posts with args
         limit: string,
