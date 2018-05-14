@@ -132,8 +132,9 @@ input, textarea, select {
       padding: 10px 0 !important; }
       .article .img-fit {
         padding-bottom: 110%; } }
-  .article.feature {
-    padding-top: 0; }
+  @media screen and (min-width: 1024px) {
+    .article.featured:nth-child(4) {
+      display: none; } }
 
 .post h2 {
   border-bottom: 1px solid;

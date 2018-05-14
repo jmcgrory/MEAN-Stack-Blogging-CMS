@@ -306,10 +306,14 @@ input, textarea, select {
 
     }
 
-    &.feature {
-
-        padding-top: 0;
-
+    &.featured:nth-child(4){
+    
+        @include desktop {
+    
+            display: none;
+    
+        }
+    
     }
 
 }

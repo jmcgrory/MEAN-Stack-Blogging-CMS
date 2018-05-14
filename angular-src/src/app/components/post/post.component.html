@@ -29,9 +29,9 @@
         </section>
 
         <section *ngIf="section.type==='media'" class="section-media" [ngClass]="{ 'captioned':section.caption }">
-            <img [src]="parse(section.hero)" alt="{{section.caption}}" />
+            <img [src]="parse(section.content)" alt="{{section.caption}}" />
             <p *ngIf="section.caption" class="section-caption">
-                {{ section.caption }}
+                {{ section.caption }} | {{ section.hero }}
             </p>
         </section>
 
@@ -44,4 +44,21 @@
     <a class="btn mini" routerLink="/dashboard/edit/{{ post?._id }}">
         Edit Article
     </a>
+
+</div>
+
+<div class="column content" *ngIf="post">
+
+    <h2>Related Articles</h2>
+
+    <div class="articles">
+
+        <ng-template ngFor let-article [ngForOf]="relatedArticles">
+
+            <article feature [article]="article" class="article featured"></article>
+
+        </ng-template>
+
+    </div>
+
 </div>

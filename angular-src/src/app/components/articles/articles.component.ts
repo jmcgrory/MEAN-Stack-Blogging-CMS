@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { Feature } from '../../models/feature.model';
-import { DatePipe } from '@angular/common';
 import { PostalService } from '../../services/postal.service';
 import { CategoryService } from 'app/services/category.service';
+import { FeatureComponent } from '../feature/feature.component';
 import { Category } from 'app/models/category.model';
+import { Feature } from '../../models/feature.model';
 
 @Component({
     selector: 'app-articles',

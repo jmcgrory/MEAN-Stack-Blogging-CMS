@@ -5,6 +5,8 @@ import { DatePipe } from '@angular/common';
 import { HtmlPipe } from 'app/pipes/html.pipe';
 import { PostalService } from 'app/services/postal.service';
 import { Post } from 'app/models/post.model';
+import { FeatureComponent } from '../feature/feature.component';
+import { Feature } from '../../models/feature.model';
 
 @Component({
     selector: 'app-post',
@@ -16,6 +18,9 @@ export class PostComponent implements OnInit {
     private sub: any;
 
     post: Post;
+
+    // TODO: Exclusion isn't working && Fix Spacing In Layout
+    relatedArticles: Feature[];
 
     constructor(
         private route: ActivatedRoute,
@@ -41,7 +46,35 @@ export class PostComponent implements OnInit {
 
                 this.post = data;
 
+                this.getRelatedPosts();
+
             });
+
+        });
+
+    }
+
+    getRelatedPosts(): void {
+
+        const excludedId = this.post._id;
+
+        const params = {
+
+            active: 'true',
+
+            limit: '4',
+
+            select: ['url', 'hero', 'title', 'date'],
+
+            categories: this.post.category,
+
+            excluding: [excludedId]
+
+        };
+
+        this.postalService.getPosts(params).subscribe(data => {
+
+            this.relatedArticles = data;
 
         });
 

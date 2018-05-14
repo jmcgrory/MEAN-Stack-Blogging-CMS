@@ -15,16 +15,17 @@
 </div>
 
 <div class="column content">
+
     <h2>Latest Articles</h2>
+
     <div class="articles">
-        <article *ngFor="let post of featured" class="article featured">
-            <a routerLink="/articles/{{ post.url }}" title="Read Article">
-                <div class="article-hero img-fit">
-                    <img [src]="parse(post.hero)">
-                </div>
-                <h3>{{ post.title }}</h3>
-                <span>{{ post.date | date:'mediumDate' }}</span>
-            </a>
-        </article>
+
+        <ng-template ngFor let-post [ngForOf]="featured">
+
+            <article feature [article]="post" class="article featured"></article>
+
+        </ng-template>
+
     </div>
+
 </div>

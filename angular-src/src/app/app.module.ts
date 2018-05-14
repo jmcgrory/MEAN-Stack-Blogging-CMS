@@ -18,6 +18,7 @@ import { ArticlesComponent } from './components/articles/articles.component';
 import { PostComponent } from './components/post/post.component';
 import { SectionComponent } from './components/html/section.component';
 import { MediaComponent } from './components/media/media.component';
+import { FeatureComponent } from './components/feature/feature.component';
 
 // Service Imports
 import { AuthService } from './services/auth.service';
@@ -68,7 +69,8 @@ const options = {
         EditComponent,
         SectionComponent,
         MediaComponent,
-        HtmlPipe
+        HtmlPipe,
+        FeatureComponent
     ],
     imports: [
         BrowserModule,

@@ -11,15 +11,3 @@
 @import '../../partials/classes'; // TODO: Unnecessary?
 
 @import '../../partials/basic'; // TODO: Unnecessary?
-
-// Styles
-
-.articles .article.featured:nth-child(4){
-
-    @include desktop {
-
-        display: none;
-
-    }
-
-}

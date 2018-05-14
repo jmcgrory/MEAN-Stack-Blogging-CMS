@@ -32,23 +32,11 @@
 
     <div class="articles">
 
-        <article *ngFor="let post of articles" class="article">
+        <ng-template ngFor let-article [ngForOf]="articles">
 
-            <a routerLink="/articles/{{ post.url }}" title="Read Article">
+            <article feature [article]="article" class="article"></article>
 
-                <div class="article-hero img-fit">
-
-                    <img [src]="parse(post.hero)">
-
-                </div>
-
-                <h3>{{ post.title }}</h3>
-
-                <span>{{ post.date | date:'mediumDate' }}</span>
-
-            </a>
-
-        </article>
+        </ng-template>
 
     </div>
 

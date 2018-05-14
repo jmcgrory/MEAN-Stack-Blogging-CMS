@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { DatePipe } from '@angular/common';
 import { PostalService } from '../../services/postal.service';
 import { Feature } from '../../models/feature.model';
+import { FeatureComponent } from '../feature/feature.component';
 
 @Component({
     selector: 'app-home',
@@ -21,12 +21,6 @@ export class HomeComponent implements OnInit {
     constructor(
         private postalService: PostalService
     ) { }
-
-    parse(upload: string): string {
-
-        return 'http://localhost:3000' + upload.substring(1);
-
-    }
 
     ngOnInit() {
 
