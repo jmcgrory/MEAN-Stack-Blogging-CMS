@@ -41,6 +41,20 @@
 
     });
 
+    // Get posts with arguments
+    router.get('/count',
+        (req, res, next) => {
+
+        Post.countPosts(req.query, (err, count) => {
+
+            if(err) console.log(err);
+
+            res.send({ count: count });
+
+        });
+
+    });
+
     // Register post request
     router.post('/add',
         passport.authenticate('jwt', { session: false }),

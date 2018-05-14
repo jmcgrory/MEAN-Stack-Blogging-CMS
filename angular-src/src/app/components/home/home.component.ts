@@ -48,19 +48,27 @@ export class HomeComponent implements OnInit {
 
     ngOnInit() {
 
+        // Get Posts
+
+        this.getPosts();
+
+    }
+
+    getPosts(): void {
+
         const params = {
 
-            limit: '4', // limit
+            active: 'true',
+
+            limit: '4',
             
-            fields: ['url', 'hero', 'title', 'date'], // fieldParams
+            select: ['url', 'hero', 'title', 'date'],
             
-            categories: ['design', 'development'], // categories
+            categories: ['design', 'development'],
 
         };
 
         this.postalService.getPosts(params).subscribe( data => {
-
-            console.log(data);
             
             this.featured = data;
 

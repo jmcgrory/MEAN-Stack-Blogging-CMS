@@ -84,17 +84,7 @@ export class PostalService {
     */
     getPosts(params: object) {
 
-        let httpParams = new HttpParams();
-
-        Object.keys(params).map(key => {
-
-            let value = params[key];
-
-            if(Array.isArray(value)) value = value.join(',');
-
-            httpParams = httpParams.set(key, value);
-
-        });
+        const httpParams = this.constructParams(params);
 
         let headers = new HttpHeaders({'Content-Type': 'application/json'});
         
@@ -111,6 +101,47 @@ export class PostalService {
             }
 
         );
+
+    }
+
+    countPosts(params: object) {
+
+        const httpParams = this.constructParams(params);
+
+        let headers = new HttpHeaders({'Content-Type': 'application/json'});
+
+        return this.http.get<any>(
+
+            'http://localhost:3000/posts/count',
+
+            {
+
+                headers: headers,
+
+                params: httpParams
+
+            }
+
+        );
+
+    }
+
+    // Construct Params
+    constructParams(params: object){
+
+        let httpParams = new HttpParams();
+
+        Object.keys(params).map(key => {
+
+            let value = params[key];
+
+            if(Array.isArray(value)) value = value.join(',');
+
+            httpParams = httpParams.set(key, value);
+
+        });
+
+        return httpParams;
 
     }
 

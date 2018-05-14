@@ -78,6 +78,8 @@
 //****   Functions    ****//
 //************************//
 
+    // Construct Parameters
+
     // Get Post by URL
 
     module.exports.getPostByURL = (search, callback) => {
@@ -102,24 +104,15 @@
 
     }
 
-    // Get All Posts
-    module.exports.getPosts = (query, callback) => {
+    const constructParams = (query) => {
 
-        // TODO: Categories
+        let params = {}
 
-        const limit = query.hasOwnProperty('limit') ? parseInt(query.limit) : 12;
+        if(query.hasOwnProperty('active')){
+            
+            const active = query.active === 'true';
 
-        const offset = query.hasOwnProperty('offset') ? parseInt(query.offset) : 0;
-
-        const order = query.hasOwnProperty('order') ? query.order : 'desc';
-
-        const fields = query.hasOwnProperty('fields') ? query.fields.replace(/,/g, ' ').trim() : 'id';
-
-        const active = query.hasOwnProperty('active') ? query.active === 'true' : true;
-
-        let params = {
-
-            active: active
+            params['active'] =  active;
 
         }
 
@@ -138,8 +131,34 @@
             params['id'] = { $ne: excludedIds };
 
         }
+
+        return params;
+
+    }
+
+    // Get All Posts
+    module.exports.countPosts = (query, callback) => {
+
+        const allParams = constructParams(query);
     
-        Post.find(params).skip(offset).limit(limit).select(fields).sort({date: order}).exec(callback);
+        Post.find(allParams.params).exec(callback);
+
+    }
+
+    // Get All Posts
+    module.exports.getPosts = (query, callback) => {
+
+        const limit = query.hasOwnProperty('limit') ? parseInt(query.limit) : 12;
+
+        const offset = query.hasOwnProperty('offset') ? parseInt(query.offset) : 0;
+
+        const order = query.hasOwnProperty('order') ? query.order : 'desc';
+
+        const select = query.hasOwnProperty('select') ? query.select.replace(/,/g, ' ').trim() : 'id';
+
+        const params = constructParams(query);
+    
+        Post.find(params).skip(offset).limit(limit).select(select).sort({date: order}).exec(callback);
 
     }
 

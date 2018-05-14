@@ -39,19 +39,55 @@ export class ArticlesComponent implements OnInit {
     ngOnInit() {
 
         // Get Initial Posts
-        this.getAllPosts();
+        this.getPosts();
 
         // Get Available Categories
         this.getAllCategories();
 
+        const params = {
+
+            active: 'true'
+
+        }
+
+        this.postalService.countPosts(params).subscribe(data => {
+
+            console.log(data);
+
+        });
+
     }
 
 
-    getAllPosts(): void {
+    getPosts(addByOffset: boolean = false): void {
 
-        this.postalService.getAllPosts().subscribe(data => {
+        const params = {
 
-            this.articles = data;
+            active: 'true',
+            
+            select: ['url', 'title', 'date', 'hero']
+
+        }
+
+        params['offset'] = addByOffset ? this.articles.length : 0;
+
+        if(this.activeCategories.length > 0){
+
+            params['categories'] = this.activeCategories;
+
+        }
+
+        this.postalService.getPosts(params).subscribe(data => {
+
+            if(!addByOffset){
+
+                this.articles = data;
+
+            } else {
+
+                this.articles = this.articles.concat(data);
+
+            }
 
         });
 
@@ -81,8 +117,6 @@ export class ArticlesComponent implements OnInit {
 
         });
 
-        console.log(this.categories);
-
     }
 
     selectCategory(index: number): void {
@@ -104,6 +138,8 @@ export class ArticlesComponent implements OnInit {
             return category.name;
 
         });
+
+        this.getPosts();
 
     }
 
