@@ -139,9 +139,9 @@
     // Get All Posts
     module.exports.countPosts = (query, callback) => {
 
-        const allParams = constructParams(query);
+        const params = constructParams(query);
     
-        Post.find(allParams.params).exec(callback);
+        Post.find(params).count({}).exec(callback);
 
     }
 
