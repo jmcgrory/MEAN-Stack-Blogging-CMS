@@ -5,13 +5,9 @@ import { Post } from 'app/models/post.model';
 import { Router } from '@angular/router';
 
 @Component({
-
     selector: 'app-dashboard',
-
     templateUrl: './dashboard.component.html',
-
     styleUrls: ['./dashboard.component.css']
-
 })
 export class DashboardComponent implements OnInit {
 
@@ -26,29 +22,29 @@ export class DashboardComponent implements OnInit {
         const greetings: string[] = [
 
             "Bok prijatelju", // Croatian
-            
+
             "Ahoj příteli", // Czech
-            
+
             "Hej ven", // Danish
-            
+
             "Hallo vriend", // Dutch
-            
+
             "Salut l'ami", // French
-            
+
             "Hei ystävä", // Finnish
-            
+
             "Hallo Freund", // German
-            
+
             "Helló barát", // Hungarian
-            
+
             "Ciao amico", // Italian
-            
+
             "Salut prietene", // Romanian
-            
+
             "Caraid hello", // Scottish Gaelic
-            
+
             "Hola amigo", // Spanish
-            
+
             "Hej kompis", // Swedish
 
         ];
@@ -58,12 +54,9 @@ export class DashboardComponent implements OnInit {
     }
 
     constructor(
-
         private postalService: PostalService,
-
         private router: Router
-
-    ) {}
+    ) { }
 
     ngOnInit() {
 
@@ -72,7 +65,7 @@ export class DashboardComponent implements OnInit {
 
         // Load all posts
         this.getPosts();
-    
+
     }
 
     // Get all posts
@@ -85,7 +78,7 @@ export class DashboardComponent implements OnInit {
         }
 
         // Load all posts
-        this.postalService.getPosts(params).subscribe( data => {
+        this.postalService.getPosts(params).subscribe(data => {
 
             this.posts = data;
 
@@ -98,7 +91,7 @@ export class DashboardComponent implements OnInit {
     // Delete clicked post
     postDelete(id: string): void {
 
-        this.postalService.deletePost(id).subscribe( data => {
+        this.postalService.deletePost(id).subscribe(data => {
 
             // Load all posts
             this.getPosts();
@@ -110,8 +103,8 @@ export class DashboardComponent implements OnInit {
     // Add post
     postAdd(): void {
 
-        this.postalService.addPost().subscribe( data => {
-            
+        this.postalService.addPost().subscribe(data => {
+
             // Load all posts
             this.getPosts();
 
@@ -119,13 +112,13 @@ export class DashboardComponent implements OnInit {
 
     }
 
-    postActive(id: string, active: boolean): void{
+    postActive(id: string, active: boolean): void {
 
-        this.postalService.postActive(id, !active).subscribe( data => {
+        this.postalService.postActive(id, !active).subscribe(data => {
 
             // Load all posts
             this.getPosts();
-        
+
         });
 
     }

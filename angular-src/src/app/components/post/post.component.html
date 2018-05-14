@@ -10,18 +10,11 @@
 
 <article class="column content post" *ngIf="post">
 
-    <ng-template
-        ngFor
-        let-section
-        [ngForOf]="post.body">
+    <ng-template ngFor let-section [ngForOf]="post.body">
 
-        <section 
-            class="section-html"
-            PostSectionid="section.id"
-            [innerHtml]="section.content | Html"
-            *ngIf="section.type==='html'">
+        <section class="section-html" PostSectionid="section.id" [innerHtml]="section.content | Html" *ngIf="section.type==='html'">
         </section>
-            
+
         <section *ngIf="section.type==='code'" class="section-code" [ngClass]="{ 'captioned':section.caption }">
             <pre>
                 <code
@@ -34,7 +27,7 @@
                 {{ section.caption }}
             </p>
         </section>
-            
+
         <section *ngIf="section.type==='media'" class="section-media" [ngClass]="{ 'captioned':section.caption }">
             <img [src]="parse(section.hero)" alt="{{section.caption}}" />
             <p *ngIf="section.caption" class="section-caption">

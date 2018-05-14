@@ -4,15 +4,11 @@ import { AuthService } from '../../services/auth.service';
 import { Response } from '../../models/response.model';
 
 @Component({
-
     selector: 'app-login',
-
     templateUrl: './login.component.html'
-
 })
 export class LoginComponent {
 
-    // Init Vars
     name: String;
 
     password: String;
@@ -23,7 +19,7 @@ export class LoginComponent {
 
         private router: Router
 
-    ) {}
+    ) { }
 
     onLoginSubmit(): void {
 
@@ -35,9 +31,9 @@ export class LoginComponent {
 
         }
 
-        this.authService.authenticateUser(user).subscribe((data:Response)=>{
+        this.authService.authenticateUser(user).subscribe((data: Response) => {
 
-            if(data.success){
+            if (data.success) {
 
                 this.authService.storeUserData(data.token, data.user.name);
 
@@ -46,7 +42,7 @@ export class LoginComponent {
             } else {
 
                 this.router.navigate(['login']);
-            
+
             }
 
         });

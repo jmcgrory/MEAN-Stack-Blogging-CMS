@@ -27,7 +27,7 @@ export class AuthService {
 
     registerUser(user) {
 
-        let headers = new HttpHeaders({'Content-Type': 'application/json'});
+        let headers = new HttpHeaders({ 'Content-Type': 'application/json' });
 
         return this.http.post(
 
@@ -43,14 +43,14 @@ export class AuthService {
 
     authenticateUser(user) {
 
-        let headers = new HttpHeaders({'Content-Type': 'application/json'});
-        
+        let headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+
         return this.http.post(
 
             'http://localhost:3000/users/authenticate',
 
             user,
-            
+
             { headers: headers }
 
         );
@@ -63,7 +63,7 @@ export class AuthService {
 
         if (decoded.exp === undefined) return null;
 
-        const date = new Date(0); 
+        const date = new Date(0);
 
         date.setUTCSeconds(decoded.exp);
 
@@ -73,13 +73,13 @@ export class AuthService {
 
     isTokenExpired(token?: string): boolean {
 
-        if(!token) token = this.getToken();
+        if (!token) token = this.getToken();
 
-        if(!token) return true;
+        if (!token) return true;
 
         const date = this.getTokenExpirationDate(token);
 
-        if(date === undefined) return false;
+        if (date === undefined) return false;
 
         return !(date.valueOf() > new Date().valueOf());
 
@@ -87,11 +87,11 @@ export class AuthService {
 
     storeUserData(token: string, user): void {
 
-        localStorage.setItem('id_token', 'jwt '+token);
+        localStorage.setItem('id_token', 'jwt ' + token);
 
         localStorage.setItem('user', JSON.stringify(user));
 
-        this.token = 'jwt '+token;
+        this.token = 'jwt ' + token;
 
         this.user = user;
 
@@ -107,7 +107,7 @@ export class AuthService {
 
         var local_token = localStorage.getItem('id_token');
 
-        if(this.isTokenExpired(local_token)) this.logout();
+        if (this.isTokenExpired(local_token)) this.logout();
 
         return (local_token) ? local_token : 'jwt false';
 

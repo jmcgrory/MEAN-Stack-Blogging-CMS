@@ -6,13 +6,9 @@ import { CategoryService } from 'app/services/category.service';
 import { Category } from 'app/models/category.model';
 
 @Component({
-
     selector: 'app-articles',
-
     templateUrl: './articles.component.html',
-
-    styleUrls: [ './articles.component.css' ]
-
+    styleUrls: ['./articles.component.css']
 })
 export class ArticlesComponent implements OnInit {
 
@@ -31,16 +27,13 @@ export class ArticlesComponent implements OnInit {
     maxPosts: number;
 
     constructor(
-
         private postalService: PostalService,
-
         private categoryService: CategoryService
-
-    ){}
+    ) { }
 
     parse(upload: string): string {
 
-        return 'http://localhost:3000'+upload.substring(1);
+        return 'http://localhost:3000' + upload.substring(1);
 
     }
 
@@ -77,7 +70,7 @@ export class ArticlesComponent implements OnInit {
 
         this.postalService.getPosts(params).subscribe(data => {
 
-            if(!addByOffset){
+            if (!addByOffset) {
 
                 this.articles = data;
 
@@ -93,7 +86,7 @@ export class ArticlesComponent implements OnInit {
 
     getAllCategories(): void {
 
-        this.categoryService.getCategories().subscribe( data => {
+        this.categoryService.getCategories().subscribe(data => {
 
             this.buildSelectableCategories(data);
 
@@ -103,12 +96,12 @@ export class ArticlesComponent implements OnInit {
 
     buildSelectableCategories(categories: Category[]): void {
 
-        this.categories = categories.map( category => {
+        this.categories = categories.map(category => {
 
             return {
 
                 active: false,
-                
+
                 name: category.name,
 
             }
@@ -127,11 +120,11 @@ export class ArticlesComponent implements OnInit {
 
     filterCategories(): void {
 
-        this.activeCategories = this.categories.filter( category => {
+        this.activeCategories = this.categories.filter(category => {
 
             return category.active;
 
-        }).map( category => {
+        }).map(category => {
 
             return category.name;
 

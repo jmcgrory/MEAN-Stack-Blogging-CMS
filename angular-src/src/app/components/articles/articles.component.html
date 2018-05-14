@@ -4,7 +4,9 @@
 
     <div class="category-picker">
 
-        <p>Filter Categories <fa name="angle-down"></fa></p>
+        <p>Filter Categories
+            <fa name="angle-down"></fa>
+        </p>
 
         <ul>
 
@@ -15,7 +17,7 @@
                     <fa name="check"></fa>
 
                 </div>
-                
+
                 <span>{{category.name}}</span>
 
             </li>
@@ -33,7 +35,7 @@
         <article *ngFor="let post of articles" class="article">
 
             <a routerLink="/articles/{{ post.url }}" title="Read Article">
-                
+
                 <div class="article-hero img-fit">
 
                     <img [src]="parse(post.hero)">

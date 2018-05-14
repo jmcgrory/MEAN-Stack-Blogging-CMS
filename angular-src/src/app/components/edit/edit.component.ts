@@ -7,13 +7,9 @@ import { CategoryService } from 'app/services/category.service';
 import { Category } from 'app/models/category.model';
 
 @Component({
-
     selector: 'app-edit',
-
     templateUrl: './edit.component.html',
-
     styleUrls: ['./edit.component.css']
-
 })
 export class EditComponent implements OnInit {
 
@@ -37,14 +33,10 @@ export class EditComponent implements OnInit {
 
 
     constructor(
-
         private route: ActivatedRoute,
-
         private postalService: PostalService,
-
         private categoryService: CategoryService
-        
-    ){}
+    ) { }
 
     ngOnInit() {
 
@@ -58,13 +50,13 @@ export class EditComponent implements OnInit {
 
     getPostData(): void {
 
-        this.sub = this.route.params.subscribe( params => {
+        this.sub = this.route.params.subscribe(params => {
 
-            this.postalService.getPostByID(params._id).subscribe( data => {
+            this.postalService.getPostByID(params._id).subscribe(data => {
 
                 this.post = data;
 
-                if(data.category!==undefined){
+                if (data.category !== undefined) {
 
                     this.selectedCategories = data.category;
 
@@ -78,7 +70,7 @@ export class EditComponent implements OnInit {
 
     addSection(): void {
 
-        const defaultId = 'section'+this.post.body.length;
+        const defaultId = 'section' + this.post.body.length;
 
         this.post.body.push({
 
@@ -98,7 +90,7 @@ export class EditComponent implements OnInit {
 
     getCategories(): void {
 
-        this.categoryService.getCategories().subscribe( data => {
+        this.categoryService.getCategories().subscribe(data => {
 
             this.categories = data;
 
@@ -108,7 +100,7 @@ export class EditComponent implements OnInit {
 
     editPost(): void {
 
-        this.postalService.updatePost(this.post).subscribe( data => {
+        this.postalService.updatePost(this.post).subscribe(data => {
 
             this.getPostData();
 
@@ -117,7 +109,7 @@ export class EditComponent implements OnInit {
     }
 
     // Unsubscribe on leave
-    ngOnDestroy(){
+    ngOnDestroy() {
 
         this.sub.unsubscribe();
 

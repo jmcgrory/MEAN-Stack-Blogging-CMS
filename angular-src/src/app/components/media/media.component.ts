@@ -5,9 +5,9 @@ import { Media } from '../../models/media.model';
 import { DatePipe } from '@angular/common';
 
 @Component({
-  selector: 'app-media',
-  templateUrl: './media.component.html',
-  styleUrls: ['./media.component.css']
+    selector: 'app-media',
+    templateUrl: './media.component.html',
+    styleUrls: ['./media.component.css']
 })
 export class MediaComponent implements OnInit {
 
@@ -19,7 +19,7 @@ export class MediaComponent implements OnInit {
 
         private mediaService: MediaService
 
-    ){}
+    ) { }
 
     handleFileInput(files: FileList) {
 
@@ -27,12 +27,12 @@ export class MediaComponent implements OnInit {
 
     }
 
-    addMedia(){
+    addMedia() {
 
-        if(this.fileToUpload===undefined){
+        if (this.fileToUpload === undefined) {
 
             console.log('No Media');
-            
+
             return false;
 
         }
@@ -45,7 +45,7 @@ export class MediaComponent implements OnInit {
 
     }
 
-    delete(path: string){
+    delete(path: string) {
 
         this.mediaService.delete(path).subscribe(data => {
 
@@ -57,19 +57,19 @@ export class MediaComponent implements OnInit {
 
     }
 
-    parse(upload: string){
+    parse(upload: string) {
 
-        return 'http://localhost:3000'+upload.substring(1);
+        return 'http://localhost:3000' + upload.substring(1);
 
     }
 
-    ngOnInit(){
+    ngOnInit() {
 
         this.getAllMedia();
 
     }
 
-    getAllMedia(){
+    getAllMedia() {
 
         this.mediaService.getAllMedia().subscribe((data: Media[]) => {
 

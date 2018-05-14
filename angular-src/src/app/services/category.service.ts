@@ -10,7 +10,7 @@ export class CategoryService {
 
         private http: HttpClient
 
-    ){}
+    ) { }
 
     // Get variable amount of posts...
     getCategory(name: string) {

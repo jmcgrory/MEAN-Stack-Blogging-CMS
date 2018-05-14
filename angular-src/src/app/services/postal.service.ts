@@ -12,13 +12,13 @@ export class PostalService {
         private http: HttpClient,
 
         private authService: AuthService
-        
-    ){}
+
+    ) { }
 
     // Get variable amount of posts...
     getPostByURL(url: string) {
 
-        let headers = new HttpHeaders({'Content-Type': 'application/json'});
+        let headers = new HttpHeaders({ 'Content-Type': 'application/json' });
 
         return this.http.get<Post>(
 
@@ -39,7 +39,7 @@ export class PostalService {
     // Get variable amount of posts...
     getPostByID(id: string) {
 
-        let headers = new HttpHeaders({'Content-Type': 'application/json'});
+        let headers = new HttpHeaders({ 'Content-Type': 'application/json' });
 
         return this.http.get<Post>(
 
@@ -71,8 +71,8 @@ export class PostalService {
 
         const httpParams = this.constructParams(params);
 
-        let headers = new HttpHeaders({'Content-Type': 'application/json'});
-        
+        let headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+
         return this.http.get<any[]>(
 
             'http://localhost:3000/posts/get',
@@ -93,7 +93,7 @@ export class PostalService {
 
         const httpParams = this.constructParams(params);
 
-        let headers = new HttpHeaders({'Content-Type': 'application/json'});
+        let headers = new HttpHeaders({ 'Content-Type': 'application/json' });
 
         return this.http.get<any>(
 
@@ -112,7 +112,7 @@ export class PostalService {
     }
 
     // Construct Params
-    constructParams(params: object){
+    constructParams(params: object) {
 
         let httpParams = new HttpParams();
 
@@ -120,7 +120,7 @@ export class PostalService {
 
             let value = params[key];
 
-            if(Array.isArray(value)) value = value.join(',');
+            if (Array.isArray(value)) value = value.join(',');
 
             httpParams = httpParams.set(key, value);
 

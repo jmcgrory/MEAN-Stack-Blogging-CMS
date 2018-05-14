@@ -39,63 +39,63 @@ import { JwtModule } from '@auth0/angular-jwt';
 
 // Angular Routes
 const appRoutes = [
-  { path: '', component: HomeComponent, pathMatch: 'full' },
-  { path: 'about', component: AboutComponent },
-  { path: 'articles', component: ArticlesComponent },
-  { path: 'articles/:url', component: PostComponent },
-  { path: 'contact', component: ContactComponent },
-  { path: 'login', component: LoginComponent },
-  { path: 'dashboard', component: DashboardComponent, canActivate:[AuthGuard] },
-  { path: 'dashboard/edit/:_id', component: EditComponent, canActivate:[AuthGuard] },
-  { path: 'dashboard/media', component: MediaComponent, canActivate:[AuthGuard] },
-  { path: '**', redirectTo: '' }
+    { path: '', component: HomeComponent, pathMatch: 'full' },
+    { path: 'about', component: AboutComponent },
+    { path: 'articles', component: ArticlesComponent },
+    { path: 'articles/:url', component: PostComponent },
+    { path: 'contact', component: ContactComponent },
+    { path: 'login', component: LoginComponent },
+    { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },
+    { path: 'dashboard/edit/:_id', component: EditComponent, canActivate: [AuthGuard] },
+    { path: 'dashboard/media', component: MediaComponent, canActivate: [AuthGuard] },
+    { path: '**', redirectTo: '' }
 ]
 
 const options = {
-  theme: 'dracula'
+    theme: 'dracula'
 }
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    NavbarComponent,
-    HomeComponent,
-    AboutComponent,
-    ContactComponent,
-    LoginComponent,
-    DashboardComponent,
-    ArticlesComponent,
-    PostComponent,
-    EditComponent,
-    SectionComponent,
-    HtmlComponent,
-    MediaComponent,
-    HtmlPipe
-  ],
-  imports: [
-    BrowserModule,
-    FormsModule,
-    HttpClientModule,
-    RouterModule.forRoot(appRoutes),
-    HighlightModule.forRoot(options),
-    AngularFontAwesomeModule,
-    JwtModule.forRoot({
-      config: {
-        tokenGetter: () => {
-          let token = localStorage.getItem('id_token');
-          return token ? token : null;
-        }
-      }
-    })
-  ],
-  providers: [
-    AuthService,
-    AuthGuard,
-    PostalService,
-    CategoryService,
-    MediaService
-  ],
-  bootstrap: [AppComponent]
+    declarations: [
+        AppComponent,
+        NavbarComponent,
+        HomeComponent,
+        AboutComponent,
+        ContactComponent,
+        LoginComponent,
+        DashboardComponent,
+        ArticlesComponent,
+        PostComponent,
+        EditComponent,
+        SectionComponent,
+        HtmlComponent,
+        MediaComponent,
+        HtmlPipe
+    ],
+    imports: [
+        BrowserModule,
+        FormsModule,
+        HttpClientModule,
+        RouterModule.forRoot(appRoutes),
+        HighlightModule.forRoot(options),
+        AngularFontAwesomeModule,
+        JwtModule.forRoot({
+            config: {
+                tokenGetter: () => {
+                    let token = localStorage.getItem('id_token');
+                    return token ? token : null;
+                }
+            }
+        })
+    ],
+    providers: [
+        AuthService,
+        AuthGuard,
+        PostalService,
+        CategoryService,
+        MediaService
+    ],
+    bootstrap: [AppComponent]
 })
 
 export class AppModule { }

@@ -2,15 +2,12 @@ import { Component } from '@angular/core';
 import { Skill } from '../../models/skill.model';
 
 @Component({
-
     selector: 'app-about',
-
     templateUrl: './about.component.html'
-
 })
 export class AboutComponent {
 
-    constructor() {}
+    constructor() { }
 
     snippet: string = `
         export Jamie = new Person({
@@ -36,7 +33,7 @@ export class AboutComponent {
 
         },
 
-		{
+        {
 
             name: 'CSS3/SCSS',
 
@@ -44,7 +41,7 @@ export class AboutComponent {
 
         },
 
-		{
+        {
 
             name: 'HTML5',
 
@@ -52,7 +49,7 @@ export class AboutComponent {
 
         },
 
-		{
+        {
 
             name: 'Angular (2+)',
 
@@ -60,7 +57,7 @@ export class AboutComponent {
 
         },
 
-		{
+        {
 
             name: 'AngularJS',
 
@@ -68,7 +65,7 @@ export class AboutComponent {
 
         },
 
-		{
+        {
 
             name: 'NodeJS',
 
@@ -76,7 +73,7 @@ export class AboutComponent {
 
         },
 
-		{
+        {
 
             name: 'React',
 
@@ -84,7 +81,7 @@ export class AboutComponent {
 
         },
 
-		{
+        {
 
             name: 'PHP 7+',
 
@@ -92,7 +89,7 @@ export class AboutComponent {
 
         },
 
-		{
+        {
 
             name: 'Laravel 5.6+',
 
@@ -100,7 +97,7 @@ export class AboutComponent {
 
         },
 
-		{
+        {
 
             name: 'ExpressJS',
 
@@ -108,7 +105,7 @@ export class AboutComponent {
 
         },
 
-		{
+        {
 
             name: 'MongoDB',
 
@@ -116,7 +113,7 @@ export class AboutComponent {
 
         },
 
-		{
+        {
 
             name: 'MySQL/SQL',
 
@@ -124,7 +121,7 @@ export class AboutComponent {
 
         },
 
-		{
+        {
 
             name: 'Typescript',
 
@@ -132,7 +129,7 @@ export class AboutComponent {
 
         },
 
-		{
+        {
 
             name: 'C++',
 
@@ -140,7 +137,7 @@ export class AboutComponent {
 
         },
 
-		{
+        {
 
             name: 'Adobe Photoshop',
 
@@ -148,7 +145,7 @@ export class AboutComponent {
 
         },
 
-		{
+        {
 
             name: 'Adobe Illustrator',
 
@@ -156,7 +153,7 @@ export class AboutComponent {
 
         },
 
-		{
+        {
 
             name: 'Adobe AfterEffects',
 
@@ -164,7 +161,7 @@ export class AboutComponent {
 
         },
 
-		{
+        {
 
             name: 'Adobe InDesign',
 
@@ -172,7 +169,7 @@ export class AboutComponent {
 
         },
 
-		{
+        {
 
             name: 'Adobe XD',
 
@@ -180,7 +177,7 @@ export class AboutComponent {
 
         },
 
-		{
+        {
 
             name: 'Adobe Premiere Pro',
 
@@ -188,7 +185,7 @@ export class AboutComponent {
 
         },
 
-		{
+        {
 
             name: 'Google Analytics',
 
@@ -196,7 +193,7 @@ export class AboutComponent {
 
         },
 
-		{
+        {
 
             name: 'Google Tag Manager',
 
@@ -204,14 +201,14 @@ export class AboutComponent {
 
         },
 
-		{
-            
+        {
+
             name: 'SEO Screaming Frog',
 
             level: 50
 
         }
-        
+
     ];
 
 }

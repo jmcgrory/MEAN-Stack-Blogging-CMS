@@ -8,3 +8,4 @@ angular-src/angular-src/
 /config/database.js
 /angular-src/src/assets/lib/hljs/styles/*.css
 uploads/
+.prettierrc

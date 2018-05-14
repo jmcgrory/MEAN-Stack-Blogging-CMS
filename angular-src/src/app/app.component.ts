@@ -7,10 +7,10 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
 
-  // Define Date
   date: Date = new Date();
+
   d = this.date.getFullYear();
 
-  constructor(){}
+  constructor() { }
 
 }

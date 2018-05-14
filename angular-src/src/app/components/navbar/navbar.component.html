@@ -1,36 +1,36 @@
 <header id="main" class="column content clear-inner">
-  <a routerLink="home" id="logo">
-    <h2>jmcgrory</h2>
-  </a>
-  <button id="mobileMenuBtn" class="mobile-menu-btn" [ngClass]="{ 'active': menuActive }" (click)="mobileMenu()">
-    <span class="mobile-menu-bar mobile-menu-bar-1"></span>
-    <span class="mobile-menu-bar mobile-menu-bar-2"></span>
-    <span class="mobile-menu-bar mobile-menu-bar-3"></span>
-  </button>
-  <nav [ngClass]="{'admin': authService.loggedIn(), 'active': menuActive }">
-    <ul>
-      <li>
-        <a routerLink="home">Home</a>
-      </li>
-      <li routerLinkActive="active">
-        <a routerLink="about">About</a>
-      </li>
-      <li routerLinkActive="active">
-        <a routerLink="articles">Articles</a>
-      </li>
-      <li routerLinkActive="active" *ngIf="authService.loggedIn()">
-        <a routerLink="dashboard">Dash</a>
-      </li>
-      <li routerLinkActive="active" *ngIf="authService.loggedIn()">
-        <a (click)="logout()">Logout</a>
-      </li>
-      <li routerLinkActive="active">
-        <a routerLink="contact">Contact</a>
-      </li>
-    </ul>
-  </nav>
+    <a routerLink="home" id="logo">
+        <h2>jmcgrory</h2>
+    </a>
+    <button id="mobileMenuBtn" class="mobile-menu-btn" [ngClass]="{ 'active': menuActive }" (click)="mobileMenu()">
+        <span class="mobile-menu-bar mobile-menu-bar-1"></span>
+        <span class="mobile-menu-bar mobile-menu-bar-2"></span>
+        <span class="mobile-menu-bar mobile-menu-bar-3"></span>
+    </button>
+    <nav [ngClass]="{'admin': authService.loggedIn(), 'active': menuActive }">
+        <ul>
+            <li>
+                <a routerLink="home">Home</a>
+            </li>
+            <li routerLinkActive="active">
+                <a routerLink="about">About</a>
+            </li>
+            <li routerLinkActive="active">
+                <a routerLink="articles">Articles</a>
+            </li>
+            <li routerLinkActive="active" *ngIf="authService.loggedIn()">
+                <a routerLink="dashboard">Dash</a>
+            </li>
+            <li routerLinkActive="active" *ngIf="authService.loggedIn()">
+                <a (click)="logout()">Logout</a>
+            </li>
+            <li routerLinkActive="active">
+                <a routerLink="contact">Contact</a>
+            </li>
+        </ul>
+    </nav>
 </header>
 
 <div class="column content">
-  <hr>
+    <hr>
 </div>

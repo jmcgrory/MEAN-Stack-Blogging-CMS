@@ -1,7 +1,7 @@
 <header class="column content clear-inner">
     <h1>Media Centre</h1>
 </header>
-      
+
 <div class="column content">
 
     <h2>Add Media</h2>
@@ -16,12 +16,7 @@
 
             </label>
 
-            <input
-                type="file"
-                name="file"
-                id="file"
-                (change)="handleFileInput($event.target.files)"
-                placeholder="Select Your Media">
+            <input type="file" name="file" id="file" (change)="handleFileInput($event.target.files)" placeholder="Select Your Media">
         </div>
 
         <p>
@@ -29,7 +24,7 @@
         </p>
 
     </form>
-    
+
     <h2>Existing Media</h2>
 
     <div class="media-container" *ngIf="media">

@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 
-// TODO: Delete this probably
+// TODO: Delete this
 
 @Component({
     selector: 'app-html',

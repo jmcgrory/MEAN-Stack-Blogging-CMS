@@ -1,31 +1,34 @@
-
-  <div class="column content">
+<div class="column content">
 
     <h1>About Me</h1>
-    <p>Outside of my professional work, I've always been an extremely active and adventurous person. I love weekend surfing trips, recently spending a week braving the Atlantic waves on the coast around Porto. I am also into the custom motorcycle scene and am regularly finding new hidden country roads to explore on my Triumph, and making sure I keep the shiny side up.</p>
+    <p>Outside of my professional work, I've always been an extremely active and adventurous person. I love weekend surfing
+        trips, recently spending a week braving the Atlantic waves on the coast around Porto. I am also into the custom motorcycle
+        scene and am regularly finding new hidden country roads to explore on my Triumph, and making sure I keep the shiny
+        side up.</p>
 
     <pre>
-      <code class="typescript" [code]="snippet" highlight>
-      </code>
-    </pre>
+        <code class="typescript" [code]="snippet" highlight>
+        </code>
+        </pre>
 
-  </div>
+</div>
 
-  <div class="column content">
+<div class="column content">
 
     <h2>Technical Proficiency</h2>
 
-    <p>In addition to the key programming, markup and design skills below, I have more intrinsic skills I have found invaluable throughout my professional career. Creative problem solving, dramatic learning capabilities and a love of communicating within teams has propelled me forward and fuelled my passion in my craft.</p>
+    <p>In addition to the key programming, markup and design skills below, I have more intrinsic skills I have found invaluable
+        throughout my professional career. Creative problem solving, dramatic learning capabilities and a love of communicating
+        within teams has propelled me forward and fuelled my passion in my craft.</p>
 
     <ul class="skills-container">
-      <li *ngFor="let skill of skills">
-        <span>{{ skill.name }}</span>
-        <div class="skill-bar">
-          <div class="skill-bg"></div>
-          <div class="skill-val" [style.width]="skill.level + '%'"></div>
-        </div>
-      </li>
+        <li *ngFor="let skill of skills">
+            <span>{{ skill.name }}</span>
+            <div class="skill-bar">
+                <div class="skill-bg"></div>
+                <div class="skill-val" [style.width]="skill.level + '%'"></div>
+            </div>
+        </li>
     </ul>
 
-  </div>
-
+</div>

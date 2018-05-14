@@ -8,12 +8,12 @@ import { AuthService } from './auth.service';
 export class MediaService {
 
     constructor(
-        
+
         private http: HttpClient,
 
         private authService: AuthService
 
-    ){}
+    ) { }
 
     // Media Upload
     upload(fileToUpload: File) {
@@ -38,7 +38,7 @@ export class MediaService {
 
             formData,
 
-            { 
+            {
                 headers: headers,
 
                 params: new HttpParams()
@@ -57,9 +57,9 @@ export class MediaService {
 
         let headers = new HttpHeaders({
 
-          'Content-Type': 'application/json',
+            'Content-Type': 'application/json',
 
-          'Authorization': token
+            'Authorization': token
 
         });
 
@@ -86,9 +86,9 @@ export class MediaService {
 
         let headers = new HttpHeaders({
 
-          'Content-Type': 'application/json',
+            'Content-Type': 'application/json',
 
-          'Authorization': token
+            'Authorization': token
 
         });
 
@@ -98,7 +98,7 @@ export class MediaService {
 
             { filePath: path },
 
-            { 
+            {
 
                 headers: headers,
 

@@ -2,221 +2,221 @@
 //****  Dependencies  ****//
 //************************//
 
-    const mongoose = require('mongoose');
+const mongoose = require('mongoose');
 
-    const Schema = mongoose.Schema;
+const Schema = mongoose.Schema;
 
-    const ObjectId = Schema.ObjectId;
+const ObjectId = Schema.ObjectId;
 
-    const config = require('../config/database');
+const config = require('../config/database');
 
 //************************//
 //****   Post Model   ****//
 //************************//
 
-    const PostSchema = Schema({
+const PostSchema = Schema({
 
-        title: {
+    title: {
 
-            type: String,
+        type: String,
 
-            required: true
+        required: true
 
-        },
+    },
 
-        url: {
+    url: {
 
-            type: String,
-            
-            required: true
+        type: String,
 
-        },
+        required: true
 
-        category: {
+    },
 
-            type: [String]
+    category: {
 
-        },
+        type: [String]
 
-        date: {
+    },
 
-            type: Date,
+    date: {
 
-            default: Date.now
+        type: Date,
 
-        },
+        default: Date.now
 
-        hero: {
+    },
 
-            type: String
+    hero: {
 
-        },
+        type: String
 
-        body: {
+    },
 
-            type: Array,
-            
-            default: []
+    body: {
 
-        },
+        type: Array,
 
-        active: {
+        default: []
 
-            type: Boolean
+    },
 
-        }
+    active: {
 
-    });
+        type: Boolean
+
+    }
+
+});
 
 //************************//
 //****     Export     ****//
 //************************//
 
-    const Post = module.exports = mongoose.model('Post', PostSchema);
+const Post = module.exports = mongoose.model('Post', PostSchema);
 
 //************************//
 //****   Functions    ****//
 //************************//
 
-    // Construct Parameters
+// Construct Parameters
 
-    // Get Post by URL
+// Get Post by URL
 
-    module.exports.getPostByURL = (search, callback) => {
+module.exports.getPostByURL = (search, callback) => {
 
-        Post.findOne({ url: search.url }, callback);
+    Post.findOne({ url: search.url }, callback);
 
-    }
+}
 
-    // Get Post by URL
+// Get Post by URL
 
-    module.exports.getPostByID = (search, callback) => {
+module.exports.getPostByID = (search, callback) => {
 
-        Post.findById( search.id, callback);
+    Post.findById(search.id, callback);
 
-    }
+}
 
-    const constructParams = query => {
+const constructParams = query => {
 
-        let params = {}
+    let params = {}
 
-        if(query.hasOwnProperty('active')){
-            
-            const active = query.active === 'true';
+    if (query.hasOwnProperty('active')) {
 
-            params['active'] =  active;
+        const active = query.active === 'true';
 
-        }
-
-        if(query.hasOwnProperty('categories')) {
-
-            const categoryParams = query['categories'].split(',');
-            
-            params['category'] = { $in: categoryParams }
-
-        }
-
-        if(query.hasOwnProperty('excluding')) {
-            
-            const excludedIds = query['excluding'].split(',');
-
-            params['id'] = { $ne: excludedIds };
-
-        }
-
-        return params;
+        params['active'] = active;
 
     }
 
-    // Get All Posts
-    module.exports.countPosts = (query, callback) => {
+    if (query.hasOwnProperty('categories')) {
 
-        const params = constructParams(query);
+        const categoryParams = query['categories'].split(',');
 
-        console.log(params);
-    
-        Post.find(params).count({}).exec(callback);
+        params['category'] = { $in: categoryParams }
 
     }
 
-    // Get All Posts
-    module.exports.getPosts = (query, callback) => {
+    if (query.hasOwnProperty('excluding')) {
 
-        const limit = query.hasOwnProperty('limit') ? parseInt(query.limit) : 12;
+        const excludedIds = query['excluding'].split(',');
 
-        const offset = query.hasOwnProperty('offset') ? parseInt(query.offset) : 0;
-
-        const order = query.hasOwnProperty('order') ? query.order : 'desc';
-
-        const select = query.hasOwnProperty('select') ? query.select.replace(/,/g, ' ').trim() : 'id';
-
-        const params = constructParams(query);
-    
-        Post.find(params).skip(offset).limit(limit).select(select).sort({date: order}).exec(callback);
+        params['id'] = { $ne: excludedIds };
 
     }
 
-    // Add new Post
+    return params;
 
-    module.exports.addPost = (newPost, callback) => {
+}
 
-        newPost.save(callback);
+// Get All Posts
+module.exports.countPosts = (query, callback) => {
 
-    }
+    const params = constructParams(query);
 
-    // Delete Post
+    console.log(params);
 
-    module.exports.deletePost = (id, callback) => {
+    Post.find(params).count({}).exec(callback);
 
-        Post.remove({ _id: id }, callback);
+}
 
-    }
+// Get All Posts
+module.exports.getPosts = (query, callback) => {
 
-    // ?Active Post
+    const limit = query.hasOwnProperty('limit') ? parseInt(query.limit) : 12;
 
-    module.exports.postActive = (req, callback) => {
+    const offset = query.hasOwnProperty('offset') ? parseInt(query.offset) : 0;
 
-        Post.update(
+    const order = query.hasOwnProperty('order') ? query.order : 'desc';
 
-            { _id: req.id },
+    const select = query.hasOwnProperty('select') ? query.select.replace(/,/g, ' ').trim() : 'id';
 
-            { $set: { active: req.active } },
+    const params = constructParams(query);
 
-            callback
+    Post.find(params).skip(offset).limit(limit).select(select).sort({ date: order }).exec(callback);
 
-        )
+}
 
-    }
+// Add new Post
 
-    // Update Post
+module.exports.addPost = (newPost, callback) => {
 
-    module.exports.postUpdate = (req, callback) => {
+    newPost.save(callback);
 
-        Post.update(
+}
 
-            { _id: req.id },
+// Delete Post
 
-            {
-                
-                $set: {
+module.exports.deletePost = (id, callback) => {
 
-                    url: req.post.url,
-                    
-                    title: req.post.title,
-                    
-                    hero: req.post.hero,
-                    
-                    date: req.post.date,
-                    
-                    category: req.post.category,
-                    
-                    body: req.post.body
-                
-                }
+    Post.remove({ _id: id }, callback);
 
-            },
+}
 
-            callback
+// ?Active Post
 
-        )
-    }
+module.exports.postActive = (req, callback) => {
+
+    Post.update(
+
+        { _id: req.id },
+
+        { $set: { active: req.active } },
+
+        callback
+
+    )
+
+}
+
+// Update Post
+
+module.exports.postUpdate = (req, callback) => {
+
+    Post.update(
+
+        { _id: req.id },
+
+        {
+
+            $set: {
+
+                url: req.post.url,
+
+                title: req.post.title,
+
+                hero: req.post.hero,
+
+                date: req.post.date,
+
+                category: req.post.category,
+
+                body: req.post.body
+
+            }
+
+        },
+
+        callback
+
+    )
+}
