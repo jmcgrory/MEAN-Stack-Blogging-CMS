@@ -133,8 +133,6 @@ module.exports.countPosts = (query, callback) => {
 
     const params = constructParams(query);
 
-    console.log(params);
-
     Post.find(params).count({}).exec(callback);
 
 }

@@ -49,8 +49,6 @@ export class MediaComponent implements OnInit {
 
         this.mediaService.delete(path).subscribe(data => {
 
-            console.log(data);
-
             this.getAllMedia();
 
         });

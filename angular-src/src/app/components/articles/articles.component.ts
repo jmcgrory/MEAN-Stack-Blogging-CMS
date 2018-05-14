@@ -18,11 +18,7 @@ export class ArticlesComponent implements OnInit {
 
     activeCategories: string[] = [];
 
-    filterParams: object = {
-
-        active: 'true'
-
-    }
+    filterParams: object;
 
     maxPosts: number;
 
@@ -38,6 +34,9 @@ export class ArticlesComponent implements OnInit {
     }
 
     ngOnInit() {
+
+        // Initially Set Filter Params
+        this.resetFilterParams();
 
         // Count Posts
         this.countPosts();
@@ -118,6 +117,16 @@ export class ArticlesComponent implements OnInit {
 
     }
 
+    resetFilterParams(): void {
+
+        this.filterParams = {
+
+            active: 'true'
+
+        }
+
+    }
+
     filterCategories(): void {
 
         this.activeCategories = this.categories.filter(category => {
@@ -130,8 +139,15 @@ export class ArticlesComponent implements OnInit {
 
         });
 
-        // Update Filter Parameters
-        this.filterParams['categories'] = this.activeCategories;
+        if (this.activeCategories.length) {
+
+            this.filterParams['categories'] = this.activeCategories;
+
+        } else {
+
+            this.resetFilterParams();
+
+        }
 
         // Re Request Count
         this.countPosts();

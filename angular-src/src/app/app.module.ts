@@ -17,7 +17,6 @@ import { EditComponent } from './components/edit/edit.component';
 import { ArticlesComponent } from './components/articles/articles.component';
 import { PostComponent } from './components/post/post.component';
 import { SectionComponent } from './components/html/section.component';
-import { HtmlComponent } from './components/html/html.component';
 import { MediaComponent } from './components/media/media.component';
 
 // Service Imports
@@ -68,7 +67,6 @@ const options = {
         PostComponent,
         EditComponent,
         SectionComponent,
-        HtmlComponent,
         MediaComponent,
         HtmlPipe
     ],
