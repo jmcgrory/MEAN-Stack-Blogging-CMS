@@ -71,27 +71,27 @@ export class DashboardComponent implements OnInit {
         this.randomGreeting();
 
         // Load all posts
-        this.getAllPosts();
+        this.getPosts();
     
     }
 
     // Get all posts
-    getAllPosts(): void {
+    getPosts(): void {
+
+        const params = {
+
+            select: 'id url title date active category'
+
+        }
 
         // Load all posts
-        this.postalService.getAllPosts().subscribe( data => {
+        this.postalService.getPosts(params).subscribe( data => {
 
             this.posts = data;
 
+            console.log(data);
+
         });
-
-    }
-
-    // Edit clicked post
-    postEdit(id: string): void {
-
-        // TODO: Edit Selected Post Functionality
-        console.log('Edit: '+id);
 
     }
 
@@ -101,7 +101,7 @@ export class DashboardComponent implements OnInit {
         this.postalService.deletePost(id).subscribe( data => {
 
             // Load all posts
-            this.getAllPosts();
+            this.getPosts();
 
         });
 
@@ -113,7 +113,7 @@ export class DashboardComponent implements OnInit {
         this.postalService.addPost().subscribe( data => {
             
             // Load all posts
-            this.getAllPosts();
+            this.getPosts();
 
         });
 
@@ -124,7 +124,7 @@ export class DashboardComponent implements OnInit {
         this.postalService.postActive(id, !active).subscribe( data => {
 
             // Load all posts
-            this.getAllPosts();
+            this.getPosts();
         
         });
 

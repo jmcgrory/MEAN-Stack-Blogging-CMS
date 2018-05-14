@@ -22,6 +22,14 @@ export class ArticlesComponent implements OnInit {
 
     activeCategories: string[] = [];
 
+    filterParams: object = {
+
+        active: 'true'
+
+    }
+
+    maxPosts: number;
+
     constructor(
 
         private postalService: PostalService,
@@ -38,44 +46,34 @@ export class ArticlesComponent implements OnInit {
 
     ngOnInit() {
 
+        // Count Posts
+        this.countPosts();
+
         // Get Initial Posts
         this.getPosts();
 
         // Get Available Categories
         this.getAllCategories();
 
-        const params = {
+    }
 
-            active: 'true'
+    countPosts(): void {
 
-        }
+        this.postalService.countPosts(this.filterParams).subscribe(count => {
 
-        this.postalService.countPosts(params).subscribe(data => {
-
-            console.log(data);
+            this.maxPosts = count.count;
 
         });
 
     }
 
-
     getPosts(addByOffset: boolean = false): void {
 
-        const params = {
-
-            active: 'true',
-            
-            select: ['url', 'title', 'date', 'hero']
-
-        }
+        const params = this.filterParams;
 
         params['offset'] = addByOffset ? this.articles.length : 0;
 
-        if(this.activeCategories.length > 0){
-
-            params['categories'] = this.activeCategories;
-
-        }
+        params['select'] = 'id hero title url';
 
         this.postalService.getPosts(params).subscribe(data => {
 
@@ -139,6 +137,13 @@ export class ArticlesComponent implements OnInit {
 
         });
 
+        // Update Filter Parameters
+        this.filterParams['categories'] = this.activeCategories;
+
+        // Re Request Count
+        this.countPosts();
+
+        // Re Request Posts
         this.getPosts();
 
     }
