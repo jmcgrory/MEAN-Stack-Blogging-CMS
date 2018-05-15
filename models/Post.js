@@ -120,7 +120,7 @@ const constructParams = query => {
 
         const excludedIds = query['excluding'].split(',');
 
-        params['id'] = { $ne: excludedIds };
+        params['_id'] = { $nin: excludedIds };
 
     }
 

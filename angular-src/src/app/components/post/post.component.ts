@@ -70,8 +70,6 @@ export class PostComponent implements OnInit {
 
         };
 
-        console.log(params);
-
         this.postalService.getPosts(params).subscribe(data => {
 
             this.relatedArticles = data;
