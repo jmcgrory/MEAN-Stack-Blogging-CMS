@@ -56,8 +56,6 @@ export class PostComponent implements OnInit {
 
     getRelatedPosts(): void {
 
-        const excludedId = this.post._id;
-
         const params = {
 
             active: 'true',
@@ -68,9 +66,11 @@ export class PostComponent implements OnInit {
 
             categories: this.post.category,
 
-            excluding: [excludedId]
+            excluding: [this.post._id]
 
         };
+
+        console.log(params);
 
         this.postalService.getPosts(params).subscribe(data => {
 

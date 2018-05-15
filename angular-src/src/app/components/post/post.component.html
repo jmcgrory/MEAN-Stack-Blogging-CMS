@@ -31,7 +31,7 @@
         <section *ngIf="section.type==='media'" class="section-media" [ngClass]="{ 'captioned':section.caption }">
             <img [src]="parse(section.content)" alt="{{section.caption}}" />
             <p *ngIf="section.caption" class="section-caption">
-                {{ section.caption }} | {{ section.hero }}
+                {{ section.caption }}
             </p>
         </section>
 
@@ -39,7 +39,7 @@
 
 </article>
 
-<div class="column content" *ngIf="authService.loggedIn()">
+<div class="column content edit-content" *ngIf="authService.loggedIn()">
 
     <a class="btn mini" routerLink="/dashboard/edit/{{ post?._id }}">
         Edit Article
