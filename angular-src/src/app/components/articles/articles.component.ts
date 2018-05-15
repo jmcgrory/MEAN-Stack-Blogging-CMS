@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { PostalService } from '../../services/postal.service';
 import { CategoryService } from 'app/services/category.service';
 import { FeatureComponent } from '../feature/feature.component';
@@ -22,7 +23,10 @@ export class ArticlesComponent implements OnInit {
 
     maxPosts: number;
 
+    queryCategory: string = null;
+
     constructor(
+        private route: ActivatedRoute,
         private postalService: PostalService,
         private categoryService: CategoryService
     ) { }
@@ -38,14 +42,32 @@ export class ArticlesComponent implements OnInit {
         // Initially Set Filter Params
         this.resetFilterParams();
 
-        // Count Posts
-        this.countPosts();
-
-        // Get Initial Posts
-        this.getPosts();
+        // Check if query category
+        this.getQueryCategory();
 
         // Get Available Categories
         this.getAllCategories();
+
+        // Count Posts
+        this.countPosts();
+
+    }
+
+    getQueryCategory(): void {
+
+        const queryCategory = this.route.queryParams.subscribe(query => {
+
+            if (query.hasOwnProperty('category')) {
+
+                this.queryCategory = query.category;
+
+            } else {
+
+                this.getPosts();
+
+            }
+
+        });
 
     }
 
@@ -65,7 +87,7 @@ export class ArticlesComponent implements OnInit {
 
         params['offset'] = addByOffset ? this.articles.length : 0;
 
-        params['select'] = 'id hero title url';
+        params['select'] = 'id hero title url date';
 
         this.postalService.getPosts(params).subscribe(data => {
 
@@ -106,6 +128,28 @@ export class ArticlesComponent implements OnInit {
             }
 
         });
+
+        if (this.queryCategory) {
+
+            let index = null;
+
+            this.categories.forEach((category, categoryIndex) => {
+
+                if (category.name === this.queryCategory) {
+
+                    index = categoryIndex;
+
+                }
+
+            });
+
+            if (index !== null) {
+
+                this.selectCategory(index);
+
+            }
+
+        }
 
     }
 

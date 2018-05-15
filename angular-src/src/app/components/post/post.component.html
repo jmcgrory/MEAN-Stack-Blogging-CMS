@@ -1,10 +1,18 @@
-<header class="column content clear-inner">
+<header class="column content clear-inner" *ngIf="post">
 
-    <h1>{{ post?.title }}</h1>
-    <p class="post-date">
-        <fa name="calendar"></fa>
-        <time>{{ post?.date | date:'fullDate' }}</time>
-    </p>
+    <h1>{{ post.title }}</h1>
+    <div class="post-meta">
+        <div class="post-meta-left">
+            <fa name="calendar"></fa>
+            <time>{{ post.date | date:'fullDate' }}</time>
+        </div>
+        <div class="post-meta-right">
+            <span *ngFor="let cat of post.category">
+                <a routerLink="/articles/" [queryParams]="{ category: cat }">{{ cat }}</a>
+            </span>
+            <fa name="bookmark"></fa>
+        </div>
+    </div>
 
 </header>
 

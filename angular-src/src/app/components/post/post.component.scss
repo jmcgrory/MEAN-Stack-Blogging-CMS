@@ -3,9 +3,12 @@
 //************************//
 
 // Includes
+
 @import '../../partials/const';
 
 @import '../../partials/mixins';
+
+@import '../../partials/classes';
 
 // Styles
 
@@ -21,13 +24,61 @@ section:last-child, .edit-content {
 
 }
 
-.post-date {
+.post-meta {
+
+    padding-top: 10px;
 
     font-size: 14px;
 
     time {
 
         padding-left: 0.1em;
+
+    }
+
+    .post-meta-left, .post-meta-right {
+
+        display: inline-block;
+
+        width: 50%;
+
+        @extend .clear-inner;
+
+    }
+
+    .post-meta-left {
+
+        float: left;
+
+    }
+
+    .post-meta-right {
+
+        float: right;
+
+        text-align: right;
+
+        span {
+
+            padding-right: 2px;
+
+            text-transform: capitalize;
+
+            &:nth-last-child(2n+1) a:after  {
+
+                content: ',';
+
+                display: inline-block;
+
+            }
+
+            a:hover {
+
+                text-decoration: underline;
+
+            }
+
+        }
 
     }
 
