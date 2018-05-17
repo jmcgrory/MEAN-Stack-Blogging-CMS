@@ -57,7 +57,7 @@
 
             <div class="td">
 
-                <div class="btn mini" (click)="postActive(post._id, post.active)">
+                <div class="btn mini" (click)="postActive(post)">
 
                     <fa name="check-circle" *ngIf="post.active"></fa>
 
@@ -115,5 +115,13 @@
         </div>
 
     </div>
+
+</div>
+
+<div class="column content" *ngIf="count > currentPostCount">
+
+    <a (click)="getMorePosts()" class="btn">Get More Posts Bruh
+        <fa name="plus-square"></fa>
+    </a>
 
 </div>

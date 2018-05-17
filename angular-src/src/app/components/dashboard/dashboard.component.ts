@@ -15,6 +15,12 @@ export class DashboardComponent implements OnInit {
 
     posts: Post[];
 
+    count: number;
+
+    currentPostCount: number = 0;
+
+    params: object;
+
     // Randomisation
     randomGreeting(): void {
 
@@ -60,6 +66,12 @@ export class DashboardComponent implements OnInit {
 
     ngOnInit() {
 
+        // Set params
+        this.resetParams();
+
+        // Get Count
+        this.getCount();
+
         // Loads random <h1> greeting :)
         this.randomGreeting();
 
@@ -68,21 +80,62 @@ export class DashboardComponent implements OnInit {
 
     }
 
-    // Get all posts
-    getPosts(): void {
+    getCount(): void {
 
-        const params = {
+        this.postalService.countPosts({}).subscribe(count => {
+
+            this.count = count.count;
+
+        });
+
+    }
+
+    resetParams(): void {
+
+        this.params = {
 
             select: 'id url title date active category'
 
         }
 
+    }
+
+    // Load more posts
+    getMorePosts(): void {
+
+        this.resetParams();
+
+        this.params['offset'] = this.currentPostCount;
+
+        this.getPosts();
+
+    }
+
+    // Get all posts
+    getPosts(addToStart: boolean = false): void {
+
         // Load all posts
-        this.postalService.getPosts(params).subscribe(data => {
+        this.postalService.getPosts(this.params).subscribe(data => {
 
-            this.posts = data;
+            if (this.posts && this.posts.length) {
 
-            console.log(data);
+                if (addToStart) {
+
+                    this.posts = data.concat(this.posts);
+
+                } else {
+
+                    this.posts = this.posts.concat(data);
+
+                }
+
+            } else {
+
+                this.posts = data;
+
+            }
+
+            this.currentPostCount = this.posts.length;
 
         });
 
@@ -105,19 +158,33 @@ export class DashboardComponent implements OnInit {
 
         this.postalService.addPost().subscribe(data => {
 
+            // Get Count
+            this.getCount();
+
+            // Set params
+            this.resetParams();
+
+            this.params['limit'] = 1;
+
             // Load all posts
-            this.getPosts();
+            this.getPosts(true);
 
         });
 
     }
 
-    postActive(id: string, active: boolean): void {
+    postActive(post): void {
 
-        this.postalService.postActive(id, !active).subscribe(data => {
+        post.active = !post.active;
+
+        const id: string = post._id;
+
+        const active: boolean = post.active;
+
+        this.postalService.postActive(id, active).subscribe(data => {
 
             // Load all posts
-            this.getPosts();
+            //this.getPosts();
 
         });
 
