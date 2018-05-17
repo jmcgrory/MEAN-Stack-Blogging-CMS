@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Feature } from '../../models/feature.model';
 import { DatePipe } from '@angular/common';
 
@@ -6,11 +6,23 @@ import { DatePipe } from '@angular/common';
     selector: '[feature]',
     templateUrl: './feature.component.html'
 })
-export class FeatureComponent {
+export class FeatureComponent implements OnInit {
+
+    hasArticle: boolean = false;
 
     @Input() article: Feature;
 
     constructor() { }
+
+    ngOnInit() {
+
+        if (typeof this.article !== 'undefined') {
+
+            this.hasArticle = true;
+
+        }
+
+    }
 
     parse(upload: string): string {
 

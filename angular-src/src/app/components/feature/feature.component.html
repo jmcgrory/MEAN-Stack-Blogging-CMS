@@ -1,13 +1,13 @@
-<a routerLink="/articles/{{ article.url }}" title="Read Article">
+<a routerLink="/articles/{{ article?.url }}" title="Read Article" [ngClass]="{ 'placeholder': !hasArticle }">
 
     <div class="article-hero img-fit">
 
-        <img [src]="parse(article.hero)">
+        <img *ngIf="hasArticle" [src]="parse(article.hero)">
 
     </div>
 
-    <h3>{{ article.title }}</h3>
+    <h3>{{ article?.title }}</h3>
 
-    <span>{{ article.date | date:'mediumDate' }}</span>
+    <span>{{ article?.date | date:'mediumDate' }}</span>
 
 </a>

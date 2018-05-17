@@ -1,6 +1,6 @@
 <div class="column content clear-inner">
 
-    <h1>Articles</h1>
+    <h1>Articles ({{currentPostCount}}/{{maxPostCount}})</h1>
 
     <div class="category-picker">
 
@@ -35,6 +35,12 @@
         <ng-template ngFor let-article [ngForOf]="articles">
 
             <article feature [article]="article" class="article"></article>
+
+        </ng-template>
+
+        <ng-template ngFor let-placeholder [ngForOf]="placeholders">
+
+            <article feature class="article"></article>
 
         </ng-template>
 

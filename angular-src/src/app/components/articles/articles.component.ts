@@ -15,13 +15,17 @@ export class ArticlesComponent implements OnInit {
 
     articles: Feature[] = [];
 
+    placeholders: Array<any> = [];
+
     categories: any[] = [];
 
     activeCategories: string[] = [];
 
     filterParams: object;
 
-    maxPosts: number;
+    maxPostCount: number = 0;
+
+    currentPostCount: number = 0;
 
     queryCategory: string = null;
 
@@ -53,6 +57,14 @@ export class ArticlesComponent implements OnInit {
 
     }
 
+    updatePlaceholderArticles(): void {
+
+        const diff = this.maxPostCount - this.currentPostCount;
+
+        this.placeholders = Array(diff).fill(0);
+
+    }
+
     getQueryCategory(): void {
 
         const queryCategory = this.route.queryParams.subscribe(query => {
@@ -75,7 +87,9 @@ export class ArticlesComponent implements OnInit {
 
         this.postalService.countPosts(this.filterParams).subscribe(count => {
 
-            this.maxPosts = count.count;
+            this.maxPostCount = count.count;
+
+            this.updatePlaceholderArticles();
 
         });
 
@@ -100,6 +114,8 @@ export class ArticlesComponent implements OnInit {
                 this.articles = this.articles.concat(data);
 
             }
+
+            this.currentPostCount = this.articles.length;
 
         });
 

@@ -46,8 +46,6 @@ export class PostComponent implements OnInit {
 
                 this.post = data;
 
-                console.log(data);
-
                 this.getRelatedPosts();
 
             });
