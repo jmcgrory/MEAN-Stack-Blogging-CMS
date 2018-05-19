@@ -240,7 +240,7 @@ export class ArticlesComponent implements OnInit {
 
             active: 'true',
 
-            limit: '5',
+            limit: '6',
 
         }
 
