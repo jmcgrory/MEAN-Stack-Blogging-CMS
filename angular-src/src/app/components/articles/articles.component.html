@@ -1,8 +1,8 @@
-<div class="column content clear-inner">
+<div class="column content clear-inner" (scroll)="wtf()">
 
-    <h1>Articles ({{currentPostCount}}/{{maxPostCount}})</h1>
+    <h1 id="hello">Articles</h1>
 
-    <div class="category-picker">
+    <div class="category-picker" [ngClass]="{'active':activeCategories.length}">
 
         <p>Filter Categories
             <fa name="angle-down"></fa>
@@ -23,6 +23,8 @@
             </li>
 
         </ul>
+
+        <div *ngIf="activeCategories.length" class="category-count">{{activeCategories.length}}</div>
 
     </div>
 

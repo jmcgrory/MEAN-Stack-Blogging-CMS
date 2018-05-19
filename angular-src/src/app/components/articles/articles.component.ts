@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { PostalService } from '../../services/postal.service';
 import { CategoryService } from 'app/services/category.service';
@@ -12,6 +12,47 @@ import { Feature } from '../../models/feature.model';
     styleUrls: ['./articles.component.css']
 })
 export class ArticlesComponent implements OnInit {
+
+    @HostListener("window:scroll", ['$event'])
+    onWindowScroll(e) {
+
+        // TODO: set onInit if window can be accessed
+
+        const document = e.target;
+
+        const window = e.path[1];
+
+        //
+
+        let firstPlaceholderScroll = 0;
+
+        const pageHeight = window.innerHeight;
+
+        const scrollTop = window.pageYOffset + pageHeight;
+
+        const placeholder = document.getElementsByClassName('placeholder');
+
+        if (typeof placeholder !== 'undefined' && placeholder.length) {
+
+            // TODO: Could also be set once post load
+            const first = placeholder.item(0);
+
+            firstPlaceholderScroll = first.offsetTop;
+
+        }
+
+        const shouldLoad = scrollTop > firstPlaceholderScroll;
+
+        // TODO: This can also be set once after load
+        const allLoaded = this.currentPostCount >= this.maxPostCount;
+
+        if (!this.loading && shouldLoad && !allLoaded) {
+
+            this.getPosts(true);
+
+        }
+
+    }
 
     articles: Feature[] = [];
 
@@ -28,6 +69,12 @@ export class ArticlesComponent implements OnInit {
     currentPostCount: number = 0;
 
     queryCategory: string = null;
+
+    loading: boolean = false;
+
+    // Window Objects
+
+    firstPlaceholderScroll: number = 0;
 
     constructor(
         private route: ActivatedRoute,
@@ -61,7 +108,17 @@ export class ArticlesComponent implements OnInit {
 
         const diff = this.maxPostCount - this.currentPostCount;
 
-        this.placeholders = Array(diff).fill(0);
+        const adjustedDiff = (diff > 6) ? 6 : diff;
+
+        if (adjustedDiff > 0) {
+
+            this.placeholders = Array(adjustedDiff).fill(0);
+
+        } else {
+
+            this.placeholders = [];
+
+        }
 
     }
 
@@ -97,6 +154,10 @@ export class ArticlesComponent implements OnInit {
 
     getPosts(addByOffset: boolean = false): void {
 
+        // Set Loading State
+
+        this.loading = true;
+
         const params = this.filterParams;
 
         params['offset'] = addByOffset ? this.articles.length : 0;
@@ -116,6 +177,12 @@ export class ArticlesComponent implements OnInit {
             }
 
             this.currentPostCount = this.articles.length;
+
+            // Reset loading state
+
+            this.loading = false;
+
+            this.updatePlaceholderArticles();
 
         });
 
@@ -181,7 +248,9 @@ export class ArticlesComponent implements OnInit {
 
         this.filterParams = {
 
-            active: 'true'
+            active: 'true',
+
+            limit: '5',
 
         }
 
