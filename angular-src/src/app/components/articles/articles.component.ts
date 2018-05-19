@@ -16,13 +16,7 @@ export class ArticlesComponent implements OnInit {
     @HostListener("window:scroll", ['$event'])
     onWindowScroll(e) {
 
-        // TODO: set onInit if window can be accessed
-
-        const document = e.target;
-
         const window = e.path[1];
-
-        //
 
         let firstPlaceholderScroll = 0;
 
@@ -30,11 +24,10 @@ export class ArticlesComponent implements OnInit {
 
         const scrollTop = window.pageYOffset + pageHeight;
 
-        const placeholder = document.getElementsByClassName('placeholder');
+        const placeholder = e.target.getElementsByClassName('placeholder');
 
         if (typeof placeholder !== 'undefined' && placeholder.length) {
 
-            // TODO: Could also be set once post load
             const first = placeholder.item(0);
 
             firstPlaceholderScroll = first.offsetTop;
@@ -43,10 +36,7 @@ export class ArticlesComponent implements OnInit {
 
         const shouldLoad = scrollTop > firstPlaceholderScroll;
 
-        // TODO: This can also be set once after load
-        const allLoaded = this.currentPostCount >= this.maxPostCount;
-
-        if (!this.loading && shouldLoad && !allLoaded) {
+        if (shouldLoad && this.currentPostCount < this.maxPostCount && !this.loading) {
 
             this.getPosts(true);
 
