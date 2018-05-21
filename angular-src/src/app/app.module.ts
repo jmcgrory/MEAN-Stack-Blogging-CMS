@@ -25,6 +25,7 @@ import { AuthService } from './services/auth.service';
 import { PostalService } from './services/postal.service';
 import { CategoryService } from './services/category.service';
 import { MediaService } from './services/media.service';
+import { MetaService } from './services/meta.service';
 
 // Guard Imports
 import { AuthGuard } from './guards/auth.guard';
@@ -93,7 +94,8 @@ const options = {
         AuthGuard,
         PostalService,
         CategoryService,
-        MediaService
+        MediaService,
+        MetaService
     ],
     bootstrap: [AppComponent]
 })

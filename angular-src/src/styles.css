@@ -213,6 +213,9 @@ p a {
 .full {
   width: 100%; }
 
+code.hljs {
+  padding: 2em 0 2em 2em; }
+
 h1.small, h2.small, h3.small, h4.small, h5.small, h6.small {
   font-size: 18px;
   text-transform: uppercase; }

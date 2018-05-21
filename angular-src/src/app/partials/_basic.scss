@@ -54,6 +54,12 @@ p a {
 
 }
 
+code.hljs {
+
+    padding: 2em 0 2em 2em;
+
+}
+
 body, div, section {
 
     @extend .box;

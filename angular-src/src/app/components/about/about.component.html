@@ -1,4 +1,4 @@
-<div class="column content">
+<!-- <div class="column content">
 
     <h1>About Me</h1>
     <p>Outside of my professional work, I've always been an extremely active and adventurous person. I love weekend surfing
@@ -23,6 +23,36 @@
 
     <ul class="skills-container">
         <li *ngFor="let skill of skills">
+            <span>{{ skill.name }}</span>
+            <div class="skill-bar">
+                <div class="skill-bg"></div>
+                <div class="skill-val" [style.width]="skill.level + '%'"></div>
+            </div>
+        </li>
+    </ul>
+
+</div> -->
+
+<div class="column content">
+
+    <h1>{{aboutTitle}}</h1>
+
+    <section [innerHtml]="aboutContent"></section>
+
+    <pre>
+        <code class="typescript" [code]="aboutSnippet" highlight></code>
+    </pre>
+
+</div>
+
+<div class="column content">
+
+    <h2>{{technicalTitle}}</h2>
+
+    <section [innerHtml]="technicalContent"></section>
+
+    <ul class="skills-container">
+        <li *ngFor="let skill of technicalSkills">
             <span>{{ skill.name }}</span>
             <div class="skill-bar">
                 <div class="skill-bg"></div>

@@ -126,11 +126,17 @@ const posts = require('./routes/posts');
 
 app.use('/posts', posts);
 
-// Route for PostChunks
+// Route for Categories
 
 const categories = require('./routes/categories');
 
 app.use('/categories', categories);
+
+// Route for Categories
+
+const meta = require('./routes/meta');
+
+app.use('/meta', meta);
 
 //************************//
 //****    RUN DMC     ****//

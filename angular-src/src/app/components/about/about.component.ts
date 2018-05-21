@@ -1,214 +1,53 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Skill } from '../../models/skill.model';
+import { MetaService } from '../../services/meta.service';
 
 @Component({
     selector: 'app-about',
     templateUrl: './about.component.html'
 })
-export class AboutComponent {
+export class AboutComponent implements OnInit {
 
-    constructor() { }
+    aboutTitle: string = '';
 
-    snippet: string = `
-        export Jamie = new Person({
-            age: 26,
-            interests: [
-                'Surfing',
-                'Motorcycles',
-                'Coffee',
-                'Camping',
-                'Design',
-                'Development'
-            ]
-        })
-    `;
+    aboutContent: string = '';
 
-    skills: Object[] = [
+    aboutSnippet: string = '';
 
-        {
+    technicalTitle: string = '';
 
-            name: 'Javascript (ES5/ES6)',
+    technicalContent: string = '';
 
-            level: 75
+    technicalSkills: string[] = [];
 
-        },
+    constructor(
+        private metaService: MetaService
+    ) { }
 
-        {
+    ngOnInit() {
 
-            name: 'CSS3/SCSS',
+        this.getContent();
 
-            level: 95
+    }
 
-        },
+    getContent() {
 
-        {
+        this.metaService.get('about technical').subscribe((data) => {
 
-            name: 'HTML5',
+            this.aboutTitle = data.about.title;
 
-            level: 95
+            this.aboutContent = data.about.content;
 
-        },
+            this.aboutSnippet = data.about.snippet;
 
-        {
+            this.technicalTitle = data.technical.title;
 
-            name: 'Angular (2+)',
+            this.technicalContent = data.technical.content;
 
-            level: 72
+            this.technicalSkills = data.technical.skills;
 
-        },
+        });
 
-        {
-
-            name: 'AngularJS',
-
-            level: 76
-
-        },
-
-        {
-
-            name: 'NodeJS',
-
-            level: 65
-
-        },
-
-        {
-
-            name: 'React',
-
-            level: 30
-
-        },
-
-        {
-
-            name: 'PHP 7+',
-
-            level: 60
-
-        },
-
-        {
-
-            name: 'Laravel 5.6+',
-
-            level: 40
-
-        },
-
-        {
-
-            name: 'ExpressJS',
-
-            level: 45
-
-        },
-
-        {
-
-            name: 'MongoDB',
-
-            level: 35
-
-        },
-
-        {
-
-            name: 'MySQL/SQL',
-
-            level: 40
-
-        },
-
-        {
-
-            name: 'Typescript',
-
-            level: 70
-
-        },
-
-        {
-
-            name: 'C++',
-
-            level: 26
-
-        },
-
-        {
-
-            name: 'Adobe Photoshop',
-
-            level: 90
-
-        },
-
-        {
-
-            name: 'Adobe Illustrator',
-
-            level: 95
-
-        },
-
-        {
-
-            name: 'Adobe AfterEffects',
-
-            level: 65
-
-        },
-
-        {
-
-            name: 'Adobe InDesign',
-
-            level: 60
-
-        },
-
-        {
-
-            name: 'Adobe XD',
-
-            level: 45
-
-        },
-
-        {
-
-            name: 'Adobe Premiere Pro',
-
-            level: 35
-
-        },
-
-        {
-
-            name: 'Google Analytics',
-
-            level: 55
-
-        },
-
-        {
-
-            name: 'Google Tag Manager',
-
-            level: 65
-
-        },
-
-        {
-
-            name: 'SEO Screaming Frog',
-
-            level: 50
-
-        }
-
-    ];
+    }
 
 }

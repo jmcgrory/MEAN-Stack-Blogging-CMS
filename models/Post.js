@@ -78,8 +78,6 @@ const Post = module.exports = mongoose.model('Post', PostSchema);
 //****   Functions    ****//
 //************************//
 
-// Construct Parameters
-
 // Get Post by URL
 
 module.exports.getPostByURL = (search, callback) => {
