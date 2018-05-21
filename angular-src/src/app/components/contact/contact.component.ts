@@ -1,13 +1,30 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { MetaService } from '../../services/meta.service';
 
 @Component({
     selector: 'app-contact',
     templateUrl: './contact.component.html'
 })
-export class ContactComponent {
+export class ContactComponent implements OnInit {
 
-    email: string = "contact@jmcgr.co.uk";
+    title: string = '';
 
-    constructor() { }
+    content: string = '';
+
+    constructor(
+        private metaService: MetaService
+    ) { }
+
+    ngOnInit() {
+
+        this.metaService.get('contact').subscribe(data => {
+
+            this.title = data.contact.title;
+
+            this.content = data.contact.content;
+
+        });
+
+    }
 
 }
