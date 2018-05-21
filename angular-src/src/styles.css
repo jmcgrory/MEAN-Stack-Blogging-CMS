@@ -88,6 +88,10 @@ input, textarea, select {
     font-size: 14px;
     padding: 0.3em 0.75em;
     min-width: 0; }
+  .btn:nth-last-child(2) {
+    margin-right: 0.5em; }
+  .btn fa {
+    margin: 0 0.2em; }
 
 .article {
   display: inline-block;
