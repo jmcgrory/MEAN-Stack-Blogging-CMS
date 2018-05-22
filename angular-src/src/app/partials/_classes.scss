@@ -5,15 +5,9 @@
 // Fonts
 .paragraph {
 
-    font: normal normal 300 16px/1.8em $font;
+    font: normal normal 300 0.9em/1.5em $font;
 
     margin: 0.5em auto 1.65em;
-
-    @include mobile {
-
-        font-size: 15px;
-
-    }
 
 }
 

@@ -1,10 +1,7 @@
 @import url("https://fonts.googleapis.com/css?family=Roboto+Mono|PT+Sans:400,700");
 .paragraph, p, input, select {
-  font: normal normal 300 16px/1.8em "PT Sans", sans-serif;
+  font: normal normal 300 0.9em/1.5em "PT Sans", sans-serif;
   margin: 0.5em auto 1.65em; }
-  @media screen and (max-width: 640px) {
-    .paragraph, p, input, select {
-      font-size: 15px; } }
 
 .title, h1, h2, h3, h4, h5, h6 {
   font: normal normal 700 30px/1.6em "PT Sans", sans-serif;
