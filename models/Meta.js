@@ -60,3 +60,11 @@ module.exports.get = (query, callback) => {
 
 }
 
+module.exports.update = (meta, callback) => {
+
+    const newMeta = meta.body.meta;
+
+    Meta.findByIdAndUpdate(newMeta._id, newMeta, callback);
+
+}
+

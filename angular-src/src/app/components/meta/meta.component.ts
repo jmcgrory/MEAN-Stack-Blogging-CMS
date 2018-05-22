@@ -18,17 +18,31 @@ export class MetaComponent implements OnInit {
 
     ngOnInit() {
 
+        this.getMeta();
+
+    }
+
+    getMeta(): void {
+
         this.metaService.get().subscribe(data => {
 
             this.metaContent = JSON.stringify(data);
 
-        })
+        });
 
     }
 
-    update(): void {
+    updateMeta(): void {
 
-        console.log(this.metaContent);
+        const meta = JSON.parse(this.metaContent);
+
+        this.metaService.update(meta).subscribe(data => {
+
+            console.log(data);
+
+            this.getMeta();
+
+        });
 
     }
 

@@ -30,14 +30,21 @@ router.get('/get',
 
     });
 // Get posts with arguments
-router.post('/post',
+router.post('/update',
+    passport.authenticate('jwt', { session: false }),
     (req, res, next) => {
 
-        Meta.post({}, (err, meta) => {
+        Meta.update(req, (err, meta) => {
 
-            if (err) console.log(err);
+            if (err) {
 
-            res.send(meta);
+                res.json({ success: false, msg: 'Failed to update' });
+
+            } else {
+
+                res.json({ success: true, msg: 'Meta updated' });
+
+            }
 
         });
 

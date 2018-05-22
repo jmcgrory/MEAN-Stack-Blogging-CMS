@@ -32,7 +32,7 @@ export class MetaService {
 
     }
 
-    update(meta) {
+    update(meta: object) {
 
         let token = this.authService.getToken();
 
