@@ -19,6 +19,7 @@ import { PostComponent } from './components/post/post.component';
 import { SectionComponent } from './components/html/section.component';
 import { MediaComponent } from './components/media/media.component';
 import { FeatureComponent } from './components/feature/feature.component';
+import { MetaComponent } from './components/meta/meta.component';
 
 // Service Imports
 import { AuthService } from './services/auth.service';
@@ -49,6 +50,7 @@ const appRoutes = [
     { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },
     { path: 'dashboard/edit/:_id', component: EditComponent, canActivate: [AuthGuard] },
     { path: 'dashboard/media', component: MediaComponent, canActivate: [AuthGuard] },
+    { path: 'dashboard/meta', component: MetaComponent, canActivate: [AuthGuard] },
     { path: '**', redirectTo: '' }
 ]
 
@@ -71,7 +73,8 @@ const options = {
         SectionComponent,
         MediaComponent,
         HtmlPipe,
-        FeatureComponent
+        FeatureComponent,
+        MetaComponent
     ],
     imports: [
         BrowserModule,

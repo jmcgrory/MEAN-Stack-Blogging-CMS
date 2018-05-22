@@ -12,7 +12,7 @@ export class MetaService {
     ) { }
 
     // Get variable amount of posts...
-    get(select: string) {
+    get(select: string = 'title home about contact') {
 
         let headers = new HttpHeaders({ 'Content-Type': 'application/json' });
 
@@ -32,28 +32,28 @@ export class MetaService {
 
     }
 
-    // updatePost(post) {
+    update(meta) {
 
-    //     let token = this.authService.getToken();
+        let token = this.authService.getToken();
 
-    //     let headers = new HttpHeaders({
+        let headers = new HttpHeaders({
 
-    //         'Content-Type': 'application/json',
+            'Content-Type': 'application/json',
 
-    //         'Authorization': token
+            'Authorization': token
 
-    //     });
+        });
 
-    //     return this.http.post(
+        return this.http.post(
 
-    //         'http://localhost:3000/posts/update',
+            'http://localhost:3000/meta/update',
 
-    //         { post: post },
+            { meta: meta },
 
-    //         { headers: headers }
+            { headers: headers }
 
-    //     );
+        );
 
-    // }
+    }
 
 }

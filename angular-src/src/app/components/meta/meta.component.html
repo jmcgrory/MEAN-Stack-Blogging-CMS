@@ -1,0 +1,19 @@
+<div class="column content">
+
+    <h1>Meta</h1>
+
+    <form (submit)="update()" class="form">
+
+        <div class="form-input-group form-input-full form-input-border">
+
+            <textarea name="metaContent" [(ngModel)]="metaContent"></textarea>
+
+        </div>
+
+        <p>
+            <input type="submit" class="btn" value="Update Meta">
+        </p>
+
+    </form>
+
+</div>

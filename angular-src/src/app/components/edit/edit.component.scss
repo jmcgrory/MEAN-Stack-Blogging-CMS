@@ -47,17 +47,15 @@ margin-bottom: 0;
 
     textarea {
 
-        resize: vertical;
-
         min-height: 160px;
 
         padding: 0.8em;
 
         &:focus {
 
-            -moz-appearance:none;
+            -moz-appearance: none;
 
-            outline:0px none transparent;
+            outline: 0px none transparent;
 
         }
 
