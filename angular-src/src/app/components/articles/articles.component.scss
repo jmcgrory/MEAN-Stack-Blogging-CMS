@@ -44,6 +44,18 @@ h1 {
 
         float: right;
 
+        .refresh {
+
+            display: none;
+
+        }
+
+    }
+
+    @include mobile {
+
+        width: 100%;
+
     }
 
     &.active {
@@ -190,7 +202,7 @@ h1 {
 
             }
 
-            &.active, &:hover {
+            &.active{
 
                 span, fa {
 
@@ -200,17 +212,47 @@ h1 {
 
             }
 
+            @include notMobile {
+
+                &:hover {
+
+                    span, fa {
+
+                        opacity: 1;
+
+                    }
+
+                }
+
+            }
+
         }
 
     }
 
-    &:hover {
+    &.viewable {
 
         opacity: 1;
-        
+                
         ul {
-
+    
             display: block;
+    
+        }
+    
+    }
+
+    @include notMobile {
+
+        &:hover {
+
+            opacity: 1;
+                    
+            ul {
+        
+                display: block;
+        
+            }
 
         }
 

@@ -64,6 +64,8 @@ export class ArticlesComponent implements OnInit {
 
     loading: boolean = false;
 
+    categoryPickerViewable: boolean = false;
+
     // Window Objects
 
     firstPlaceholderScroll: number = 0;
@@ -275,6 +277,30 @@ export class ArticlesComponent implements OnInit {
 
         // Re Request Posts
         this.getPosts();
+
+    }
+
+    viewCategories(): void {
+
+        this.categoryPickerViewable = !this.categoryPickerViewable;
+
+    }
+
+    clearCategories(): void {
+
+        this.categories = this.categories.map(category => {
+
+            category.active = false;
+
+            return category;
+
+        });
+
+        this.viewCategories();
+
+        this.activeCategories = [];
+
+        this.filterCategories();
 
     }
 

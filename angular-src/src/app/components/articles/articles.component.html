@@ -2,9 +2,9 @@
 
     <h1 id="hello">Articles</h1>
 
-    <div class="category-picker" [ngClass]="{'active':activeCategories.length}">
+    <div class="category-picker" [ngClass]="{'active':activeCategories.length,'viewable':categoryPickerViewable}">
 
-        <p>Filter Categories
+        <p (click)="viewCategories()">Filter Categories
             <fa name="angle-down"></fa>
         </p>
 
@@ -19,6 +19,18 @@
                 </div>
 
                 <span>{{category.name}}</span>
+
+            </li>
+
+            <li (click)="clearCategories()">
+
+                <div class="checkbox">
+
+                    <fa name="refresh"></fa>
+
+                </div>
+
+                <span>Clear Categories</span>
 
             </li>
 

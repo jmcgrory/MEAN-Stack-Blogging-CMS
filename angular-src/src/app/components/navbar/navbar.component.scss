@@ -139,6 +139,7 @@ nav {
 
         left: 0;
 
+        z-index: 1;
 
         &.active {
 
@@ -218,10 +219,11 @@ nav {
 
     cursor: pointer;
 
+    background: transparent;
 
     @include notMobile {
 
-    display: none;
+        display: none;
 
     }
 
