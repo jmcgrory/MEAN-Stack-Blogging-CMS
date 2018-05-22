@@ -133,7 +133,8 @@ input, textarea, select {
     .article {
       width: 50%; }
       .article:nth-child(odd) {
-        padding-right: 2%; }
+        padding-right: 2%;
+        clear: both; }
       .article:nth-child(even) {
         padding-left: 2%; }
       .article .img-fit {

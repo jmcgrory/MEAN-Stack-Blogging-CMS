@@ -16,15 +16,17 @@ export class ArticlesComponent implements OnInit {
     @HostListener("window:scroll", ['$event'])
     onWindowScroll(e) {
 
-        const window = e.path[1];
+        const document = e.target;
+
+        const scrollingElement = document.scrollingElement;
 
         let firstPlaceholderScroll = 0;
 
-        const pageHeight = window.innerHeight;
+        const pageHeight = document.defaultView.innerHeight;
 
-        const scrollTop = window.pageYOffset + pageHeight;
+        const scrollTop = scrollingElement.scrollTop + pageHeight;
 
-        const placeholder = e.target.getElementsByClassName('placeholder');
+        const placeholder = document.getElementsByClassName('placeholder');
 
         if (typeof placeholder !== 'undefined' && placeholder.length) {
 
