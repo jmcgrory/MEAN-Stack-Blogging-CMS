@@ -5,6 +5,7 @@ import { CategoryService } from 'app/services/category.service';
 import { FeatureComponent } from '../feature/feature.component';
 import { Category } from 'app/models/category.model';
 import { Feature } from '../../models/feature.model';
+import { environment } from '../../../environments/environment';
 
 @Component({
     selector: 'app-articles',
@@ -78,7 +79,7 @@ export class ArticlesComponent implements OnInit {
 
     parse(upload: string): string {
 
-        return 'http://localhost:3000' + upload.substring(1);
+        return environment.apiUrl + upload.substring(1);
 
     }
 

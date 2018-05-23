@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import 'rxjs/add/operator/map';
 import { Media } from 'app/models/media.model';
 import { AuthService } from './auth.service';
+import { environment } from '../../environments/environment';
 
 @Injectable()
 export class MediaService {
@@ -34,7 +35,7 @@ export class MediaService {
 
         return this.http.post(
 
-            'http://localhost:3000/media/upload',
+            `${environment.apiUrl}/media/upload`,
 
             formData,
 
@@ -65,7 +66,7 @@ export class MediaService {
 
         return this.http.get<Media[]>(
 
-            'http://localhost:3000/media/all',
+            `${environment.apiUrl}/media/all`,
 
             {
 
@@ -94,7 +95,7 @@ export class MediaService {
 
         return this.http.post<string>(
 
-            'http://localhost:3000/media/delete',
+            `${environment.apiUrl}/media/delete`,
 
             { filePath: path },
 

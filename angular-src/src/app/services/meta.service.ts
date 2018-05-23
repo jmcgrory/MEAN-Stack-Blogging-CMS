@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import 'rxjs/add/operator/map';
 import { AuthService } from './auth.service';
+import { environment } from '../../environments/environment';
 
 @Injectable()
 export class MetaService {
@@ -18,7 +19,7 @@ export class MetaService {
 
         return this.http.get<any>(
 
-            'http://localhost:3000/meta/get',
+            `${environment.apiUrl}/meta/get`,
 
             {
 
@@ -46,7 +47,7 @@ export class MetaService {
 
         return this.http.post(
 
-            'http://localhost:3000/meta/update',
+            `${environment.apiUrl}/meta/update`,
 
             { meta: meta },
 

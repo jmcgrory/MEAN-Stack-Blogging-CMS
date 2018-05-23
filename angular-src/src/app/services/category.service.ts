@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import 'rxjs/add/operator/map';
 import { Category } from 'app/models/category.model';
+import { environment } from '../../environments/environment';
 
 @Injectable()
 export class CategoryService {
@@ -21,7 +22,7 @@ export class CategoryService {
 
         return this.http.get<Category>(
 
-            'http://localhost:3000/categories/post',
+            `${environment.apiUrl}/categories/post`,
 
             {
 
@@ -44,7 +45,7 @@ export class CategoryService {
 
         return this.http.get<Category[]>(
 
-            'http://localhost:3000/categories/all',
+            `${environment.apiUrl}/categories/all`,
 
             { headers: headers }
 

@@ -89,19 +89,9 @@ input, textarea, select {
 
     overflow: hidden;
 
-    opacity: 0.5;
-
     img {
 
         position: absolute;
-
-        object-fit: cover;
-
-        object-position: center center;
-
-        top: 0;
-
-        left: 0;
 
         width: 100%;
 
@@ -111,23 +101,51 @@ input, textarea, select {
 
     }
 
-    &:hover img {
+    .object-fit & {
 
-        height: 110%;
+        img {
 
-        width: 110%;
+            object-fit: cover;
 
-        top: -5%;
+            object-position: center center;
 
-        left: -5%;
+            top: 0;
+
+            left: 0;
+
+        }
+
+        &:hover img {
+
+            height: 110%;
+
+            width: 110%;
+
+            top: -5%;
+
+            left: -5%;
+
+        }
 
     }
 
-    .object-fit & {
+    .no-object-fit & {
 
-        opacity: .5;
+        img {
 
-        @include transform(rotateY(180deg));
+            top: 50%;
+
+            left: 50%;
+
+            @include transform(translate(-50%,-50%));
+
+        }
+
+        &:hover img {
+
+            @include transform(translate(-50%,-50%)scale(1.1));
+
+        }
 
     }
 

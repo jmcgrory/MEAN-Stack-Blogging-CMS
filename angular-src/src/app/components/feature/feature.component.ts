@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Feature } from '../../models/feature.model';
 import { DatePipe } from '@angular/common';
+import { environment } from '../../../environments/environment';
 
 @Component({
     selector: '[feature]',
@@ -26,7 +27,7 @@ export class FeatureComponent implements OnInit {
 
     parse(upload: string): string {
 
-        return 'http://localhost:3000' + upload.substring(1);
+        return environment.apiUrl + upload.substring(1);
 
     }
 

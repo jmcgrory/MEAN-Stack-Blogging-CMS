@@ -7,6 +7,7 @@ import { PostalService } from 'app/services/postal.service';
 import { Post } from 'app/models/post.model';
 import { FeatureComponent } from '../feature/feature.component';
 import { Feature } from '../../models/feature.model';
+import { environment } from '../../../environments/environment';
 
 @Component({
     selector: 'app-post',
@@ -30,7 +31,7 @@ export class PostComponent implements OnInit {
 
     parse(upload: string): string {
 
-        return 'http://localhost:3000' + upload.substring(1);
+        return environment.apiUrl + upload.substring(1);
 
     }
 

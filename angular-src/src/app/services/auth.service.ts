@@ -3,6 +3,7 @@ import { HttpClientModule, HttpClient, HttpHeaders } from '@angular/common/http'
 import 'rxjs/add/operator/map';
 import { JwtHelperService, JwtModule } from '@auth0/angular-jwt';
 import { Router } from '@angular/router';
+import { environment } from '../../environments/environment';
 
 @Injectable()
 export class AuthService {
@@ -31,7 +32,7 @@ export class AuthService {
 
         return this.http.post(
 
-            'http://localhost:3000/users/register',
+            `${environment.apiUrl}/users/register`,
 
             user,
 
@@ -47,7 +48,7 @@ export class AuthService {
 
         return this.http.post(
 
-            'http://localhost:3000/users/authenticate',
+            `${environment.apiUrl}/users/authenticate`,
 
             user,
 

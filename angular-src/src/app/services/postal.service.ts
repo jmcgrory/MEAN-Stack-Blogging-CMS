@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import 'rxjs/add/operator/map';
 import { Post } from 'app/models/post.model';
 import { AuthService } from './auth.service';
+import { environment } from '../../environments/environment';
 
 @Injectable()
 export class PostalService {
@@ -22,7 +23,7 @@ export class PostalService {
 
         return this.http.get<Post>(
 
-            'http://localhost:3000/posts/post',
+            `${environment.apiUrl}/posts/post`,
 
             {
 
@@ -43,7 +44,7 @@ export class PostalService {
 
         return this.http.get<Post>(
 
-            'http://localhost:3000/posts/post',
+            `${environment.apiUrl}/posts/post`,
 
             {
 
@@ -75,7 +76,7 @@ export class PostalService {
 
         return this.http.get<any[]>(
 
-            'http://localhost:3000/posts/get',
+            `${environment.apiUrl}/posts/get`,
 
             {
 
@@ -97,7 +98,7 @@ export class PostalService {
 
         return this.http.get<any>(
 
-            'http://localhost:3000/posts/count',
+            `${environment.apiUrl}/posts/count`,
 
             {
 
@@ -145,7 +146,7 @@ export class PostalService {
 
         return this.http.post(
 
-            'http://localhost:3000/posts/delete',
+            `${environment.apiUrl}/posts/delete`,
 
             { _id: id },
 
@@ -170,7 +171,7 @@ export class PostalService {
 
         return this.http.post(
 
-            'http://localhost:3000/posts/add',
+            `${environment.apiUrl}/posts/add`,
 
             {},
 
@@ -195,7 +196,7 @@ export class PostalService {
 
         return this.http.post(
 
-            'http://localhost:3000/posts/active',
+            `${environment.apiUrl}/posts/active`,
 
             {
 
@@ -226,7 +227,7 @@ export class PostalService {
 
         return this.http.post(
 
-            'http://localhost:3000/posts/update',
+            `${environment.apiUrl}/posts/update`,
 
             { post: post },
 

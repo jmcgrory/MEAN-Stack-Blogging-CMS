@@ -1,3 +1,5 @@
 export const environment = {
-  production: true
+    production: false,
+    apiUrl: 'http://www.jmcgrory.co.uk',
+    siteUrl: 'http://www.jmcgrory.co.uk',
 };
