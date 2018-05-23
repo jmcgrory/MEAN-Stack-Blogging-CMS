@@ -89,6 +89,8 @@ input, textarea, select {
 
     overflow: hidden;
 
+    opacity: 0.5;
+
     img {
 
         position: absolute;
@@ -118,6 +120,14 @@ input, textarea, select {
         top: -5%;
 
         left: -5%;
+
+    }
+
+    .object-fit & {
+
+        opacity: .5;
+
+        @include transform(rotateY(180deg));
 
     }
 
