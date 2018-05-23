@@ -52,12 +52,6 @@ h1 {
 
     }
 
-    @include mobile {
-
-        width: 100%;
-
-    }
-
     &.active {
 
         opacity: 1;
@@ -230,16 +224,22 @@ h1 {
 
     }
 
-    &.viewable {
+    @include mobile {
 
-        opacity: 1;
-                
-        ul {
-    
-            display: block;
-    
+        width: 100%;
+
+        &.viewable {
+
+            opacity: 1;
+                    
+            ul {
+        
+                display: block;
+        
+            }
+        
         }
-    
+
     }
 
     @include notMobile {

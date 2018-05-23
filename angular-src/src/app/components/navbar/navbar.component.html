@@ -13,24 +13,24 @@
                 <a routerLink="home">Home</a>
             </li>
             <li routerLinkActive="active">
-                <a routerLink="about ">About</a>
+                <a routerLink="about">About</a>
             </li>
-            <li routerLinkActive="active ">
-                <a routerLink="articles ">Articles</a>
+            <li routerLinkActive="active">
+                <a routerLink="articles">Articles</a>
             </li>
-            <li routerLinkActive="active " *ngIf="authService.loggedIn() ">
-                <a routerLink="dashboard ">Dash</a>
+            <li routerLinkActive="active" *ngIf="authService.loggedIn()">
+                <a routerLink="dashboard">Dash</a>
             </li>
-            <li routerLinkActive="active " *ngIf="authService.loggedIn() ">
-                <a (click)="logout() ">Logout</a>
+            <li routerLinkActive="active" *ngIf="authService.loggedIn()">
+                <a (click)="logout()">Logout</a>
             </li>
-            <li routerLinkActive="active ">
-                <a routerLink="contact ">Contact</a>
+            <li routerLinkActive="active">
+                <a routerLink="contact">Contact</a>
             </li>
         </ul>
     </nav>
 </header>
 
-<div class="column content ">
+<div class="column content">
     <hr>
 </div>
