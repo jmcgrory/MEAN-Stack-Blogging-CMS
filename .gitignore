@@ -10,4 +10,5 @@ angular-src/angular-src/
 uploads/
 .prettierrc
 .env
+.env.production
 angular-src/src/environments/

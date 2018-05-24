@@ -16,16 +16,19 @@ const config = require('./config/database.js');
 
 const passport = require('passport');
 
+const dotenv = require('dotenv');
+
 //************************//
 //****    App Setup   ****//
 //************************//
 
+dotenv.config();
+
 // Development Port
 
-const port = 3000;
+const port = process.env.PORT;
 
 // Heroku Port
-
 // const port = process.env.PORT || 8080;
 
 const app = express();
@@ -42,11 +45,11 @@ app.use(bodyParser.json());
 
 mongoose.connect(config.database, { useMongoClient: true });
 
-// When connected log connection
+// Log Connection
 
 mongoose.connection.on('connected', () => {
 
-    console.log('connected to db ' + config.database);
+    console.log(`connected to db ${config.database}`);
 
 });
 
@@ -54,7 +57,7 @@ mongoose.connection.on('connected', () => {
 
 mongoose.connection.on('error', (err) => {
 
-    console.log('DB Error: ' + err);
+    console.log(err);
 
 });
 
@@ -88,21 +91,13 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(cors());
 
-// Index Route
-
+// Index Route (possibly use '*')
 app.get('/', (req, res) => {
-
-    res.send('[application]')
-
-});
-
-/* Use when live
-app.get('*', (req, res) => {
 
     res.sendFile(path.join(__dirname, 'public/index.html'));
 
 });
-*/
+
 
 //************************//
 //****   CRUD Routes  ****//
@@ -146,6 +141,6 @@ app.use('/meta', meta);
 
 app.listen(port, () => {
 
-    console.log('LISTENING ON PORT >>> ' + port);
+    console.log(`Listening on port: ${port}`);
 
 });
