@@ -22,7 +22,7 @@ module.exports = (passport) => {
     opts.jwtFromRequest = ExtractJwt.fromAuthHeaderWithScheme('jwt');
 
     // Set our key/secret to our db secret
-    opts.secretOrKey = config.database;
+    opts.secretOrKey = config.secret;
 
     // Create new instance, callback to our User model function with data
     passport.use(new JwtStrategy(opts, (jwt_payload, done) => {

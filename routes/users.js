@@ -18,24 +18,30 @@ const User = require('../models/User');
 
 // Register post request
 router.post('/register', (req, res, next) => {
-	// TODO: Replace in prod with email
-	return false;
 
 	// define new user
 	let newUser = new User({
+
 		name: req.body.name,
+
 		password: req.body.password,
+
 	});
 
-	console.log('registration closed', newUser);
-
 	// User.addUser(newUser, (err, user) => {
-	//   if(err){
-	//     res.json({success: false, msg: 'Failed to register user'});
-	//   } else {
-	//     res.json({success: true, msg: 'User registered'});
-	//   }
+
+	// 	if (err) {
+
+	// 		res.json({ success: false, msg: 'Failed to register user' });
+
+	// 	} else {
+
+	// 		res.json({ success: true, msg: 'User registered' });
+
+	// 	}
+
 	// });
+
 });
 
 //************************//
