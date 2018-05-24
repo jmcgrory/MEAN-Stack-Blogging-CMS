@@ -10,3 +10,4 @@ angular-src/angular-src/
 uploads/
 .prettierrc
 .env
+/environments/*.ts
