@@ -9,3 +9,4 @@ angular-src/angular-src/
 /angular-src/src/assets/lib/hljs/styles/*.css
 uploads/
 .prettierrc
+.env
