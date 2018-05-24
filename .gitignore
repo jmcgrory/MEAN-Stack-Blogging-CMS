@@ -4,7 +4,6 @@ angular-src/node_modules/
 .sass-cache/
 angular-src/angular-src/
 *.css.map
-/angular-src/src/assets/lib/hljs/styles/*.css
 uploads/
 .prettierrc
 .env
