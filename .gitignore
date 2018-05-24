@@ -1,11 +1,9 @@
 .vscode/
 node_modules/
-config/
 angular-src/node_modules/
 .sass-cache/
 angular-src/angular-src/
 *.css.map
-/config/database.js
 /angular-src/src/assets/lib/hljs/styles/*.css
 uploads/
 .prettierrc
