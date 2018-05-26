@@ -47,7 +47,7 @@
 
 </article>
 
-<div class="column content edit-content" *ngIf="authService.loggedIn()">
+<div class="column content edit-content" *ngIf="loggedIn">
 
     <a class="btn mini" routerLink="/dashboard/edit/{{ post?._id }}">
         Edit Article

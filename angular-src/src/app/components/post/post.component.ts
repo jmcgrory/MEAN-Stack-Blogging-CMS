@@ -20,7 +20,8 @@ export class PostComponent implements OnInit {
 
     post: Post;
 
-    // TODO: Exclusion isn't working && Fix Spacing In Layout
+    loggedIn: boolean = this.authService.loggedIn();
+
     relatedArticles: Feature[];
 
     constructor(
