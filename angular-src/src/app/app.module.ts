@@ -58,6 +58,14 @@ const options = {
     theme: 'dracula'
 }
 
+const token = localStorage.getItem('id_token');
+
+export function tokenGetter() {
+
+    return token ? token : null;
+
+}
+
 @NgModule({
     declarations: [
         AppComponent,
@@ -85,10 +93,7 @@ const options = {
         AngularFontAwesomeModule,
         JwtModule.forRoot({
             config: {
-                tokenGetter: () => {
-                    let token = localStorage.getItem('id_token');
-                    return token ? token : null;
-                }
+                tokenGetter: tokenGetter
             }
         })
     ],

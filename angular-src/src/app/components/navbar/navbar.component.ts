@@ -11,6 +11,8 @@ export class NavbarComponent {
 
     menuActive: boolean = false;
 
+    loggedIn: boolean = this.authService.loggedIn();
+
     constructor(
         private authService: AuthService,
         private router: Router

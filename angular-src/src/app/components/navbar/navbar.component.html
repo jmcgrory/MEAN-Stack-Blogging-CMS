@@ -7,7 +7,7 @@
         <span class="mobile-menu-bar mobile-menu-bar-2"></span>
         <span class="mobile-menu-bar mobile-menu-bar-3"></span>
     </button>
-    <nav [ngClass]="{'admin': authService.loggedIn(), 'active': menuActive }">
+    <nav [ngClass]="{'admin': loggedIn, 'active': menuActive }">
         <ul>
             <li>
                 <a routerLink="home">Home</a>
@@ -18,10 +18,10 @@
             <li routerLinkActive="active">
                 <a routerLink="articles">Articles</a>
             </li>
-            <li routerLinkActive="active" *ngIf="authService.loggedIn()">
+            <li routerLinkActive="active" *ngIf="loggedIn">
                 <a routerLink="dashboard">Dash</a>
             </li>
-            <li routerLinkActive="active" *ngIf="authService.loggedIn()">
+            <li routerLinkActive="active" *ngIf="loggedIn">
                 <a (click)="logout()">Logout</a>
             </li>
             <li routerLinkActive="active">
