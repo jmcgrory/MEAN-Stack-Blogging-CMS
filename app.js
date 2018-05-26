@@ -88,13 +88,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 //app.use(cors());
 
-// Index Route (possibly use '*')
-app.get('*', (req, res) => {
-
-    res.sendFile(path.join(__dirname, 'public/index.html'));
-
-});
-
 
 //************************//
 //****   CRUD Routes  ****//
@@ -129,6 +122,17 @@ app.use('/categories', categories);
 const meta = require('./routes/meta');
 
 app.use('/meta', meta);
+
+//************************//
+//****     GET IT     ****//
+//************************//
+
+// Index Route (possibly use '*')
+app.get('*', (req, res) => {
+
+    res.sendFile(path.join(__dirname, 'public/index.html'));
+
+});
 
 //************************//
 //****    RUN DMC     ****//
