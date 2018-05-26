@@ -2,10 +2,6 @@
 //**** MongoDB Config ****//
 //************************//
 
-const dotenv = require('dotenv');
-
-dotenv.config();
-
 module.exports = {
 
     database: "mongodb://user_jamie_mcgrory:V5NOP1aUlibpsCTmXr1B@ds233895.mlab.com:33895/jmcgrory",
