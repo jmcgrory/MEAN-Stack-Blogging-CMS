@@ -86,7 +86,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // Allow CORS
 
-app.use(cors());
+//app.use(cors());
 
 // Index Route (possibly use '*')
 app.get('/', (req, res) => {
