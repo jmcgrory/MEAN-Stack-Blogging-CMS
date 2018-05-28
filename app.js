@@ -24,7 +24,7 @@ const dotenv = require('dotenv');
 
 dotenv.config();
 
-// Heroku Port
+// Port
 const port = process.env.PORT || 3000;
 
 const app = express();
@@ -87,13 +87,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(cors());
 
-// Index Route (possibly use '*')
-app.get('/', (req, res) => {
-
-    res.sendFile(path.join(__dirname, 'public/index.html'));
-
-});
-
 
 //************************//
 //****   CRUD Routes  ****//
@@ -132,6 +125,12 @@ app.use('/meta', meta);
 //************************//
 //****    RUN DMC     ****//
 //************************//
+
+app.get('*', (req, res) => {
+
+    res.sendFile(path.join(__dirname, 'public/index.html'));
+
+});
 
 // Run the server
 
