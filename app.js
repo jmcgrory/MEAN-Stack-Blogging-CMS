@@ -16,13 +16,9 @@ const config = require('./config/database.js');
 
 const passport = require('passport');
 
-const dotenv = require('dotenv');
-
 //************************//
 //****    App Setup   ****//
 //************************//
-
-dotenv.config();
 
 // Port
 const port = process.env.PORT || 3000;
