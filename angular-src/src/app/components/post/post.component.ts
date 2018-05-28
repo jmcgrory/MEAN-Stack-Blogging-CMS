@@ -14,20 +14,31 @@ import { environment } from '../../../environments/environment';
     templateUrl: './post.component.html',
     styleUrls: ['./post.component.css']
 })
-export class PostComponent implements OnInit {
+export class PostComponent implements OnInit, OnDestroy {
 
     private sub: any;
 
+    private loginState: any;
+
     post: Post;
 
-    // TODO: Exclusion isn't working && Fix Spacing In Layout
     relatedArticles: Feature[];
+
+    loggedIn: boolean;
 
     constructor(
         private route: ActivatedRoute,
         private authService: AuthService,
         private postalService: PostalService
-    ) { }
+    ) {
+
+        this.loginState = this.authService.getLoginState().subscribe(value => {
+
+            this.loggedIn = value;
+
+        });
+
+    }
 
     parse(upload: string): string {
 
@@ -55,6 +66,14 @@ export class PostComponent implements OnInit {
 
     }
 
+    ngOnDestroy() {
+
+        this.loginState.unsubscribe();
+
+        this.sub.unsubscribe();
+
+    }
+
     getRelatedPosts(): void {
 
         const params = {
@@ -76,13 +95,6 @@ export class PostComponent implements OnInit {
             this.relatedArticles = data;
 
         });
-
-    }
-
-    // Unsubscribe on leave
-    ngOnDestroy() {
-
-        this.sub.unsubscribe();
 
     }
 

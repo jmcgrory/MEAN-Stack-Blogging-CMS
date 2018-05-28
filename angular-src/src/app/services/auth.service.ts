@@ -4,6 +4,8 @@ import 'rxjs/add/operator/map';
 import { JwtHelperService, JwtModule } from '@auth0/angular-jwt';
 import { Router } from '@angular/router';
 import { environment } from '../../environments/environment';
+import { Observable } from 'rxjs';
+import { Subject } from 'rxjs/Subject';
 
 @Injectable()
 export class AuthService {
@@ -11,6 +13,8 @@ export class AuthService {
     token: any;
 
     user: any;
+
+    loginState = new Subject<any>();
 
     constructor(
 
@@ -23,6 +27,28 @@ export class AuthService {
     ) {
 
         const helper = new JwtHelperService();
+
+    }
+
+    setLoginState(): void {
+
+        const token = this.loggedIn() ? true : false;
+
+        this.loginState.next(token);
+
+    }
+
+    getLoginState(): Observable<any> {
+
+        return this.loginState.asObservable();
+
+    }
+
+    loggedIn() {
+
+        var token = this.jwtHelper.decodeToken(this.token);
+
+        return (token) ? token : false;
 
     }
 
@@ -111,14 +137,6 @@ export class AuthService {
         if (this.isTokenExpired(local_token)) this.logout();
 
         return (local_token) ? local_token : 'jwt false';
-
-    }
-
-    loggedIn() {
-
-        var token = this.jwtHelper.decodeToken(this.token);
-
-        return (token) ? token : false;
 
     }
 

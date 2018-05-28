@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 import { Response } from '../../models/response.model';
@@ -14,11 +14,8 @@ export class LoginComponent {
     password: String;
 
     constructor(
-
         private authService: AuthService,
-
         private router: Router
-
     ) { }
 
     onLoginSubmit(): void {
@@ -36,6 +33,8 @@ export class LoginComponent {
             if (data.success) {
 
                 this.authService.storeUserData(data.token, data.user.name);
+
+                this.authService.setLoginState();
 
                 this.router.navigate(['dashboard']);
 

@@ -39,6 +39,16 @@ import { HighlightModule } from 'ngx-highlightjs';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import { JwtModule } from '@auth0/angular-jwt';
 
+// Token Getter
+
+export function tokenGetter() {
+
+    const token = localStorage.getItem('id_token');
+
+    return token ? token : null;
+
+}
+
 // Angular Routes
 const appRoutes = [
     { path: '', component: HomeComponent, pathMatch: 'full' },
@@ -85,10 +95,7 @@ const options = {
         AngularFontAwesomeModule,
         JwtModule.forRoot({
             config: {
-                tokenGetter: () => {
-                    let token = localStorage.getItem('id_token');
-                    return token ? token : null;
-                }
+                tokenGetter: tokenGetter
             }
         })
     ],
