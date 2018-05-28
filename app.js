@@ -8,7 +8,7 @@ const path = require('path');
 
 const bodyParser = require('body-parser');
 
-//const cors = require('cors');
+const cors = require('cors');
 
 const mongoose = require('mongoose');
 
@@ -81,7 +81,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // Allow CORS
 
-//app.use(cors());
+app.use(cors());
 
 
 //************************//
