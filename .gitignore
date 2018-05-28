@@ -10,4 +10,3 @@ uploads/
 .env.production
 .env.dev
 angular-src/src/environments/
-config/database.js
