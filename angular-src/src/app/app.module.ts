@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { RouterModule, Routes } from '@angular/router';
+import { RouterModule } from '@angular/router';
 
 // Component Imports
 import { AppComponent } from './app.component';
@@ -39,6 +39,10 @@ import { HighlightModule } from 'ngx-highlightjs';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import { JwtModule } from '@auth0/angular-jwt';
 
+// Production
+import { enableProdMode } from '@angular/core';
+enableProdMode();
+
 // Token Getter
 
 export function tokenGetter() {
@@ -67,6 +71,7 @@ const appRoutes = [
 const options = {
     theme: 'dracula'
 }
+
 
 @NgModule({
     declarations: [
