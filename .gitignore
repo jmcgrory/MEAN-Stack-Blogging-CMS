@@ -9,4 +9,4 @@ uploads/
 .env
 .env.production
 .env.dev
-angular-src/src/environments/
+angular-src/src/environments/*.ts

@@ -32,3 +32,12 @@ To-Do:
  - Improve UI for initial load
  - Add animations to post/page navigation
  
+Instructions:
+
+ - in `angular-src/src/environments/`, copy `environment.ts.example` to `environment.ts`, and copy `environment.prod.ts.example` to `environment.prod.ts`
+ - in the application root, run `npm install` and then `npm run start`
+ - open another bash shell, and in `angular-src`, run `npm install` and then `npm run start`
+ - in `routes/users.js`, uncomment the commented out code in the `register` route handler
+ - in another shell, run  `curl -d "name=<username>&password=<password>" -X POST http://localhost:3000/users/register`, replacing `<username>` and `<password>` with desired values
+ - undo the previous changes to `routes/users.js`, to prevent unauthorized creation of arbitrary users
+ - navigate to `localhost:4200/login`, and login with the username and password you chose above

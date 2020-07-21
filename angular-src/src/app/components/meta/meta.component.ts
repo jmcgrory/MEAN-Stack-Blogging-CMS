@@ -5,7 +5,7 @@ import { AuthService } from '../../services/auth.service';
 @Component({
     selector: 'app-meta',
     templateUrl: './meta.component.html',
-    styleUrls: ['./meta.component.css']
+    styleUrls: ['./meta.component.scss']
 })
 export class MetaComponent implements OnInit {
 
