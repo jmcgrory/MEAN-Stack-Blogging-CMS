@@ -4,7 +4,7 @@ import { HtmlPipe } from 'app/pipes/html.pipe';
 @Component({
     selector: '[PostSection]',
     templateUrl: './section.component.html',
-    styleUrls: ['./section.component.css']
+    styleUrls: ['./section.component.scss']
 })
 export class SectionComponent {
 
